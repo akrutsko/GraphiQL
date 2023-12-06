@@ -16,7 +16,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'react'],
+  plugins: ['@typescript-eslint', 'import', 'react'],
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
@@ -36,5 +36,12 @@ module.exports = {
     'react/display-name': 'off',
     'comma-dangle': ['error', 'only-multiline'],
     'no-fallthrough': 'error',
+    'import/order': [
+      2,
+      {
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+        'newlines-between': 'always',
+      },
+    ],
   },
 };
