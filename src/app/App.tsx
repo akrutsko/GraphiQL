@@ -1,7 +1,13 @@
+import Welcome from '../components/pages/Welcome';
+import LanguageProvider from '../contexts/LanguageContext';
 import './App.css';
 
 function App() {
-  return <h1>GraphiQL</h1>;
+  return (
+    <LanguageProvider>
+      <Welcome />
+    </LanguageProvider>
+  );
 }
 
 export default App;

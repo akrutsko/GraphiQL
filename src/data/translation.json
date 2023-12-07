@@ -1,0 +1,14 @@
+{
+  "en": {
+    "welcome": "Welcome!",
+    "signin": "Sign In",
+    "signup": "Sign Up",
+    "logout": "Log out"
+  },
+  "ru": {
+    "welcome": "Добро пожаловать!",
+    "signin": "Войти",
+    "signup": "Зарегистрироваться",
+    "logout": "Выйти"
+  }
+}
