@@ -1,13 +1,14 @@
 import Welcome from '../components/pages/Welcome';
 import LanguageProvider from '../contexts/LanguageContext';
+
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <LanguageProvider>
       <Welcome />
     </LanguageProvider>
   );
-}
+};
 
 export default App;

@@ -6,7 +6,7 @@ import type { Lang } from '../types';
 export const Language = createContext<Lang>(LANG_EN);
 export const LanguageDispatchContext = createContext<Dispatch<SetStateAction<Lang>> | null>(null);
 
-export default function LanguageProvider({ children }: PropsWithChildren) {
+const LanguageProvider = ({ children }: PropsWithChildren) => {
   const [language, setLanguage] = useState<Lang>(LANG_EN);
 
   return (
@@ -14,4 +14,6 @@ export default function LanguageProvider({ children }: PropsWithChildren) {
       <LanguageDispatchContext.Provider value={setLanguage}>{children}</LanguageDispatchContext.Provider>
     </Language.Provider>
   );
-}
+};
+
+export default LanguageProvider;
