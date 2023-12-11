@@ -1,12 +1,13 @@
-import Welcome from '../components/pages/Welcome';
-import LanguageProvider from '../contexts/LanguageContext';
+import { RouterProvider } from 'react-router-dom';
 
+import { router } from '../router/router.tsx';
+import LanguageProvider from '../contexts/LanguageContext';
 import './App.css';
 
 const App = () => {
   return (
     <LanguageProvider>
-      <Welcome />
+      <RouterProvider router={router} />
     </LanguageProvider>
   );
 };
