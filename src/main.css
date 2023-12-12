@@ -1,7 +1,19 @@
+:root {
+  --pink-color: #ff05ea;
+  --dark-grey-color: #ababab;
+  --violet-color: #2f2746;
+  --inner-font-size: 48px;
+  --link-font-size: 28px;
+  --font-size: 16px;
+  --link-padding: 5px 10px;
+  --link-color: #000;
+}
+
 html {
   box-sizing: border-box;
-  font-size: 62.5%;
   scroll-behavior: smooth;
+  font-family: "Inconsolata", monospace;
+  font-size: var(--font-size);
 }
 
 *,
@@ -10,6 +22,15 @@ html {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-color: var(--violet-color);
+  color: #ffff;
+  background-image: url("./assets/images/background.png");
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: top right;
 }
 
 ul {
@@ -21,4 +42,15 @@ svg {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
 }

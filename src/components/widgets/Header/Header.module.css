@@ -1,0 +1,25 @@
+.header {
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.settings {
+  background-image: url("../../../assets/icons/settings.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+}
+
+.buttonsContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.buttonsContainer a {
+  font-size: var(--link-font-size);
+  background-color: var(--pink-color);
+  padding: var(--link-padding);
+  color: var(--link-color);
+}

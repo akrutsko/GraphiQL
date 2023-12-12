@@ -1,0 +1,22 @@
+.footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 20px;
+}
+
+.devContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.rsLogo {
+  background-image: url("../../../assets/icons/rs_school_js.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 50px;
+  width: 140px;
+}
