@@ -10,6 +10,12 @@
   background-repeat: no-repeat;
   width: 40px;
   height: 40px;
+  transition: transform 0.5s;
+}
+
+.settings:hover,
+.active {
+  transform: rotate(90deg);
 }
 
 .buttonsContainer {

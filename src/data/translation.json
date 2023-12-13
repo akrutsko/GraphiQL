@@ -1,14 +1,66 @@
 {
   "en": {
-    "welcome": "Welcome!",
+    "welcome": "Welcome to GraphiQL!",
     "signin": "Sign In",
     "signup": "Sign Up",
-    "logout": "Log out"
+    "logout": "Log out",
+    "404": "Page not found",
+    "gotomain": "Go to main",
+    "settings": "Settings",
+    "developers": [
+      { "name": "Valeriia Galakhova", "href": "https://github.com/ValeriyaGlx" },
+      { "name": "Maria Stroich", "href": "https://github.com/stroich" },
+      { "name": "Aliaksei Krutsko", "href": "https://github.com/akrutsko" }
+    ],
+    "languageSetting": "Language",
+    "languageSettingDescription": "Choose the current language of the App",
+    "themeSetting": "Theme",
+    "themeSettingDescription": "Adjust how the interface looks like",
+    "languageToggle": [
+      {
+        "name": "En",
+        "value": "en"
+      },
+      {
+        "name": "Ru",
+        "value": "ru"
+      }
+    ],
+    "themeToggle": [
+      { "name": "Dark", "value": "dark" },
+      { "name": "Light", "value": "light" }
+    ]
   },
   "ru": {
-    "welcome": "Добро пожаловать!",
-    "signin": "Войти",
-    "signup": "Зарегистрироваться",
-    "logout": "Выйти"
+    "welcome": "Добро пожаловать в GraphiQL!",
+    "signin": "Вход",
+    "signup": "Регистрация",
+    "logout": "Выход",
+    "404": "Страница не найдена",
+    "gotomain": "На главную",
+    "settings": "Настройки",
+    "developers": [
+      { "name": "Валерия Галахова", "href": "https://github.com/ValeriyaGlx" },
+      { "name": "Мария Строич", "href": "https://github.com/stroich" },
+      { "name": "Алексей Крутько", "href": "https://github.com/akrutsko" }
+    ],
+    "languageSetting": "Язык",
+    "languageSettingDescription": "Выберите текущий язык приложения",
+    "themeSetting": "Тема",
+    "themeSettingDescription": "Настройте как будет выглядеть интерфейс",
+    "languageToggle": [
+      {
+        "name": "Англ",
+        "value": "en"
+      },
+      {
+        "name": "Рус",
+        "value": "ru"
+      }
+    ],
+    "themeToggle": [
+      { "name": "Темная", "value": "dark" },
+      { "name": "Светлая", "value": "light" }
+    ]
   }
 }
