@@ -8,7 +8,7 @@ import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher.tsx';
 const Layout = () => {
   return (
     <ThemeSwitcher>
-      <Container sx={{ position: 'relative', minHeight: '100vh' }}>
+      <Container sx={{ minHeight: '100vh', display: 'flex', justifyContent: 'space-between', flexDirection: 'column' }}>
         <Header />
         <main>
           <Outlet />

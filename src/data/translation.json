@@ -29,7 +29,10 @@
     "themeToggle": [
       { "name": "Dark", "value": "dark" },
       { "name": "Light", "value": "light" }
-    ]
+    ],
+    "variables": "Variables",
+    "headers": "Headers",
+    "endpoint": "Endpoint"
   },
   "ru": {
     "welcome": "Добро пожаловать в GraphiQL!",
@@ -61,6 +64,9 @@
     "themeToggle": [
       { "name": "Темная", "value": "dark" },
       { "name": "Светлая", "value": "light" }
-    ]
+    ],
+    "variables": "Переменные",
+    "headers": "Заголовки",
+    "endpoint": "Конечная точка"
   }
 }

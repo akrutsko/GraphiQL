@@ -1,0 +1,55 @@
+.buttonGroup {
+  display: block;
+  position: absolute;
+  right: 20px;
+  top: 25%;
+  background-image: url("../../../assets/icons/Group.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  transform: rotate(180deg);
+  transition: 0.2s ease-in;
+}
+
+.wrapperGroup {
+  background-color: var(--dark-blue-color);
+  padding: 10px 0;
+  position: relative;
+}
+
+.wrapperGroup div {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: var(--dark-grey-color);
+}
+
+.wrapperGroup button {
+  color: white;
+}
+
+.visible {
+  transform: none;
+}
+
+.buttonsControl {
+  color: white;
+  padding: 9px 12px;
+  font-family: Inconsolata, serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.activeButton {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: var(--pink-color);
+}
+
+@media (max-width: 700px) {
+  .buttonsControl {
+    font-size: 16px;
+  }
+}

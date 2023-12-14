@@ -16,7 +16,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'import', 'react'],
+  plugins: ['@typescript-eslint', 'import', 'react', 'prettier'],
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
