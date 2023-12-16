@@ -7,10 +7,26 @@
     "404": "Page not found",
     "gotomain": "Go to main",
     "settings": "Settings",
+    "applicationDevelopers": "Application Developers",
     "developers": [
-      { "name": "Valeriia Galakhova", "href": "https://github.com/ValeriyaGlx" },
-      { "name": "Maria Stroich", "href": "https://github.com/stroich" },
-      { "name": "Aliaksei Krutsko", "href": "https://github.com/akrutsko" }
+      {
+        "name": "Valeriia Galakhova",
+        "image": "https://avatars.githubusercontent.com/u/115462690?v=4",
+        "href": "https://github.com/ValeriyaGlx",
+        "description": "This is the Team Leader specializing in interface design. Strong JavaScript skills are combined with creative design, resulting in aesthetic and functional applications. Continuously improving, adhering to high-quality standards."
+      },
+      {
+        "name": "Maria Stroich",
+        "image": "https://avatars.githubusercontent.com/u/119624478?v=4",
+        "href": "https://github.com/stroich",
+        "description": "Creative frontend developer specializing in crafting intuitive interfaces using React and TypeScript. Proficient in building interactive designs that deliver an excellent user experience. Constantly refining skills and adhering to high-quality standards."
+      },
+      {
+        "name": "Aliaksei Krutsko",
+        "image": "https://avatars.githubusercontent.com/u/15146619?v=4",
+        "href": "https://github.com/akrutsko",
+        "description": "A talented frontend developer specializing in React and TypeScript. His enthusiasm for cutting-edge technologies and ability to create efficient and clean code make him a key member of our team."
+      }
     ],
     "languageSetting": "Language",
     "languageSettingDescription": "Choose the current language of the App",
@@ -34,7 +50,14 @@
     "placeholders": ["Enter Email", "Enter Password", "Confirm Password"],
     "variables": "Variables",
     "headers": "Headers",
-    "endpoint": "Endpoint"
+    "endpoint": "Endpoint",
+    "projectInfo": [
+      "Our platform provides you with unique opportunities to interact with GraphQL API. Here, you can easily experiment with various endpoints, input queries, manage variables and headers, and then enjoy the results of your efforts.",
+
+      "GraphiQL Playground is designed with your comfort and understanding in mind. We offer an intuitive interface that will make exploring the power of GraphQL a breeze. Your queries will become simpler, and the results more accessible.",
+
+      "Join us, and let's uncover the magic of GraphQL together. GraphiQL Playground is your reliable partner in learning and utilizing GraphQL API. Enjoy the journey through GraphQL functionality with ease and pleasure!"
+    ]
   },
   "ru": {
     "welcome": "Добро пожаловать в GraphiQL!",
@@ -44,10 +67,26 @@
     "404": "Страница не найдена",
     "gotomain": "На главную",
     "settings": "Настройки",
+    "applicationDevelopers": "Разработчики приложения",
     "developers": [
-      { "name": "Валерия Галахова", "href": "https://github.com/ValeriyaGlx" },
-      { "name": "Мария Строич", "href": "https://github.com/stroich" },
-      { "name": "Алексей Крутько", "href": "https://github.com/akrutsko" }
+      {
+        "name": "Валерия Галахова",
+        "image": "https://avatars.githubusercontent.com/u/115462690?v=4",
+        "href": "https://github.com/ValeriyaGlx",
+        "description": "Лидер команды, специализируется на создании интерфейсов. Сильные навыки в JavaScript сочетаются с творческим дизайном, результат — эстетичные и функциональные приложения. Постоянно совершенствуется, придерживается высоких стандартов качества."
+      },
+      {
+        "name": "Мария Строич",
+        "image": "https://avatars.githubusercontent.com/u/119624478?v=4",
+        "href": "https://github.com/stroich",
+        "description": "Креативный фронтенд-разработчик, предпочитающий разрабатывать интуитивно понятные интерфейсы с использованием React и TypeScript. Специализируется на построении интерактивных интерфейсов, которые обеспечивают отличный пользовательский опыт."
+      },
+      {
+        "name": "Алексей Крутько",
+        "image": "https://avatars.githubusercontent.com/u/15146619?v=4",
+        "href": "https://github.com/akrutsko",
+        "description": "Талантливый фронтенд-разработчик, специализирующимся на React и TypeScript. Его энтузиазм по отношению к передовым технологиям и умение создавать эффективный и чистый код делают его ключевым членом нашей команды."
+      }
     ],
     "languageSetting": "Язык",
     "languageSettingDescription": "Выберите текущий язык приложения",
@@ -71,6 +110,13 @@
     "placeholders": ["Введите Эл. почту", "Введите Пароль", "Повторите Пароль"],
     "variables": "Переменные",
     "headers": "Заголовки",
-    "endpoint": "Конечная точка"
+    "endpoint": "Конечная точка",
+    "projectInfo": [
+      "Наша платформа предоставляет вам уникальные возможности взаимодействия с GraphQL API. Здесь вы можете легко экспериментировать с различными конечными точками, вводить запросы, управлять переменными и заголовками, а затем наслаждаться результатами вашего труда.",
+
+      "GraphiQL Playground создан с учетом вашего комфорта и понимания. Мы предлагаем интуитивно понятный интерфейс, который облегчит вам исследование мощи GraphQL. Ваши запросы станут проще, а результаты - более доступными.",
+
+      "Присоединяйтесь к нам, и давайте вместе раскроем всю магию GraphQL. GraphiQL Playground - это ваш надежный партнер в изучении и использовании GraphQL API. Наслаждайтесь путешествием по функциональности GraphQL с легкостью и удовольствием!"
+    ]
   }
 }
