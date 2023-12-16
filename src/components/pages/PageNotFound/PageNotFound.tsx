@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom';
 
 import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner.tsx';
+import { useTranslation } from '../../../hooks';
 
 import styles from './PageNotFound.module.css';
 
 const PageNotFound = () => {
+  const translation = useTranslation();
   return (
     <main>
-      <AnimatedInner inner={'Page Not Found'} />
+      <AnimatedInner inner={translation['404']} />
       <Link className={styles.link} to={'/'}>
-        Go to Main
+        {translation.gotomain}
       </Link>
     </main>
   );

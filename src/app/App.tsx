@@ -1,14 +1,14 @@
 import { RouterProvider } from 'react-router-dom';
 
 import { router } from '../router/router.tsx';
-import LanguageProvider from '../contexts/LanguageContext';
 import './App.css';
+import SettingsContext from '../contexts/SettingsContext.tsx';
 
 const App = () => {
   return (
-    <LanguageProvider>
+    <SettingsContext>
       <RouterProvider router={router} />
-    </LanguageProvider>
+    </SettingsContext>
   );
 };
 

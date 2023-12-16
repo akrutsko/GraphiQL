@@ -1,0 +1,59 @@
+.requestSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--violet-color);
+  height: 100%;
+}
+
+.requestSection {
+  flex: 1;
+}
+
+.wrapperButtons {
+  position: relative;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: end;
+}
+
+.buttonDocs,
+.buttonPrettier {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.buttonPrettier {
+  position: absolute;
+  top: 60px;
+  margin-right: 5px;
+  display: block;
+  background-image: url("../../../assets/icons/prettiefier.svg");
+  width: 30px;
+  height: 33px;
+}
+
+.wrapperButtonPlay {
+  position: absolute;
+  background-color: var(--pink-color);
+  display: inline-block;
+  width: 29px;
+  height: 29px;
+}
+
+.buttonPlay {
+  margin: 2px;
+  display: block;
+  background-image: url("../../../assets/icons/play-icon.svg");
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+}
+
+.textarea {
+  width: 100%;
+  height: 100%;
+}

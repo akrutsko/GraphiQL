@@ -1,0 +1,28 @@
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionInfo {
+  margin: 30px 0;
+}
+
+.text {
+  margin: 10px 0;
+  font-size: 25px;
+}
+
+.sectionDevelopers {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.sectionDevelopersTitle {
+  font-size: 30px;
+}
+
+.sectionDevelopersContext {
+  margin: 30px 0;
+  display: flex;
+  gap: 50px;
+}

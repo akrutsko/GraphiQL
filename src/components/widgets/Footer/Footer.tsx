@@ -1,13 +1,14 @@
-import { developers } from '../../../constants';
+import { useTranslation } from '../../../hooks';
 
 import styles from './Footer.module.css';
 
 const Footer = () => {
+  const translation = useTranslation();
   return (
     <footer className={styles.footer}>
       <span> &copy; 2023 - GraphiQL</span>
       <div className={styles.devContainer}>
-        {developers.map(({ name, href }) => (
+        {translation.developers.map(({ name, href }) => (
           <a key={name} href={href} target="_blank" rel="noreferrer">
             {name}
           </a>

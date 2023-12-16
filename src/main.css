@@ -2,6 +2,7 @@
   --pink-color: #ff05ea;
   --dark-grey-color: #ababab;
   --violet-color: #2f2746;
+  --dark-blue-color: #262133;
   --inner-font-size: 48px;
   --link-font-size: 28px;
   --font-size: 16px;
@@ -31,6 +32,7 @@ body {
   background-repeat: no-repeat;
   background-size: auto;
   background-position: top right;
+  background-attachment: fixed;
 }
 
 ul {
@@ -52,5 +54,5 @@ button {
 
 a {
   text-decoration: none;
-  color: #fff;
+  color: inherit;
 }
