@@ -30,6 +30,8 @@
       { "name": "Dark", "value": "dark" },
       { "name": "Light", "value": "light" }
     ],
+    "submit": "Submit",
+    "placeholders": ["Enter Email", "Enter Password", "Confirm Password"],
     "variables": "Variables",
     "headers": "Headers",
     "endpoint": "Endpoint"
@@ -65,6 +67,8 @@
       { "name": "Темная", "value": "dark" },
       { "name": "Светлая", "value": "light" }
     ],
+    "submit": "Отправить",
+    "placeholders": ["Введите Эл. почту", "Введите Пароль", "Повторите Пароль"],
     "variables": "Переменные",
     "headers": "Заголовки",
     "endpoint": "Конечная точка"
