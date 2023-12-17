@@ -5,7 +5,7 @@ import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner';
 import { useTranslation } from '../../../hooks';
 import { INPUTS_SIGN_UP } from '../../../constants';
 import InputValidation from '../../shared/InputValidation/InputValidation';
-import { validationSchema } from '../../../utils/validationSchema';
+import { validationSchema } from '../../../utils/validationSchema.ts';
 
 import styles from './SignUp.module.css';
 
