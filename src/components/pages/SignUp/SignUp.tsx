@@ -10,7 +10,7 @@ import { useAppSelector, useTranslation } from '../../../hooks';
 import { selectAuth } from '../../../store/slices/userSlice';
 import { signUpSchema, type SignUpSchema } from '../../../utils/signUpSchema';
 import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner';
-import InputValidation from '../../shared/InputValidation/InputValidation';
+import SignUpValidation from '../../shared/InputValidation/SignUpValidation';
 
 import styles from './SignUp.module.css';
 
@@ -51,7 +51,7 @@ const SignUp = () => {
       <AnimatedInner inner={translation.signup} />
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)} noValidate>
         {INPUTS_SIGN_UP.map(({ placeholder, inputName, type }, index) => (
-          <InputValidation
+          <SignUpValidation
             key={placeholder}
             placeholder={translation.placeholders[index]}
             inputName={inputName}
