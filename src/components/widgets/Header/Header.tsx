@@ -25,7 +25,10 @@ const Header = () => {
   }, [user, navigate]);
 
   const buttons = user ? (
-    <button onClick={handleClose}>{translation.signout}</button>
+    <>
+      <Link to={'/graphi-ql'}>GraphiQL</Link>
+      <button onClick={handleClose}>{translation.signout}</button>
+    </>
   ) : (
     <>
       <Link to={'/sign-in'}>{translation.signin}</Link>
