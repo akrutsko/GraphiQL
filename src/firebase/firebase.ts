@@ -9,7 +9,6 @@ const isDevelopment = import.meta.env.MODE === 'development';
 let firebaseConfig;
 
 if (isDevelopment) {
-  console.log('development');
   firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -19,7 +18,6 @@ if (isDevelopment) {
     appId: import.meta.env.VITE_FIREBASE_APP_ID,
   };
 } else {
-  console.log('production');
   firebaseConfig = {
     apiKey: process.env.VITE_FIREBASE_API_KEY,
     authDomain: process.env.VITE_FIREBASE_AUTH_DOMAIN,
