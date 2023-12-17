@@ -30,3 +30,7 @@
   padding: var(--link-padding);
   color: var(--link-color);
 }
+
+.buttonsContainer button {
+  padding-block: 10px;
+}
