@@ -16,7 +16,7 @@ import styles from './SignUp.module.css';
 
 const SignUp = () => {
   const translation = useTranslation();
-  const isAuthenticated = useAppSelector(selectAuth);
+  const { isAuthenticated } = useAppSelector(selectAuth);
   const navigate = useNavigate();
 
   const {

@@ -2,11 +2,11 @@ import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import type { RootState } from '../store';
 
-type InitialState = {
+type UserState = {
   isAuthenticated: boolean;
 };
 
-const initialState: InitialState = {
+const initialState: UserState = {
   isAuthenticated: false,
 };
 
