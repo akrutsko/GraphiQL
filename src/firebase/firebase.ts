@@ -1,6 +1,5 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { redirect } from 'react-router-dom';
 
 import { setAuth } from '../store/slices/userSlice';
 import { store } from '../store/store';
@@ -22,6 +21,6 @@ onAuthStateChanged(auth, (user) => {
     store.dispatch(setAuth(true));
   }
   if (!user) {
-    redirect('/');
+    store.dispatch(setAuth(false));
   }
 });
