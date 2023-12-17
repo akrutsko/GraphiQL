@@ -1,4 +1,4 @@
-import type { INPUT_EMAIL, INPUT_PASSWORD, INPUT_TEXT, INPUT_CONFIRM } from '../constants';
+import type { INPUT_CONFIRM, INPUT_EMAIL, INPUT_PASSWORD, INPUT_TEXT } from '../constants';
 
 export interface InputProps {
   type: typeof INPUT_EMAIL | typeof INPUT_PASSWORD | typeof INPUT_TEXT;

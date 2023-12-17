@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
-import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner.tsx';
 import { useTranslation } from '../../../hooks';
+import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner';
 
 import styles from './PageNotFound.module.css';
 

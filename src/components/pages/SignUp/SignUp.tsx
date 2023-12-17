@@ -1,16 +1,23 @@
-import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { FirebaseError } from 'firebase/app';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useForm } from 'react-hook-form';
+import { Navigate, useNavigate } from 'react-router-dom';
 
-import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner';
-import { useTranslation } from '../../../hooks';
 import { INPUTS_SIGN_UP } from '../../../constants';
+import { auth } from '../../../firebase/firebase';
+import { useAppSelector, useTranslation } from '../../../hooks';
+import { selectAuth } from '../../../store/slices/userSlice';
+import { signUpSchema, type SignUpSchema } from '../../../utils/signUpSchema';
+import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner';
 import InputValidation from '../../shared/InputValidation/InputValidation';
-import { validationSchema } from '../../../utils/validationSchema';
 
 import styles from './SignUp.module.css';
 
 const SignUp = () => {
   const translation = useTranslation();
+  const isAuthenticated = useAppSelector(selectAuth);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -19,11 +26,25 @@ const SignUp = () => {
     // reset,
     // getValues,
   } = useForm({
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(signUpSchema),
     mode: 'onBlur',
   });
 
-  const onSubmit = () => {};
+  if (isAuthenticated) {
+    return <Navigate to="/graphi-ql" replace />;
+  }
+
+  const onSubmit = async (data: SignUpSchema) => {
+    try {
+      await createUserWithEmailAndPassword(auth, data.email, data.password);
+      navigate('/graphi-ql');
+    } catch (err) {
+      if (err instanceof FirebaseError) {
+        // TODO: Add react-toastify
+        console.log(err);
+      }
+    }
+  };
 
   return (
     <>

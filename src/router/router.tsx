@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import Layout from '../components/widgets/Layout/Layout.tsx';
 import { GraphiQL, PageNotFound, SignUp, SingIn, Welcome } from '../components/pages';
+import Layout from '../components/widgets/Layout/Layout';
 
 export const router = createBrowserRouter([
   {

@@ -2,6 +2,9 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { redirect } from 'react-router-dom';
 
+import { setAuth } from '../store/slices/userSlice';
+import { store } from '../store/store';
+
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -14,12 +17,11 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 export const auth = getAuth(firebaseApp);
 
-const monitorAuthState = () => {
-  onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      redirect('/');
-    }
-  });
-};
-
-monitorAuthState();
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    store.dispatch(setAuth(true));
+  }
+  if (!user) {
+    redirect('/');
+  }
+});

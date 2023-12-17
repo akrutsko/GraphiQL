@@ -1,6 +1,6 @@
-import { object, string, ref } from 'yup';
+import { object, string, type InferType } from 'yup';
 
-export const validationSchema = object({
+export const signInSchema = object({
   email: string()
     .required('Email is required')
     .email('Email must be valid (example@mail.com)')
@@ -26,7 +26,6 @@ export const validationSchema = object({
     .matches(/[0-9]/, 'Password must contain at least one number')
     .matches(/[!"#$%&'()*+,./:;<=>?@^_`{|}~\-\[\]]/, 'Password must contain at least one special character')
     .min(8, 'Password must be at least 8 characters'),
-  confirmPassword: string()
-    .required('Confirm Password is required')
-    .oneOf([ref('password')], 'Passwords must match'),
 });
+
+export type SignInSchema = InferType<typeof signInSchema>;

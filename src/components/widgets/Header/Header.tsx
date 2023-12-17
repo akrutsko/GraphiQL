@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import SettingsModal from '../SettingsModal/SettingsModal.tsx';
 import { useTranslation } from '../../../hooks';
+import SettingsModal from '../SettingsModal/SettingsModal';
 
 import styles from './Header.module.css';
 
