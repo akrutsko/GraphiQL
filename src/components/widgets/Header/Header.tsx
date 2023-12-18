@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container } from '@mui/material';
 
-import SettingsModal from '../SettingsModal/SettingsModal.tsx';
+import SettingsModal from '../SettingsModal/SettingsModal';
 import { useTranslation } from '../../../hooks';
 
 import styles from './Header.module.css';

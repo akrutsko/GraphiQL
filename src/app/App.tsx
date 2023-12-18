@@ -1,8 +1,8 @@
 import { RouterProvider } from 'react-router-dom';
 
-import { router } from '../router/router.tsx';
+import { router } from '../router/router';
 import './App.css';
-import SettingsContext from '../contexts/SettingsContext.tsx';
+import SettingsContext from '../contexts/SettingsContext';
 
 const App = () => {
   return (

@@ -2,15 +2,17 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner';
-import { useTranslation } from '../../../hooks';
+import { useLanguage, useTranslation } from '../../../hooks';
 import { INPUTS_SIGN_UP } from '../../../constants';
 import InputValidation from '../../shared/InputValidation/InputValidation';
-import { validationSchema } from '../../../utils/validationSchema.ts';
+import { generateValidationSchema } from '../../../utils/validationSchema';
 
 import styles from './SignUp.module.css';
 
 const SignUp = () => {
   const translation = useTranslation();
+  const language = useLanguage();
+  const validationSchema = generateValidationSchema(language);
 
   const {
     register,
