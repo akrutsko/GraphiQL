@@ -1,5 +1,5 @@
-import CustomAccordion from '../../entities/Accordion/CustomAccordion.tsx';
-import FullWidthTextarea from '../../shared/FullWidthTextarea/FullWidthTextarea.tsx';
+import CustomAccordion from '../../entities/Accordion/CustomAccordion';
+import FullWidthTextarea from '../../shared/FullWidthTextarea/FullWidthTextarea';
 
 import styles from './RequestSection.module.css';
 

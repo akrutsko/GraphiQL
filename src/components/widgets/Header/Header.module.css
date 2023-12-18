@@ -24,9 +24,13 @@
   gap: 20px;
 }
 
-.buttonsContainer a {
+.buttonsContainer :is(a, button) {
   font-size: var(--link-font-size);
   background-color: var(--pink-color);
   padding: var(--link-padding);
   color: var(--link-color);
+}
+
+.buttonsContainer button {
+  padding-block: 10px;
 }

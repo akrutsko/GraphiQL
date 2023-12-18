@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { ThemeDispatchContext } from '../contexts/ThemesContext.tsx';
+import { ThemeDispatchContext } from '../contexts/ThemesContext';
 
 export function useThemeDispatch() {
   const setTheme = useContext(ThemeDispatchContext);

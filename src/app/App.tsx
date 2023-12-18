@@ -1,14 +1,18 @@
 import { RouterProvider } from 'react-router-dom';
 
-import { router } from '../router/router.tsx';
+import SettingsContext from '../contexts/SettingsContext';
+import { router } from '../router/router';
+import StoreProvider from '../store/StoreProvider';
+
 import './App.css';
-import SettingsContext from '../contexts/SettingsContext.tsx';
 
 const App = () => {
   return (
-    <SettingsContext>
-      <RouterProvider router={router} />
-    </SettingsContext>
+    <StoreProvider>
+      <SettingsContext>
+        <RouterProvider router={router} />
+      </SettingsContext>
+    </StoreProvider>
   );
 };
 

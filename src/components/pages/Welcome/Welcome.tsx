@@ -1,11 +1,12 @@
 import { useTranslation } from '../../../hooks';
-import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner.tsx';
-import DeveloperCard from '../../shared/DeveloperCard/DeveloperCard.tsx';
+import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner';
+import DeveloperCard from '../../shared/DeveloperCard/DeveloperCard';
 
 import styles from './Welcome.module.css';
 
 const Welcome = () => {
   const translation = useTranslation();
+
   return (
     <div className={styles.main}>
       <AnimatedInner inner={translation.welcome} />
