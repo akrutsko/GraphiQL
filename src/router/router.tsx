@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
         element: <SignUp />,
       },
       {
-        path: '/graphi-ql',
+        path: '/main',
         element: <GraphiQL />,
       },
     ],

@@ -14,15 +14,16 @@ const Header = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const toggleModal = () => setOpen(!open);
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
 
   const handleClose = () => {
     signOut(auth);
   };
 
   useEffect(() => {
+    if (loading) return;
     if (!user) navigate('/');
-  }, [user, navigate]);
+  }, [user, loading, navigate]);
 
   const buttons = user ? (
     <button onClick={handleClose}>{translation.signout}</button>

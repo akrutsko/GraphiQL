@@ -1,13 +1,14 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FirebaseError } from 'firebase/app';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useEffect } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { INPUTS_SIGN_IN } from '../../../constants';
 import { auth } from '../../../firebase/firebase';
-import { useAppSelector, useTranslation } from '../../../hooks';
-import { selectAuth } from '../../../store/slices/userSlice';
+import { useTranslation } from '../../../hooks';
 import { signInSchema, type SignInSchema } from '../../../utils/signInSchema';
 import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner';
 import SignInValidation from '../../shared/InputValidation/SignInValidation';
@@ -16,7 +17,8 @@ import styles from './SignIn.module.css';
 
 const SingIn = () => {
   const translation = useTranslation();
-  const { isAuthenticated } = useAppSelector(selectAuth);
+  const [user, loading] = useAuthState(auth);
+
   const navigate = useNavigate();
 
   const {
@@ -30,14 +32,15 @@ const SingIn = () => {
     mode: 'onBlur',
   });
 
-  if (isAuthenticated) {
-    return <Navigate to="/graphi-ql" replace />;
-  }
+  useEffect(() => {
+    if (loading) return;
+    if (user) navigate('/main', { replace: true });
+  }, [user, loading, navigate]);
 
   const onSubmit = async (data: SignInSchema) => {
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
-      navigate('/graphi-ql');
+      navigate('/main');
     } catch (err) {
       if (err instanceof FirebaseError) {
         // TODO: Add react-toastify
