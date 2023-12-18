@@ -1,7 +1,7 @@
 import { TextField, ThemeProvider } from '@mui/material';
 
 import { useTranslation } from '../../../hooks';
-import { themeInput } from '../../../utils/themeInput/themeInput.ts';
+import { themeInput } from '../../../utils/themeInput/themeInput';
 
 import styles from './DocsSection.module.css';
 

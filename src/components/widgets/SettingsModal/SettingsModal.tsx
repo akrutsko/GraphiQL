@@ -1,7 +1,7 @@
-import { Divider, Box, Modal, Typography } from '@mui/material';
+import { Box, Divider, Modal, Typography } from '@mui/material';
 
-import SettingsSection from '../../shared/SettingsSection/SettingsSection.tsx';
 import { useLanguage, useTheme, useTranslation } from '../../../hooks';
+import SettingsSection from '../../shared/SettingsSection/SettingsSection';
 
 import styles from './SettingsModal.module.css';
 

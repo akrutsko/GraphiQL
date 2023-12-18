@@ -1,38 +1,61 @@
-import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { FirebaseError } from 'firebase/app';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useEffect } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
-import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner';
-import { useLanguage, useTranslation } from '../../../hooks';
 import { INPUTS_SIGN_IN } from '../../../constants';
-import InputValidation from '../../shared/InputValidation/InputValidation';
-import { generateValidationSchema } from '../../../utils/validationSchema';
+import { auth } from '../../../firebase/firebase';
+import { useTranslation } from '../../../hooks';
+import { signInSchema, type SignInSchema } from '../../../utils/signInSchema';
+import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner';
+import SignInValidation from '../../shared/InputValidation/SignInValidation';
 
 import styles from './SignIn.module.css';
 
 const SingIn = () => {
   const translation = useTranslation();
-  const language = useLanguage();
-  const validationSchema = generateValidationSchema(language);
+
+  // const language = useLanguage();
+  // const validationSchema = generateValidationSchema(language);
+
+  const [user, loading] = useAuthState(auth);
+  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    // reset,
-    // getValues,
   } = useForm({
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(signInSchema),
     mode: 'onBlur',
   });
 
-  const onSubmit = () => {};
+  useEffect(() => {
+    if (loading) return;
+    if (user) navigate('/main', { replace: true });
+  }, [user, loading, navigate]);
+
+  const onSubmit = async (data: SignInSchema) => {
+    try {
+      await signInWithEmailAndPassword(auth, data.email, data.password);
+      navigate('/main');
+    } catch (err) {
+      if (err instanceof FirebaseError) {
+        // TODO: Add react-toastify
+        console.log(err);
+      }
+    }
+  };
 
   return (
     <>
       <AnimatedInner inner={translation.signin} />
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)} noValidate>
         {INPUTS_SIGN_IN.map(({ placeholder, inputName, type }, index) => (
-          <InputValidation
+          <SignInValidation
             key={placeholder}
             placeholder={translation.placeholders[index]}
             inputName={inputName}

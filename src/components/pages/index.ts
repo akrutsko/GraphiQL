@@ -1,7 +1,7 @@
-import SignUp from './SignUp/SignUp.tsx';
-import SingIn from './SingIn/SingIn.tsx';
-import Welcome from './Welcome/Welcome.tsx';
-import PageNotFound from './PageNotFound/PageNotFound.tsx';
-import GraphiQL from './GraphiQL/GraphiQL.tsx';
+import GraphiQL from './GraphiQL/GraphiQL';
+import PageNotFound from './PageNotFound/PageNotFound';
+import SignUp from './SignUp/SignUp';
+import SingIn from './SingIn/SingIn';
+import Welcome from './Welcome/Welcome';
 
-export { SignUp, SingIn, Welcome, PageNotFound, GraphiQL };
+export { GraphiQL, PageNotFound, SignUp, SingIn, Welcome };

@@ -6,6 +6,7 @@ import styles from './Welcome.module.css';
 
 const Welcome = () => {
   const translation = useTranslation();
+
   return (
     <div className={styles.main}>
       <AnimatedInner inner={translation.welcome} />

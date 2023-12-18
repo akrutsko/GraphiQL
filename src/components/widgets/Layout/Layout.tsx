@@ -1,8 +1,8 @@
-import { Outlet } from 'react-router-dom';
 import { Container } from '@mui/material';
+import { Outlet } from 'react-router-dom';
 
-import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
 import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
 
 const Layout = () => {

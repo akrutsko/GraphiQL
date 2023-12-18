@@ -1,16 +1,17 @@
-import type { UseFormRegister } from 'react-hook-form';
 import { TextField } from '@mui/material';
+import type { UseFormRegister } from 'react-hook-form';
 
-import type { InputProps, Validation } from '../../../types';
+import type { SignInProps } from '../../../types';
+import type { SignInSchema } from '../../../utils/signInSchema';
 
 import styles from './InputValidation.module.css';
 
-interface InputValidationProps extends InputProps {
+interface InputValidationProps extends SignInProps {
   error: string | undefined;
-  register: UseFormRegister<Validation>;
+  register: UseFormRegister<SignInSchema>;
 }
 
-const InputValidation = ({ placeholder, inputName, type, error, register }: InputValidationProps) => {
+const SignInValidation = ({ placeholder, inputName, type, error, register }: InputValidationProps) => {
   return (
     <div className={styles.container}>
       {/*<ThemeProvider theme={themeInput}>*/}
@@ -28,4 +29,4 @@ const InputValidation = ({ placeholder, inputName, type, error, register }: Inpu
   );
 };
 
-export default InputValidation;
+export default SignInValidation;

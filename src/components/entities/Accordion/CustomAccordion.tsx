@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import FullWidthTextarea from '../../shared/FullWidthTextarea/FullWidthTextarea.tsx';
-import { useTranslation } from '../../../hooks';
-import ControlButton from '../../shared/ControlButton/ControlButton.tsx';
 import { HEADERS_EDITOR, VARIABLES_EDITOR } from '../../../constants';
+import { useTranslation } from '../../../hooks';
 import type { Editor } from '../../../types';
+import ControlButton from '../../shared/ControlButton/ControlButton';
+import FullWidthTextarea from '../../shared/FullWidthTextarea/FullWidthTextarea';
 
 import styles from './CustomAccordion.module.css';
 

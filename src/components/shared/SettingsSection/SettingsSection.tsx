@@ -1,13 +1,13 @@
-import { type MouseEvent, useState } from 'react';
-import { ThemeProvider, ToggleButton, ToggleButtonGroup, Typography, Box } from '@mui/material';
+import { Box, ThemeProvider, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
+import { useState, type MouseEvent } from 'react';
 
-import type { Lang, languageToggleValue, Theme, themeToggleValue } from '../../../types';
-import { useLanguageDispatch } from '../../../hooks';
 import { LANG_EN, LANG_RU } from '../../../constants';
-import { useThemeDispatch } from '../../../hooks/useThemeDispatch.ts';
+import { useLanguageDispatch } from '../../../hooks';
+import { useThemeDispatch } from '../../../hooks/useThemeDispatch';
+import type { Lang, Theme, languageToggleValue, themeToggleValue } from '../../../types';
 
-import { theme } from './SettingsSectionTheme';
 import styles from './SettingsSection.module.css';
+import { theme } from './SettingsSectionTheme';
 
 type SettingsSectionProps = {
   inner: string;
