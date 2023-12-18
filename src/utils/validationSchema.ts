@@ -5,7 +5,7 @@ import type { Lang } from '../types';
 export const generateValidationSchema = (language: Lang) => {
   const messages = {
     email: {
-      required: language === 'en' ? 'Email is required' : 'Требуется электронная почта',
+      required: 'key',
       email: language === 'en' ? 'Email must be valid (example@mail.com)' : 'Невалидная эл. почта (example@mail.com)',
     },
     password: {
