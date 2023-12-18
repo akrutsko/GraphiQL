@@ -57,7 +57,26 @@
       "GraphiQL Playground is designed with your comfort and understanding in mind. We offer an intuitive interface that will make exploring the power of GraphQL a breeze. Your queries will become simpler, and the results more accessible.",
 
       "Join us, and let's uncover the magic of GraphQL together. GraphiQL Playground is your reliable partner in learning and utilizing GraphQL API. Enjoy the journey through GraphQL functionality with ease and pleasure!"
-    ]
+    ],
+    "schema": {
+      "email": {
+        "required": "Email is required",
+        "email": "Email must be valid (example@mail.com)"
+      },
+      "password": {
+        "required": "Password is required",
+        "whitespace": "Password must not contain spaces",
+        "uppercase": "Password must contain at least one uppercase letter",
+        "lowercase": "Password must contain at least one lowercase letter",
+        "number": "Password must contain at least one number",
+        "symbol": "Password must contain at least one special character",
+        "length": "Password must be at least 8 characters"
+      },
+      "confirm": {
+        "required": "Confirm password is required",
+        "match": "Passwords must match"
+      }
+    }
   },
   "ru": {
     "welcome": "Добро пожаловать в GraphiQL!",
@@ -117,6 +136,25 @@
       "GraphiQL Playground создан с учетом вашего комфорта и понимания. Мы предлагаем интуитивно понятный интерфейс, который облегчит вам исследование мощи GraphQL. Ваши запросы станут проще, а результаты - более доступными.",
 
       "Присоединяйтесь к нам, и давайте вместе раскроем всю магию GraphQL. GraphiQL Playground - это ваш надежный партнер в изучении и использовании GraphQL API. Наслаждайтесь путешествием по функциональности GraphQL с легкостью и удовольствием!"
-    ]
+    ],
+    "schema": {
+      "email": {
+        "required": "Требуется электронная почта",
+        "email": "Невалидная эл. почта (example@mail.com)"
+      },
+      "password": {
+        "required": "Требуется пароль",
+        "whitespace": "Пароль не должен содержать пробелы",
+        "uppercase": "Пароль должен содержать минимум одну заглавную букву",
+        "lowercase": "Пароль должен содержать минимум одну строчную букву",
+        "number": "Пароль должен содержать минимум одну цифру",
+        "symbol": "Пароль должен содержать хотя бы один символ",
+        "length": "Пароль должен содержать минимум 8 символов"
+      },
+      "confirm": {
+        "required": "Требуется подтверждение пароля",
+        "match": "Пароли должны совпадать"
+      }
+    }
   }
 }

@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { INPUTS_SIGN_IN } from '../../../constants';
 import { auth } from '../../../firebase/firebase';
 import { useTranslation } from '../../../hooks';
-import { signInSchema, type SignInSchema } from '../../../utils/signInSchema';
+import { createSignInSchema, type SignInSchema } from '../../../utils/signInSchema';
 import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner';
 import SignInValidation from '../../shared/InputValidation/SignInValidation';
 
@@ -18,8 +18,7 @@ import styles from './SignIn.module.css';
 const SingIn = () => {
   const translation = useTranslation();
 
-  // const language = useLanguage();
-  // const validationSchema = generateValidationSchema(language);
+  const validationSchema = createSignInSchema(translation.schema);
 
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
@@ -29,7 +28,7 @@ const SingIn = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(signInSchema),
+    resolver: yupResolver(validationSchema),
     mode: 'onBlur',
   });
 
@@ -64,7 +63,9 @@ const SingIn = () => {
             register={register}
           />
         ))}
-        <input className={styles.submit} type="submit" value={translation.submit} />
+        <button className={styles.submit} type="submit">
+          {translation.submit}
+        </button>
       </form>
     </>
   );
