@@ -2,11 +2,11 @@ import { string } from 'yup';
 
 import type { Schema } from '../../types';
 
-export const createEmailSchema = (schema: Schema) => {
+export const createEmailSchema = ({ email }: Pick<Schema, 'email'>) => {
   return string()
-    .required(schema.email.required)
-    .email(schema.email.email)
-    .test('email-tld', schema.email.email, (value) => {
+    .required(email.required)
+    .email(email.email)
+    .test('email-tld', email.email, (value) => {
       if (!value) {
         return false;
       }
