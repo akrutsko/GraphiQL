@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
+import ThemeSwitcher from '../../../utils/themeSwitcher/ThemeSwitcher';
 
 const Layout = () => {
   return (

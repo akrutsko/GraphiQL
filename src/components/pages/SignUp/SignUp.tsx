@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { INPUTS_SIGN_UP } from '../../../constants';
 import { auth } from '../../../firebase/firebase';
 import { useTranslation } from '../../../hooks';
-import { createSignUpSchema, type SignUpSchema } from '../../../utils/signUpSchema';
+import { createSignUpSchema, type SignUpSchema } from '../../../utils/validationSchema/signUpSchema';
 import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner';
 import SignUpValidation from '../../shared/InputValidation/SignUpValidation';
 
@@ -17,7 +17,6 @@ import styles from './SignUp.module.css';
 
 const SignUp = () => {
   const translation = useTranslation();
-
   const validationSchema = createSignUpSchema(translation.schema);
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();

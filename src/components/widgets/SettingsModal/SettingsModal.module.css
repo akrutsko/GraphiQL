@@ -4,9 +4,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 550px;
-  background-color: var(--violet-color);
   border: 3px solid var(--dark-grey-color);
-  color: #fff;
 }
 
 .separator {
@@ -28,5 +26,5 @@
 }
 
 .close:hover {
-  transform: rotate(90deg);
+  transform: rotate(180deg);
 }

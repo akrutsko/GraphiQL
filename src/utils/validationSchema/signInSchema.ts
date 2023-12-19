@@ -1,8 +1,8 @@
 import { object, type InferType } from 'yup';
 
-import type { Schema } from '../types';
+import type { Schema } from '../../types';
 
-import { createEmailSchema, createPasswordSchema } from './validationSchema';
+import { createEmailSchema, createPasswordSchema } from './index.ts';
 
 export const createSignInSchema = (schema: Schema) => {
   return object({
