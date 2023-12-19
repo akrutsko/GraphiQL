@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Container } from '@mui/material';
+import { AppBar, Container, Toolbar } from '@mui/material';
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../../../firebase/firebase';
 import { useTranslation } from '../../../hooks';
 import SettingsModal from '../SettingsModal/SettingsModal';
+import { SCROLL_DOWN } from '../../../constants';
 
 import styles from './Header.module.css';
 
@@ -45,19 +46,18 @@ const Header = () => {
 
   const isSticky = () => {
     const scrollTop = window.scrollY;
-    const isSticky = scrollTop >= 30;
+    const isSticky = scrollTop >= SCROLL_DOWN;
     setSticky(isSticky);
   };
 
   return (
     <>
-      <header className={[styles.header, sticky ? styles.isSticky : ''].join(' ')}>
+      <AppBar className={styles.header} sx={{ bgcolor: sticky ? 'secondary.main' : 'none', boxShadow: sticky ? 2 : 'none' }}>
         <Container sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row' }}>
           <button className={[styles.settings, open ? styles.active : ''].join(' ')} onClick={toggleModal} />
-
-          <div className={styles.buttonsContainer}>{buttons}</div>
+          <Toolbar className={styles.buttonsContainer}>{buttons}</Toolbar>
         </Container>
-      </header>
+      </AppBar>
       <SettingsModal isOpen={open} handleClose={toggleModal} />
     </>
   );

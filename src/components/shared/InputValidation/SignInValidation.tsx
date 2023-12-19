@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import type { UseFormRegister } from 'react-hook-form';
 
 import type { SignInProps } from '../../../types';
-import type { SignInSchema } from '../../../utils/validationSchema/signInSchema.ts';
+import type { SignInSchema } from '../../../utils/validationSchema/signInSchema';
 
 import styles from './InputValidation.module.css';
 

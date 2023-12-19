@@ -9,7 +9,7 @@ export const themeInput = createTheme({
       main: '#4caf50',
     },
     warning: {
-      main: '#DA0000',
+      main: '#931919',
     },
   },
 });

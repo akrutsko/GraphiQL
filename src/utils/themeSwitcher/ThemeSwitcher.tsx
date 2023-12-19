@@ -16,9 +16,24 @@ const ThemeSwitcher = ({ children }: PropsWithChildren) => {
           primary: {
             main: theme === THEME_DARK ? '#2f2746' : '#e1e0e0',
           },
+          secondary: {
+            main: theme === THEME_DARK ? '#2b2242' : '#e0dede',
+          },
           background: {
             default: theme === THEME_DARK ? '#2f2746' : '#e1e0e0',
             paper: theme === THEME_DARK ? '#2f2746' : '#e1e0e0',
+          },
+        },
+        components: {
+          MuiAppBar: {
+            styleOverrides: {
+              root: {
+                backgroundImage: 'none',
+                boxShadow: 'none',
+                backgroundColor: 'transparent',
+                transition: 'all 0.3s',
+              },
+            },
           },
         },
       }),
