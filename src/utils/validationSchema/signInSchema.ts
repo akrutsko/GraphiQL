@@ -2,7 +2,7 @@ import { object, type InferType } from 'yup';
 
 import type { Schema } from '../../types';
 
-import { createEmailSchema, createPasswordSchema } from './index.ts';
+import { createEmailSchema, createPasswordSchema } from './index';
 
 export const createSignInSchema = (schema: Schema) => {
   return object({

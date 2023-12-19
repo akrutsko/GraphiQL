@@ -19,7 +19,7 @@ const PasswordInputType = ({ setPasswordType }: PasswordInputType) => {
   };
   return (
     <button className={styles.visibility} onClick={toggleVisibility}>
-      <img className={styles.eye} src={isVisible ? open : close} alt="eye" />
+      <img className={styles.locker} src={isVisible ? open : close} alt="locker" />
     </button>
   );
 };

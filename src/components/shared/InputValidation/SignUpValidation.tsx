@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import type { SignUpProps } from '../../../types';
 import type { SignUpSchema } from '../../../utils/validationSchema/signUpSchema';
-import PasswodrInputType from '../PasswordInputType/PasswordInputType.tsx';
+import PasswordInputType from '../PasswordInputType/PasswordInputType';
 
 import styles from './InputValidation.module.css';
 
@@ -27,7 +27,7 @@ const SignUpValidation = ({ placeholder, inputName, type, error, register }: Inp
         type={type === 'password' ? passwordType : type}
         {...register(inputName)}
       />
-      {type === 'password' && <PasswodrInputType setPasswordType={setPasswordType} />}
+      {type === 'password' && <PasswordInputType setPasswordType={setPasswordType} />}
       <span className={styles.error}>{error}</span>
       {/*</ThemeProvider>*/}
     </div>
