@@ -31,8 +31,25 @@ const Header = () => {
     if (!user) navigate('/');
   }, [user, loading, navigate]);
 
+  useEffect(() => {
+    window.addEventListener('scroll', isSticky);
+    return () => {
+      window.removeEventListener('scroll', isSticky);
+    };
+  }, []);
+
+  const isSticky = () => {
+    const scrollTop = window.scrollY;
+    const isSticky = scrollTop >= SCROLL_DOWN;
+    setSticky(isSticky);
+  };
+
   const buttons: HeaderButton[] = user
     ? [
+        {
+          value: 'GraphiQL',
+          to: '/main',
+        },
         {
           value: translation.signout,
           func: handleClose,
@@ -48,19 +65,6 @@ const Header = () => {
           to: '/sign-up',
         },
       ];
-
-  useEffect(() => {
-    window.addEventListener('scroll', isSticky);
-    return () => {
-      window.removeEventListener('scroll', isSticky);
-    };
-  }, []);
-
-  const isSticky = () => {
-    const scrollTop = window.scrollY;
-    const isSticky = scrollTop >= SCROLL_DOWN;
-    setSticky(isSticky);
-  };
 
   return (
     <>

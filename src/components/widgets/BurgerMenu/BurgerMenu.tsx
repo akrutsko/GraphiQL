@@ -24,19 +24,19 @@ const BurgerMenu = ({ buttons }: BurgerMenuProps) => {
     setAnchorEl(null);
   };
 
-  const handleResize = () => {
-    const windowWidth = window.innerWidth;
-    if (windowWidth >= SCREEN_WIDTH) {
-      handleClose();
-    }
-  };
-
   useEffect(() => {
+    const handleResize = () => {
+      const windowWidth = window.innerWidth;
+      if (windowWidth >= SCREEN_WIDTH) {
+        handleClose();
+      }
+    };
+
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [handleResize]);
+  }, []);
 
   return (
     <Box sx={{ display: { xs: 'flex', sm: 'none' } }}>
