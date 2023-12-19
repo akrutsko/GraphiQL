@@ -2,16 +2,17 @@ import { useEffect, useState } from 'react';
 import { AppBar, Container, Toolbar } from '@mui/material';
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { auth } from '../../../firebase/firebase';
 import { useTranslation } from '../../../hooks';
 import SettingsModal from '../SettingsModal/SettingsModal';
 import { SCROLL_DOWN } from '../../../constants';
 import type { HeaderButton } from '../../../types';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import NavigationButton from '../../shared/NavigationButton/NavigationButton';
 
 import styles from './Header.module.css';
-import BurgerMenu from './BurgerMenu/BurgerMenu.tsx';
 
 const Header = () => {
   const translation = useTranslation();
@@ -34,7 +35,6 @@ const Header = () => {
     ? [
         {
           value: translation.signout,
-          to: '/',
           func: handleClose,
         },
       ]
@@ -54,7 +54,7 @@ const Header = () => {
     return () => {
       window.removeEventListener('scroll', isSticky);
     };
-  });
+  }, []);
 
   const isSticky = () => {
     const scrollTop = window.scrollY;
@@ -69,9 +69,7 @@ const Header = () => {
           <button className={[styles.settings, open ? styles.active : ''].join(' ')} onClick={toggleModal} />
           <Toolbar className={styles.buttonsContainer} sx={{ display: { xs: 'none', sm: 'flex' } }}>
             {buttons.map(({ value, to, func }) => (
-              <NavLink key={to} to={to} onClick={func}>
-                {value}
-              </NavLink>
+              <NavigationButton key={value} value={value} to={to} func={func} />
             ))}
           </Toolbar>
           <BurgerMenu buttons={buttons} />
