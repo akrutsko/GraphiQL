@@ -2,14 +2,16 @@ import { useEffect, useState } from 'react';
 import { AppBar, Container, Toolbar } from '@mui/material';
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { auth } from '../../../firebase/firebase';
 import { useTranslation } from '../../../hooks';
 import SettingsModal from '../SettingsModal/SettingsModal';
 import { SCROLL_DOWN } from '../../../constants';
+import type { HeaderButton } from '../../../types';
 
 import styles from './Header.module.css';
+import BurgerMenu from './BurgerMenu/BurgerMenu.tsx';
 
 const Header = () => {
   const translation = useTranslation();
@@ -28,14 +30,24 @@ const Header = () => {
     if (!user) navigate('/');
   }, [user, loading, navigate]);
 
-  const buttons = user ? (
-    <button onClick={handleClose}>{translation.signout}</button>
-  ) : (
-    <>
-      <Link to={'/sign-in'}>{translation.signin}</Link>
-      <Link to={'/sign-up'}>{translation.signup}</Link>
-    </>
-  );
+  const buttons: HeaderButton[] = user
+    ? [
+        {
+          value: translation.signout,
+          to: '/',
+          func: handleClose,
+        },
+      ]
+    : [
+        {
+          value: translation.signin,
+          to: '/sign-in',
+        },
+        {
+          value: translation.signup,
+          to: '/sign-up',
+        },
+      ];
 
   useEffect(() => {
     window.addEventListener('scroll', isSticky);
@@ -53,9 +65,16 @@ const Header = () => {
   return (
     <>
       <AppBar className={styles.header} sx={{ bgcolor: sticky ? 'secondary.main' : 'none', boxShadow: sticky ? 2 : 'none' }}>
-        <Container sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row' }}>
+        <Container sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center' }}>
           <button className={[styles.settings, open ? styles.active : ''].join(' ')} onClick={toggleModal} />
-          <Toolbar className={styles.buttonsContainer}>{buttons}</Toolbar>
+          <Toolbar className={styles.buttonsContainer} sx={{ display: { xs: 'none', sm: 'flex' } }}>
+            {buttons.map(({ value, to, func }) => (
+              <NavLink key={to} to={to} onClick={func}>
+                {value}
+              </NavLink>
+            ))}
+          </Toolbar>
+          <BurgerMenu buttons={buttons} />
         </Container>
       </AppBar>
       <SettingsModal isOpen={open} handleClose={toggleModal} />

@@ -11,6 +11,15 @@ const ThemeSwitcher = ({ children }: PropsWithChildren) => {
   const selectedTheme = useMemo(
     () =>
       createTheme({
+        breakpoints: {
+          values: {
+            xs: 0,
+            sm: 860,
+            md: 1100,
+            lg: 1280,
+            xl: 1920,
+          },
+        },
         palette: {
           mode: theme,
           primary: {
@@ -31,7 +40,7 @@ const ThemeSwitcher = ({ children }: PropsWithChildren) => {
                 backgroundImage: 'none',
                 boxShadow: 'none',
                 backgroundColor: 'transparent',
-                transition: 'all 0.3s',
+                transition: 'background-color box-shadow 0.3s',
               },
             },
           },
