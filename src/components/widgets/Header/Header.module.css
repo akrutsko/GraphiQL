@@ -33,3 +33,11 @@
 .buttonsContainer button {
   padding-block: 10px;
 }
+
+.welcome {
+  width: 70px;
+  height: 70px;
+  background-image: url("../../../assets/icons/graphql-icon.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}

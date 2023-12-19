@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import type { SignUpProps } from '../../../types';
 import type { SignUpSchema } from '../../../utils/validationSchema/signUpSchema';
-import PasswodrInputType from '../PasswordInputType/PasswodrInputType';
+import PasswodrInputType from '../PasswordInputType/PasswordInputType.tsx';
 
 import styles from './InputValidation.module.css';
 
