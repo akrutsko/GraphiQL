@@ -15,7 +15,7 @@ import { useTranslation } from '../../../hooks';
 import { createSignInSchema, type SignInSchema } from '../../../utils/validationSchema/signInSchema';
 import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner';
 import SignInValidation from '../../shared/InputValidation/SignInValidation';
-import TostifyComponent from '../../shared/TostifyComponent/TostifyComponent.tsx';
+import TostifyComponent from '../../shared/TostifyComponent/TostifyComponent';
 import TostifyMessage from '../../shared/TostifyMessage/TostifyMessage';
 
 import styles from './SignIn.module.css';
