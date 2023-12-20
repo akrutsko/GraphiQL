@@ -25,7 +25,13 @@
   background-color: var(--pink-color);
   padding: var(--link-padding);
   color: var(--link-color);
+  transition: var(--button-transition);
 }
+
+.buttonsContainer :is(a, button):hover {
+  box-shadow: var(--button-hover);
+}
+
 .isSticky {
   box-shadow: 0 2px 24px 0 rgb(0 0 0 / 15%);
 }

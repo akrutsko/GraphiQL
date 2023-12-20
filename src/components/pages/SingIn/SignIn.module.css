@@ -7,6 +7,11 @@
   background-color: var(--pink-color);
   padding: var(--link-padding);
   color: var(--link-color);
+  transition: var(--button-transition);
   display: block;
   margin: 0 auto;
+}
+
+.submit:hover {
+  box-shadow: var(--button-hover);
 }
