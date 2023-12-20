@@ -1,8 +1,9 @@
 import { Slide, ToastContainer } from 'react-toastify';
 
+import { useTheme } from '../../../hooks';
+
 import 'react-toastify/dist/ReactToastify.css';
 import './TostifyComponent.css';
-import { useTheme } from '../../../hooks';
 
 const TostifyComponent = () => {
   const theme = useTheme();

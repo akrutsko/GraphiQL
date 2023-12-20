@@ -16,6 +16,8 @@ interface InputValidationProps extends SignUpProps {
 const SignUpValidation = ({ placeholder, inputName, type, error, register }: InputValidationProps) => {
   const [passwordType, setPasswordType] = useState('password');
 
+  const isPasswordType = type === 'password';
+
   return (
     <div className={styles.container}>
       {/*<ThemeProvider theme={themeInput}>*/}
@@ -24,7 +26,7 @@ const SignUpValidation = ({ placeholder, inputName, type, error, register }: Inp
         variant="outlined"
         error={!!error}
         placeholder={placeholder}
-        type={type === 'password' ? passwordType : type}
+        type={isPasswordType ? passwordType : type}
         {...register(inputName)}
       />
       {type === 'password' && <PasswordInputType setPasswordType={setPasswordType} />}

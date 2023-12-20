@@ -1,5 +1,4 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FirebaseError } from 'firebase/app';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -48,9 +47,7 @@ const SignUp = () => {
       await createUserWithEmailAndPassword(auth, data.email, data.password);
       navigate('/main');
     } catch (err) {
-      if (err instanceof FirebaseError) {
-        notify();
-      }
+      notify();
     }
   };
 

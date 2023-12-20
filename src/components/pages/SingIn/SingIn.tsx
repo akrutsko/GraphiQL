@@ -1,13 +1,10 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FirebaseError } from 'firebase/app';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
-import 'react-toastify/dist/ReactToastify.css';
 
 import { INPUTS_SIGN_IN } from '../../../constants';
 import { auth } from '../../../firebase/firebase';
@@ -50,9 +47,7 @@ const SingIn = () => {
       await signInWithEmailAndPassword(auth, data.email, data.password);
       navigate('/main');
     } catch (err) {
-      if (err instanceof FirebaseError) {
-        notify();
-      }
+      notify();
     }
   };
 

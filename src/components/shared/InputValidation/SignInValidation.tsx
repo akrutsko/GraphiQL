@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import type { SignInProps } from '../../../types';
 import type { SignInSchema } from '../../../utils/validationSchema/signInSchema';
-import PasswordInputType from '../PasswordInputType/PasswordInputType.tsx';
+import PasswordInputType from '../PasswordInputType/PasswordInputType';
 
 import styles from './InputValidation.module.css';
 
@@ -15,6 +15,9 @@ interface InputValidationProps extends SignInProps {
 
 const SignInValidation = ({ placeholder, inputName, type, error, register }: InputValidationProps) => {
   const [passwordType, setPasswordType] = useState('password');
+
+  const isPasswordType = type === 'password';
+
   return (
     <div className={styles.container}>
       {/*<ThemeProvider theme={themeInput}>*/}
@@ -23,7 +26,7 @@ const SignInValidation = ({ placeholder, inputName, type, error, register }: Inp
         variant="outlined"
         error={!!error}
         placeholder={placeholder}
-        type={type === 'password' ? passwordType : type}
+        type={isPasswordType ? passwordType : type}
         {...register(inputName)}
       />
       {type === 'password' && <PasswordInputType setPasswordType={setPasswordType} />}

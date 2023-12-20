@@ -5,11 +5,11 @@ import open from '../../../assets/icons/lock-open-icon.svg';
 
 import styles from './PasswordInputType.module.css';
 
-type PasswordInputType = {
+type PasswordInputTypeProps = {
   setPasswordType: Dispatch<SetStateAction<string>>;
 };
 
-const PasswordInputType = ({ setPasswordType }: PasswordInputType) => {
+const PasswordInputType = ({ setPasswordType }: PasswordInputTypeProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = (e: FormEvent) => {

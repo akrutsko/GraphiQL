@@ -1,10 +1,10 @@
 import { Box, Menu, MenuItem } from '@mui/material';
 import { useState, type MouseEvent, useEffect } from 'react';
 
-import menu from '../../../assets/icons/menu-icon.svg';
 import type { HeaderButton } from '../../../types';
 import { SCREEN_WIDTH } from '../../../constants';
 import NavigationButton from '../../shared/NavigationButton/NavigationButton';
+import menu from '../../../assets/icons/menu-icon.svg';
 
 import styles from './BurgerMenu.module.css';
 
