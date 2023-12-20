@@ -76,6 +76,16 @@
         "required": "Confirm password is required",
         "match": "Passwords must match"
       }
+    },
+    "notifications": {
+      "signinFailed": {
+        "title": "Log In Failed!",
+        "text": "Please, recheck the email and password and try again"
+      },
+      "signupFailed": {
+        "title": "Sign Up Failed!",
+        "text": "Maybe you’re already registered.\nPlease, recheck your data and try again"
+      }
     }
   },
   "ru": {
@@ -154,6 +164,16 @@
       "confirm": {
         "required": "Требуется подтверждение пароля",
         "match": "Пароли должны совпадать"
+      }
+    },
+    "notifications": {
+      "signinFailed": {
+        "title": "Не удалось войти!",
+        "text": "Пожалуйста, проверьте данные и попробуйте снова"
+      },
+      "signupFailed": {
+        "title": "Ошибка регистрации!",
+        "text": "Возможно, вы уже зарегистрированы.\nПожалуйста, проверьте данные и попробуйте снова"
       }
     }
   }

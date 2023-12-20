@@ -1,0 +1,8 @@
+.Toastify__toast-theme--dark {
+  background-color: #2b2242;
+  color: #fff;
+}
+.Toastify__toast-theme--light {
+  background-color: #e0dede;
+  color: #000;
+}

@@ -5,6 +5,9 @@ import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 import { INPUTS_SIGN_IN } from '../../../constants';
 import { auth } from '../../../firebase/firebase';
@@ -12,13 +15,18 @@ import { useTranslation } from '../../../hooks';
 import { createSignInSchema, type SignInSchema } from '../../../utils/validationSchema/signInSchema';
 import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner';
 import SignInValidation from '../../shared/InputValidation/SignInValidation';
+import TostifyComponent from '../../shared/TostifyComponent/TostifyComponent.tsx';
+import TostifyMessage from '../../shared/TostifyMessage/TostifyMessage';
 
 import styles from './SignIn.module.css';
 
 const SingIn = () => {
   const translation = useTranslation();
-
   const validationSchema = createSignInSchema(translation.schema);
+  const notify = () => {
+    const { title, text } = translation.notifications.signinFailed;
+    toast.error(<TostifyMessage title={title} text={text} />);
+  };
 
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
@@ -43,8 +51,7 @@ const SingIn = () => {
       navigate('/main');
     } catch (err) {
       if (err instanceof FirebaseError) {
-        // TODO: Add react-toastify
-        console.log(err);
+        notify();
       }
     }
   };
@@ -67,6 +74,7 @@ const SingIn = () => {
           {translation.submit}
         </button>
       </form>
+      <TostifyComponent />
     </>
   );
 };
