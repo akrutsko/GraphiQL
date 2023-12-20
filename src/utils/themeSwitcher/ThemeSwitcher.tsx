@@ -28,6 +28,9 @@ const ThemeSwitcher = ({ children }: PropsWithChildren) => {
         secondary: {
           main: secondaryColor,
         },
+        info: {
+          main: '#fff',
+        },
         background: {
           default: mainColor,
           paper: mainColor,
@@ -41,6 +44,28 @@ const ThemeSwitcher = ({ children }: PropsWithChildren) => {
               boxShadow: 'none',
               backgroundColor: 'transparent',
               transition: 'background-color box-shadow 0.3s',
+            },
+          },
+        },
+        MuiOutlinedInput: {
+          styleOverrides: {
+            root: {
+              fontFamily: 'Inconsolata, monospace',
+              borderRadius: 0,
+            },
+          },
+        },
+        MuiButton: {
+          styleOverrides: {
+            root: {
+              color: 'inherit',
+              fontSize: 'inherit',
+              textTransform: 'none',
+              lineHeight: 1.1,
+              borderRadius: 0,
+              '&:hover': {
+                backgroundColor: 'transparent',
+              },
             },
           },
         },

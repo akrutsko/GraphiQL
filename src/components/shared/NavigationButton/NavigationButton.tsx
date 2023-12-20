@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 type NavigationButtonProps = {
   to: string | undefined;
@@ -12,9 +13,9 @@ const NavigationButton = ({ to, value, func }: NavigationButtonProps) => {
       {value}
     </NavLink>
   ) : (
-    <button key={value} onClick={func}>
+    <Button key={value} onClick={func}>
       {value}
-    </button>
+    </Button>
   );
 };
 

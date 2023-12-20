@@ -20,7 +20,6 @@ const SignUpValidation = ({ placeholder, inputName, type, error, register }: Inp
 
   return (
     <div className={styles.container}>
-      {/*<ThemeProvider theme={themeInput}>*/}
       <TextField
         className={styles.input}
         variant="outlined"
@@ -31,7 +30,6 @@ const SignUpValidation = ({ placeholder, inputName, type, error, register }: Inp
       />
       {type === 'password' && <PasswordInputType setPasswordType={setPasswordType} />}
       <span className={styles.error}>{error}</span>
-      {/*</ThemeProvider>*/}
     </div>
   );
 };

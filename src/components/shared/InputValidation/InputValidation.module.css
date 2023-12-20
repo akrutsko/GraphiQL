@@ -9,12 +9,6 @@
 .input {
   width: 100%;
   background-color: var(--dark-grey-color);
-  color: #fff;
-}
-
-::placeholder {
-  color: #fff;
-  opacity: 1;
 }
 
 .error {
