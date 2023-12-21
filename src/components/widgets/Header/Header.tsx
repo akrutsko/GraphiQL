@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { AppBar, Box, Container, Toolbar } from '@mui/material';
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { auth } from '../../../firebase/firebase';
 import { useTranslation } from '../../../hooks';
@@ -16,20 +16,19 @@ import styles from './Header.module.css';
 
 const Header = () => {
   const translation = useTranslation();
-  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const toggleModal = () => setOpen(!open);
   const [user, loading] = useAuthState(auth);
+  const [isLoading, setLoading] = useState(true);
 
   const handleClose = () => {
     signOut(auth);
   };
 
   useEffect(() => {
-    if (loading) return;
-    if (!user) navigate('/');
-  }, [user, loading, navigate]);
+    setLoading(loading);
+  }, [loading]);
 
   useEffect(() => {
     window.addEventListener('scroll', isSticky);
@@ -75,9 +74,8 @@ const Header = () => {
             <button className={[styles.settings, open ? styles.active : ''].join(' ')} onClick={toggleModal} />
           </Box>
           <Toolbar className={styles.buttonsContainer} sx={{ display: { xs: 'none', sm: 'flex' } }}>
-            {buttons.map(({ value, to, func }) => (
-              <NavigationButton key={value} value={value} to={to} func={func} />
-            ))}
+            {!isLoading &&
+              buttons.map(({ value, to, func }) => <NavigationButton key={value} value={value} to={to} func={func} />)}
           </Toolbar>
           <BurgerMenu buttons={buttons} />
         </Container>

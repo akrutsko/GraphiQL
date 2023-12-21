@@ -1,7 +1,23 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
+import type { ReactNode } from 'react';
 
 import { GraphiQL, PageNotFound, SignUp, SingIn, Welcome } from '../components/pages';
 import Layout from '../components/widgets/Layout/Layout';
+import { useAppSelector } from '../hooks';
+
+type PrivateRouteProps = {
+  element: ReactNode;
+};
+
+const PrivateMainRoute = ({ element }: PrivateRouteProps) => {
+  const isAuthenticated = useAppSelector((state) => state.user);
+  return isAuthenticated ? element : <Navigate to="/" />;
+};
+
+const PrivateSignRoute = ({ element }: PrivateRouteProps) => {
+  const isAuthenticated = useAppSelector((state) => state.user);
+  return !isAuthenticated ? element : <Navigate to="/main" />;
+};
 
 export const router = createBrowserRouter([
   {
@@ -15,15 +31,15 @@ export const router = createBrowserRouter([
       },
       {
         path: '/sign-in',
-        element: <SingIn />,
+        element: <PrivateSignRoute element={<SingIn />} />,
       },
       {
         path: '/sign-up',
-        element: <SignUp />,
+        element: <PrivateSignRoute element={<SignUp />} />,
       },
       {
         path: '/main',
-        element: <GraphiQL />,
+        element: <PrivateMainRoute element={<GraphiQL />} />,
       },
     ],
   },

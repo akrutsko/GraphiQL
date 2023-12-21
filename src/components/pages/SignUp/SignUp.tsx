@@ -1,7 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { useEffect } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -20,7 +18,6 @@ import styles from './SignUp.module.css';
 const SignUp = () => {
   const translation = useTranslation();
   const validationSchema = createSignUpSchema(translation.schema);
-  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
 
   const notify = () => {
@@ -36,11 +33,6 @@ const SignUp = () => {
     resolver: yupResolver(validationSchema),
     mode: 'onBlur',
   });
-
-  useEffect(() => {
-    if (loading) return;
-    if (user) navigate('/main', { replace: true });
-  }, [user, loading, navigate]);
 
   const onSubmit = async (data: SignUpSchema) => {
     try {
