@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 import { GraphiQL, PageNotFound, SignUp, SingIn, Welcome } from '../components/pages';
 import Layout from '../components/widgets/Layout/Layout';
 import { useAppSelector } from '../hooks';
+import FallbackUI from '../components/shared/FallbackUI/FallbackUI.tsx';
 
 type PrivateRouteProps = {
   element: ReactNode;
@@ -23,7 +24,7 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
-    // errorElement: ,
+    errorElement: <FallbackUI />,
     children: [
       {
         path: '/',

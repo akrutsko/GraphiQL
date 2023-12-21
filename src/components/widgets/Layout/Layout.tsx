@@ -8,6 +8,7 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import ThemeSwitcher from '../../../utils/themeSwitcher/ThemeSwitcher';
 import Loader from '../../shared/Loader/Loader';
+import ErrorBoundary from '../../shared/ErrorBoundary/ErrorBoundary';
 
 const Layout = () => {
   const [, loading] = useAuthState(auth);
@@ -20,15 +21,17 @@ const Layout = () => {
   if (isLoading) return <Loader open={isLoading} />;
 
   return (
-    <ThemeSwitcher>
-      <Header />
-      <Container sx={{ minHeight: '100vh', display: 'flex', justifyContent: 'space-between', flexDirection: 'column' }}>
-        <main>
-          <Outlet />
-        </main>
-        <Footer />
-      </Container>
-    </ThemeSwitcher>
+    <ErrorBoundary>
+      <ThemeSwitcher>
+        <Header />
+        <Container sx={{ minHeight: '100vh', display: 'flex', justifyContent: 'space-between', flexDirection: 'column' }}>
+          <main>
+            <Outlet />
+          </main>
+          <Footer />
+        </Container>
+      </ThemeSwitcher>
+    </ErrorBoundary>
   );
 };
 
