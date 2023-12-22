@@ -1,0 +1,43 @@
+.wrapper {
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 10%;
+}
+
+.title {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.close {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background-image: url("../../../assets/icons/close-cross.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 0.5s;
+}
+
+@media (max-width: 700px) {
+  .wrapper {
+    width: 260px;
+    padding-top: 5%;
+  }
+
+  .title {
+    font-size: 1.2em;
+  }
+
+  .close {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}

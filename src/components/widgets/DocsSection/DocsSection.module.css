@@ -1,23 +1,44 @@
-.docsSection {
+.MuiPaper-elevation {
+  position: absolute;
+}
+
+.docsWrapper {
   display: flex;
   gap: 10px;
 }
 
 .inputEndpoind {
   background-color: var(--dark-grey-color);
-  width: calc(50% - 60px);
+  width: calc(50% - 75px);
 }
 
 .buttonDocs {
   background-image: url("../../../assets/icons/docs-icon.svg");
-  width: 35px;
+  width: 50px;
   height: 45px;
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
+}
+
+.buttonDocsOpen {
+  background-image: url("../../../assets/icons/bookOpen.svg");
+  width: 50px;
+  height: 45px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.close {
+  position: absolute;
+}
+
+.open {
+  display: block;
 }
 
 @media (max-width: 700px) {
   .inputEndpoind {
-    width: calc(100% - 45px);
+    width: calc(100% - 55px);
   }
 }
