@@ -2,18 +2,13 @@
   display: flex;
   flex-direction: column;
   width: 400px;
-  height: 90px;
+  height: 110px;
+  position: relative;
 }
 
 .input {
   width: 100%;
   background-color: var(--dark-grey-color);
-  color: #fff;
-}
-
-::placeholder {
-  color: #fff;
-  opacity: 1;
 }
 
 .error {

@@ -8,6 +8,8 @@
   --font-size: 16px;
   --link-padding: 5px 10px;
   --link-color: #000;
+  --button-transition: box-shadow 0.2s ease-in-out;
+  --button-hover: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0 6px 6px;
 }
 
 html {
@@ -26,6 +28,7 @@ html {
 }
 
 body {
+  padding-top: 150px;
   background-color: var(--violet-color);
   color: #ffff;
   background-image: url("./assets/images/background.png");

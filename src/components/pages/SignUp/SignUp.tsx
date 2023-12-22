@@ -1,50 +1,45 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FirebaseError } from 'firebase/app';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { useEffect } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import { INPUTS_SIGN_UP } from '../../../constants';
 import { auth } from '../../../firebase/firebase';
 import { useTranslation } from '../../../hooks';
-import { signUpSchema, type SignUpSchema } from '../../../utils/signUpSchema';
+import { createSignUpSchema, type SignUpSchema } from '../../../utils/validationSchema/signUpSchema';
 import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner';
 import SignUpValidation from '../../shared/InputValidation/SignUpValidation';
+import TostifyComponent from '../../shared/TostifyComponent/TostifyComponent';
+import TostifyMessage from '../../shared/TostifyMessage/TostifyMessage';
 
 import styles from './SignUp.module.css';
 
 const SignUp = () => {
   const translation = useTranslation();
-  const [user, loading] = useAuthState(auth);
+  const validationSchema = createSignUpSchema(translation.schema);
   const navigate = useNavigate();
+
+  const notify = () => {
+    const { title, text } = translation.notifications.signupFailed;
+    toast.error(<TostifyMessage title={title} text={text} />);
+  };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    // reset,
-    // getValues,
   } = useForm({
-    resolver: yupResolver(signUpSchema),
+    resolver: yupResolver(validationSchema),
     mode: 'onBlur',
   });
-
-  useEffect(() => {
-    if (loading) return;
-    if (user) navigate('/main', { replace: true });
-  }, [user, loading, navigate]);
 
   const onSubmit = async (data: SignUpSchema) => {
     try {
       await createUserWithEmailAndPassword(auth, data.email, data.password);
       navigate('/main');
     } catch (err) {
-      if (err instanceof FirebaseError) {
-        // TODO: Add react-toastify
-        console.log(err);
-      }
+      notify();
     }
   };
 
@@ -62,8 +57,11 @@ const SignUp = () => {
             register={register}
           />
         ))}
-        <input className={styles.submit} type="submit" value={translation.submit} />
+        <button className={styles.submit} type="submit">
+          {translation.submit}
+        </button>
       </form>
+      <TostifyComponent />
     </>
   );
 };

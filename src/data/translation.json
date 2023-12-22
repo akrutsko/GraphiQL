@@ -3,7 +3,7 @@
     "welcome": "Welcome to GraphiQL!",
     "signin": "Sign In",
     "signup": "Sign Up",
-    "signout": "Sign out",
+    "signout": "Sign Out",
     "404": "Page not found",
     "gotomain": "Go to main",
     "settings": "Settings",
@@ -58,6 +58,35 @@
 
       "Join us, and let's uncover the magic of GraphQL together. GraphiQL Playground is your reliable partner in learning and utilizing GraphQL API. Enjoy the journey through GraphQL functionality with ease and pleasure!"
     ],
+    "schema": {
+      "email": {
+        "required": "Email is required",
+        "email": "Email must be valid (example@mail.com)"
+      },
+      "password": {
+        "required": "Password is required",
+        "whitespace": "Password must not contain spaces",
+        "uppercase": "Password must contain at least one uppercase letter",
+        "lowercase": "Password must contain at least one lowercase letter",
+        "number": "Password must contain at least one number",
+        "symbol": "Password must contain at least one special character",
+        "length": "Password must be at least 8 characters"
+      },
+      "confirm": {
+        "required": "Confirm password is required",
+        "match": "Passwords must match"
+      }
+    },
+    "notifications": {
+      "signinFailed": {
+        "title": "Log In Failed!",
+        "text": "Please, recheck the email and password and try again"
+      },
+      "signupFailed": {
+        "title": "Sign Up Failed!",
+        "text": "Maybe you’re already registered.\nPlease, recheck your data and try again"
+      }
+    },
     "documentationExplorer": "Documentation Explorer"
   },
   "ru": {
@@ -119,6 +148,35 @@
 
       "Присоединяйтесь к нам, и давайте вместе раскроем всю магию GraphQL. GraphiQL Playground - это ваш надежный партнер в изучении и использовании GraphQL API. Наслаждайтесь путешествием по функциональности GraphQL с легкостью и удовольствием!"
     ],
+    "schema": {
+      "email": {
+        "required": "Требуется электронная почта",
+        "email": "Невалидная эл. почта (example@mail.com)"
+      },
+      "password": {
+        "required": "Требуется пароль",
+        "whitespace": "Пароль не должен содержать пробелы",
+        "uppercase": "Пароль должен содержать минимум одну заглавную букву",
+        "lowercase": "Пароль должен содержать минимум одну строчную букву",
+        "number": "Пароль должен содержать минимум одну цифру",
+        "symbol": "Пароль должен содержать хотя бы один символ",
+        "length": "Пароль должен содержать минимум 8 символов"
+      },
+      "confirm": {
+        "required": "Требуется подтверждение пароля",
+        "match": "Пароли должны совпадать"
+      }
+    },
+    "notifications": {
+      "signinFailed": {
+        "title": "Не удалось войти!",
+        "text": "Пожалуйста, проверьте данные и попробуйте снова"
+      },
+      "signupFailed": {
+        "title": "Ошибка регистрации!",
+        "text": "Возможно, вы уже зарегистрированы.\nПожалуйста, проверьте данные и попробуйте снова"
+      }
+    },
     "documentationExplorer": "Обозреватель документации"
   }
 }
