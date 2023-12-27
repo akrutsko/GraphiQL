@@ -10,7 +10,7 @@ describe('404', () => {
   });
 
   test('has button to welcome', () => {
-    const welcomeButton = screen.getByText(/go to main/i);
+    const welcomeButton = screen.getByText(/welcome/i);
     expect(welcomeButton).toBeInTheDocument();
   });
 });

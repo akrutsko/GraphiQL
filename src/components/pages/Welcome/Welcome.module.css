@@ -26,3 +26,23 @@
   display: flex;
   gap: 50px;
 }
+
+.buttonsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.buttonsContainer :is(a, button) {
+  font-size: var(--link-font-size);
+  background-color: var(--pink-color);
+  padding: var(--link-padding);
+  color: var(--link-color);
+  transition: var(--button-transition);
+}
+
+.buttonsContainer :is(a, button):hover {
+  box-shadow: var(--button-hover);
+  background-color: var(--pink-color);
+}

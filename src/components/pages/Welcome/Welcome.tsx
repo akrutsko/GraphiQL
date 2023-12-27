@@ -39,7 +39,7 @@ const Welcome = () => {
           </p>
         ))}
       </div>
-      <div>
+      <div className={styles.buttonsContainer}>
         {' '}
         {buttons.map(({ value, to, func }) => (
           <NavigationButton key={value} value={value} to={to} func={func} />

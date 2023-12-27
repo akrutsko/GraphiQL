@@ -6,7 +6,6 @@
     "signup": "Sign Up",
     "signout": "Sign Out",
     "404": "Page not found",
-    "gotomain": "Go to main",
     "settings": "Settings",
     "applicationDevelopers": "Application Developers",
     "developers": [
@@ -97,7 +96,6 @@
     "signup": "Регистрация",
     "signout": "Выход",
     "404": "Страница не найдена",
-    "gotomain": "На главную",
     "settings": "Настройки",
     "applicationDevelopers": "Разработчики приложения",
     "developers": [
