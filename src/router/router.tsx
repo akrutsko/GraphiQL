@@ -43,10 +43,10 @@ export const router = createBrowserRouter([
         path: '/main',
         element: <PrivateMainRoute element={<GraphiQL />} />,
       },
+      {
+        path: '*',
+        element: <PageNotFound />,
+      },
     ],
-  },
-  {
-    path: '*',
-    element: <PageNotFound />,
   },
 ]);

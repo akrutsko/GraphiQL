@@ -5,7 +5,7 @@ import styles from './Footer.module.css';
 const Footer = () => {
   const translation = useTranslation();
   return (
-    <footer className={styles.footer}>
+    <footer data-testid="footer" className={styles.footer}>
       <span> &copy; 2023 - GraphiQL</span>
       <div className={styles.devContainer}>
         {translation.developers.map(({ name, href }) => (

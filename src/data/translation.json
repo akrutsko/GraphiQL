@@ -79,11 +79,11 @@
     },
     "notifications": {
       "signinFailed": {
-        "title": "Log In Failed!",
+        "title": "Login Failed!",
         "text": "Please, recheck the email and password and try again"
       },
       "signupFailed": {
-        "title": "Sign Up Failed!",
+        "title": "Signup Failed!",
         "text": "Maybe you’re already registered.\nPlease, recheck your data and try again"
       }
     },

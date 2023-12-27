@@ -4,7 +4,7 @@ type LoadingProps = {
   marginTop: string;
 };
 
-const Loading = ({ marginTop }: LoadingProps) => {
+const LoaderSmall = ({ marginTop }: LoadingProps) => {
   return (
     <CircularProgress
       color="secondary"
@@ -15,4 +15,4 @@ const Loading = ({ marginTop }: LoadingProps) => {
   );
 };
 
-export default Loading;
+export default LoaderSmall;

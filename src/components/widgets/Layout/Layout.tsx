@@ -7,7 +7,7 @@ import { auth } from '../../../firebase/firebase';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import ThemeSwitcher from '../../../utils/themeSwitcher/ThemeSwitcher';
-import Loader from '../../shared/Loader/Loader';
+import LoaderBig from '../../shared/LoaderBig/LoaderBig';
 import ErrorBoundary from '../../shared/ErrorBoundary/ErrorBoundary';
 
 const Layout = () => {
@@ -18,7 +18,7 @@ const Layout = () => {
     setLoading(loading);
   }, [loading]);
 
-  if (isLoading) return <Loader open={isLoading} />;
+  if (isLoading) return <LoaderBig open={isLoading} />;
 
   return (
     <ErrorBoundary>

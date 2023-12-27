@@ -1,7 +1,7 @@
 import { Drawer } from '@mui/material';
 import { lazy, Suspense } from 'react';
 
-import Loading from '../../shared/Loading/Loading';
+import LoaderSmall from '../../shared/LoaderSmall/LoaderSmall';
 
 import styles from './DocumentationExplorer.module.css';
 
@@ -30,7 +30,7 @@ const DocumentationExplorer = ({ showDocumentation, onclose }: DocumentationExpl
       <div className={styles.wrapper}>
         <button className={styles.close} onClick={onclose} />
         {showDocumentation && (
-          <Suspense fallback={<Loading marginTop={'30'} />}>
+          <Suspense fallback={<LoaderSmall marginTop={'30'} />}>
             <ListOfDocumentation />
           </Suspense>
         )}

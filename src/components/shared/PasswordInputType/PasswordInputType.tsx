@@ -18,7 +18,7 @@ const PasswordInputType = ({ setPasswordType }: PasswordInputTypeProps) => {
     setPasswordType((prevType) => (prevType === 'password' ? 'text' : 'password'));
   };
   return (
-    <button className={styles.visibility} onClick={toggleVisibility}>
+    <button data-testid="locker" className={styles.visibility} onClick={toggleVisibility}>
       <img className={styles.locker} src={isVisible ? open : close} alt="locker" />
     </button>
   );
