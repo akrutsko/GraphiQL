@@ -19,3 +19,14 @@
   height: 50px;
   width: 140px;
 }
+
+@media (max-width: 860px) {
+  .footer {
+    font-size: 14px;
+    flex-wrap: wrap;
+  }
+  .rsLogo {
+    height: 30px;
+    width: 100px;
+  }
+}
