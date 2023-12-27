@@ -1,5 +1,6 @@
 import { Box, Menu, MenuItem } from '@mui/material';
 import { useState, type MouseEvent, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import type { HeaderButton } from '../../../types';
 import { SCREEN_WIDTH } from '../../../constants';
@@ -15,6 +16,12 @@ type BurgerMenuProps = {
 const BurgerMenu = ({ buttons }: BurgerMenuProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
+  const location = useLocation();
+
+  const isActive = (to: string | undefined) => {
+    return location.pathname === to;
+  };
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -52,7 +59,7 @@ const BurgerMenu = ({ buttons }: BurgerMenuProps) => {
         onClose={handleClose}
       >
         {buttons.map(({ value, to, func }) => (
-          <MenuItem key={value} onClick={handleClose}>
+          <MenuItem sx={{ display: isActive(to) ? 'none' : 'line' }} key={value} onClick={handleClose}>
             <NavigationButton value={value} to={to} func={func} />
           </MenuItem>
         ))}

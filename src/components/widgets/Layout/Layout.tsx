@@ -24,7 +24,15 @@ const Layout = () => {
     <ErrorBoundary>
       <ThemeSwitcher>
         <Header />
-        <Container sx={{ minHeight: '100vh', display: 'flex', justifyContent: 'space-between', flexDirection: 'column' }}>
+        <Container
+          sx={{
+            minHeight: '100vh',
+            display: 'flex',
+            justifyContent: 'space-between',
+            flexDirection: 'column',
+            paddingTop: '120px',
+          }}
+        >
           <main>
             <Outlet />
           </main>

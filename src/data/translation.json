@@ -1,6 +1,7 @@
 {
   "en": {
     "welcome": "Welcome to GraphiQL!",
+    "welcomeLink": "Welcome",
     "signin": "Sign In",
     "signup": "Sign Up",
     "signout": "Sign Out",
@@ -91,6 +92,7 @@
   },
   "ru": {
     "welcome": "Добро пожаловать в GraphiQL!",
+    "welcomeLink": "Домой",
     "signin": "Вход",
     "signup": "Регистрация",
     "signout": "Выход",

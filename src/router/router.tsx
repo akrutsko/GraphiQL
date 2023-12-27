@@ -13,12 +13,12 @@ type PrivateRouteProps = {
 
 const PrivateMainRoute = ({ element }: PrivateRouteProps) => {
   const { isAuthenticated } = useAppSelector(selectAuth);
-  return isAuthenticated ? element : <Navigate to="/" />;
+  return isAuthenticated ? element : <Navigate replace to="/" />;
 };
 
 const PrivateSignRoute = ({ element }: PrivateRouteProps) => {
   const { isAuthenticated } = useAppSelector(selectAuth);
-  return !isAuthenticated ? element : <Navigate to="/main" />;
+  return !isAuthenticated ? element : <Navigate replace to="/main" />;
 };
 
 export const router = createBrowserRouter([

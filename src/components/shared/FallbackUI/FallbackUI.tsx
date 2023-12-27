@@ -10,7 +10,7 @@ const FallDownUI = () => {
   };
 
   return (
-    <Container sx={{ minHeight: '100vh' }}>
+    <Container sx={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
       <AnimatedInner inner="Something went wrong. Refresh the page, please." />
       <button className={styles.refresh} onClick={handleRefresh}>
         Refresh
