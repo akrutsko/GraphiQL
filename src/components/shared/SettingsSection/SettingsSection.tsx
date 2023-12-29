@@ -38,7 +38,7 @@ const SettingsSection = ({ inner, description, alignments, startValue }: Setting
       <Box className={styles.section}>
         <Typography sx={{ fontSize: { xs: '20px', md: '28px' } }} component="div">
           {inner}
-          <Typography sx={{ fontSize: { xs: '14px', md: '20px' } }} component="p">
+          <Typography sx={{ display: { xs: 'none', md: 'block' } }} component="p">
             {description}
           </Typography>
         </Typography>

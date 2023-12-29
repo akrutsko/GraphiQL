@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--violet-color);
-  height: 100%;
 }
 
 .requestSection {

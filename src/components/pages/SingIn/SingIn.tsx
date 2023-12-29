@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { INPUTS_SIGN_IN } from '../../../constants';
 import { auth } from '../../../firebase/firebase';
 import { useTranslation } from '../../../hooks';
-import { createSignInSchema, type SignInSchema } from '../../../utils/validationSchema/signInSchema';
+import { createSignInSchema, type SignInSchema } from '../../../utils/validationSchema';
 import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner';
 import SignInValidation from '../../shared/InputValidation/SignInValidation';
 import TostifyComponent from '../../shared/TostifyComponent/TostifyComponent';

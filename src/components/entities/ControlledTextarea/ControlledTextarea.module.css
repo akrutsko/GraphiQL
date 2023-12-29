@@ -12,8 +12,3 @@
 .textarea:focus-visible {
   outline: none;
 }
-
-.wrapperTextarea {
-  width: 100%;
-  height: 150px;
-}

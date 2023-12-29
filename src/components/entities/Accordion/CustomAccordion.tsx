@@ -4,7 +4,7 @@ import { HEADERS_EDITOR, VARIABLES_EDITOR } from '../../../constants';
 import { useTranslation } from '../../../hooks';
 import type { Editor } from '../../../types';
 import ControlButton from '../../shared/ControlButton/ControlButton';
-import FullWidthTextarea from '../../shared/FullWidthTextarea/FullWidthTextarea';
+import Textarea from '../../shared/Textarea/Textarea';
 
 import styles from './CustomAccordion.module.css';
 
@@ -39,7 +39,7 @@ const CustomAccordion = () => {
           <button className={`${styles.buttonGroup} ${visibleDiv ? styles.visible : ''}`} onClick={toggleDiv}></button>
         </div>
       </div>
-      {visibleDiv && <FullWidthTextarea selectedDiv={selectedDiv} />}
+      {visibleDiv && <Textarea selectedDiv={selectedDiv} />}
     </div>
   );
 };

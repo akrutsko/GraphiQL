@@ -85,6 +85,11 @@
       "signupFailed": {
         "title": "Signup Failed!",
         "text": "Maybe you’re already registered.\nPlease, recheck your data and try again"
+      },
+      "prettifyingFailed": {
+        "title": "Prettifying Failed!",
+        "textClosingParenthesis": "Extra closing parenthesis detected",
+        "textOpeningParenthesis": "Extra opening parenthesis detected"
       }
     },
     "documentationExplorer": "Documentation Explorer"
@@ -175,6 +180,11 @@
       "signupFailed": {
         "title": "Ошибка регистрации!",
         "text": "Возможно, вы уже зарегистрированы.\nПожалуйста, проверьте данные и попробуйте снова"
+      },
+      "prettifyingFailed": {
+        "title": "Ошибка форматирования!",
+        "textClosingParenthesis": "Обнаружена лишняя закрывающая скобка",
+        "textOpeningParenthesis": "Обнаружена лишняя открывающая скобка"
       }
     },
     "documentationExplorer": "Обозреватель документации"

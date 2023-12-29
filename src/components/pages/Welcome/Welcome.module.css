@@ -24,6 +24,8 @@
 .sectionDevelopersContext {
   margin: 30px 0;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 50px;
 }
 
@@ -45,4 +47,14 @@
 .buttonsContainer :is(a, button):hover {
   box-shadow: var(--button-hover);
   background-color: var(--pink-color);
+}
+
+@media (max-width: 700px) {
+  .text {
+    font-size: 18px;
+  }
+
+  .sectionInfo {
+    margin: 0;
+  }
 }
