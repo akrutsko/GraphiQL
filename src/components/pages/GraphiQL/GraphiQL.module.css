@@ -3,6 +3,7 @@
   padding: 15px 15px 0;
   margin-bottom: 10px;
   background-color: var(--dark-blue-color);
+  box-shadow: var(--button-hover);
 }
 
 .wrapper {
@@ -11,6 +12,7 @@
   align-items: stretch;
   padding: 15px 0;
   height: 94%;
+  position: relative;
 }
 
 @media (max-width: 700px) {

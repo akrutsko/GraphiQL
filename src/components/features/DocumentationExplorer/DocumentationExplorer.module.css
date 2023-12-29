@@ -23,6 +23,10 @@
   transition: transform 0.5s;
 }
 
+.close:hover {
+  transform: rotate(180deg);
+}
+
 @media (max-width: 700px) {
   .wrapper {
     width: 260px;

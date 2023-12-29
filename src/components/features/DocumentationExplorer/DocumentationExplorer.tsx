@@ -16,14 +16,15 @@ const DocumentationExplorer = ({ showDocumentation, onclose }: DocumentationExpl
   return (
     <Drawer
       variant="persistent"
-      anchor="left"
+      anchor="right"
       open={showDocumentation}
       SlideProps={{
         style: {
+          width: 'auto',
           position: 'absolute',
-          top: '73px',
-          left: '15px',
-          height: '87%',
+          zIndex: 100,
+          height: '100%',
+          boxShadow: 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0 6px 6px',
         },
       }}
     >
