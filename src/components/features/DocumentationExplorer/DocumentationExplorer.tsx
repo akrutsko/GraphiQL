@@ -20,7 +20,7 @@ const DocumentationExplorer = ({ showDocumentation, onclose }: DocumentationExpl
       open={showDocumentation}
       SlideProps={{
         style: {
-          width: 'auto',
+          width: 'fit-content',
           position: 'absolute',
           zIndex: 100,
           height: '100%',

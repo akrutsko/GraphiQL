@@ -29,14 +29,6 @@
   background-repeat: no-repeat;
 }
 
-.close {
-  position: absolute;
-}
-
-.open {
-  display: block;
-}
-
 @media (max-width: 700px) {
   .inputEndpoind {
     width: calc(100% - 55px);

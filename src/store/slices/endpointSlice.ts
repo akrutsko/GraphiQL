@@ -1,13 +1,14 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 import type { RootState } from '../store';
+import { DEFAULT_ENDPOINT } from '../../constants';
 
 type EndpointState = {
   endpoint: string;
 };
 
 const initialState: EndpointState = {
-  endpoint: 'https://swapi-graphql.eskerda.vercel.app',
+  endpoint: DEFAULT_ENDPOINT,
 };
 
 const endpointSlice = createSlice({

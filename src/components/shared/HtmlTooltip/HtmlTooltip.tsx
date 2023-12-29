@@ -1,27 +1,22 @@
-import type { TooltipProps } from '@mui/material';
-import { styled, Tooltip, tooltipClasses } from '@mui/material';
-import React, { useState } from 'react';
+import { useState, type ReactElement, cloneElement } from 'react';
+import { styled, Tooltip, tooltipClasses, type TooltipProps } from '@mui/material';
 
 interface HtmlTooltipProps extends TooltipProps {
-  children: React.ReactElement;
+  children: ReactElement;
 }
 
 const HtmlTooltip = styled(({ className, children, ...props }: HtmlTooltipProps) => {
   const [open, setOpen] = useState(false);
-
-  const openWithDelay = () => {
-    setTimeout(() => setOpen(true), 500);
-  };
 
   return (
     <Tooltip
       {...props}
       classes={{ popper: className }}
       open={open}
-      onMouseEnter={openWithDelay}
+      onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      {React.cloneElement(children, { onMouseDown: () => setOpen(false) })}
+      {cloneElement(children, { onMouseDown: () => setOpen(false) })}
     </Tooltip>
   );
 })(({ theme }) => ({

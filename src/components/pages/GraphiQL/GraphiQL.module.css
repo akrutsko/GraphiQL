@@ -2,7 +2,6 @@
   position: relative;
   padding: 15px 15px 0;
   margin-bottom: 10px;
-  background-color: var(--dark-blue-color);
   box-shadow: var(--button-hover);
 }
 

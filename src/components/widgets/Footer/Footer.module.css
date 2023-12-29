@@ -30,3 +30,9 @@
     width: 100px;
   }
 }
+
+@media (max-width: 450px) {
+  .footer {
+    justify-content: space-around;
+  }
+}
