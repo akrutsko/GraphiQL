@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux';
 
 import CustomAccordion from '../../entities/Accordion/CustomAccordion';
 import prettifyingService from '../../../services/PrettifyingService';
-import { useTranslation } from '../../../hooks';
+import { useTranslation, useActions } from '../../../hooks';
 import TostifyMessage from '../../shared/TostifyMessage/TostifyMessage';
 import TostifyComponent from '../../shared/TostifyComponent/TostifyComponent';
-import { useActions } from '../../../hooks/useActions';
 import { selectRequestData } from '../../../store/slices/requestSlice';
 import EditorOrViewer from '../../entities/EditorOrViewer/EditorOrViewer';
 import createApi from '../../../services/ApiService';
 import { selectEndpoint } from '../../../store/slices/endpointSlice';
+import HtmlTooltip from '../../shared/HtmlTooltip/HtmlTooltip';
 
 import styles from './RequestSection.module.css';
 
@@ -45,9 +45,13 @@ const RequestSection = () => {
           <EditorOrViewer readOnly={false} />
         </div>
         <div className={styles.wrapperButtonPlay}>
-          <button className={styles.buttonPlay} onClick={handleButtonPlayClick} />
+          <HtmlTooltip title={translation.tooltip.play} placement="right">
+            <button className={styles.buttonPlay} onClick={handleButtonPlayClick} />
+          </HtmlTooltip>
         </div>
-        <button className={styles.buttonPrettier} onClick={handleButtonPrettierClick} />
+        <HtmlTooltip title={translation.tooltip.prettify} placement="right">
+          <button className={styles.buttonPrettier} onClick={handleButtonPrettierClick} />
+        </HtmlTooltip>
       </div>
       <CustomAccordion />
       <TostifyComponent />

@@ -92,7 +92,12 @@
         "textOpeningParenthesis": "Extra opening parenthesis detected"
       }
     },
-    "documentationExplorer": "Documentation Explorer"
+    "documentationExplorer": "Documentation Explorer",
+    "tooltip": {
+      "docs": "Documentation",
+      "play": "Execute query",
+      "prettify": "Prettify"
+    }
   },
   "ru": {
     "welcome": "Добро пожаловать в GraphiQL!",
@@ -187,6 +192,11 @@
         "textOpeningParenthesis": "Обнаружена лишняя открывающая скобка"
       }
     },
-    "documentationExplorer": "Обозреватель документации"
+    "documentationExplorer": "Обозреватель документации",
+    "tooltip": {
+      "docs": "Документация",
+      "play": "Выполнить запрос",
+      "prettify": "Форматировать"
+    }
   }
 }
