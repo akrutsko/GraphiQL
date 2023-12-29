@@ -1,15 +1,24 @@
 import { TextField, ThemeProvider } from '@mui/material';
-import { useState } from 'react';
+import { type ChangeEvent, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { useTranslation } from '../../../hooks';
 import { themeInput } from '../../../utils/themeInput/themeInput';
 import DocumentationExplorer from '../../features/DocumentationExplorer/DocumentationExplorer';
+import { selectEndpoint } from '../../../store/slices/endpointSlice';
+import { useActions } from '../../../hooks/useActions';
 
 import styles from './DocsSection.module.css';
 
 const DocsSection = () => {
   const translation = useTranslation();
   const [showDocumentation, setShowDocumentation] = useState(false);
+  const apiUrl = useSelector(selectEndpoint);
+  const { updateEndpoint } = useActions();
+
+  const handleEndpointChange = (event: ChangeEvent<HTMLInputElement>) => {
+    updateEndpoint(event.target.value);
+  };
 
   return (
     <div className={styles.docsSection}>
@@ -26,7 +35,8 @@ const DocsSection = () => {
             variant="filled"
             size="small"
             color="secondary"
-            defaultValue={'https://swapi-graphql.eskerda.vercel.app/'}
+            defaultValue={apiUrl}
+            onChange={handleEndpointChange}
           />
         </ThemeProvider>
       </div>

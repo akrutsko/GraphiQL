@@ -1,16 +1,20 @@
 import type { ChangeEvent } from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { TextareaAutosize } from '@mui/base/TextareaAutosize';
+import { useSelector } from 'react-redux';
+
+import { selectRequestData } from '../../../store/slices/requestSlice';
+import { useActions } from '../../../hooks/useActions';
 
 import styles from './ControlledTextarea.module.css';
 
 interface ControlledTextareaProps {
   selectedDiv?: string;
-  query: string;
-  setQuery: (newQuery: string) => void;
 }
 
-const ControlledTextarea = ({ selectedDiv, query, setQuery }: ControlledTextareaProps) => {
+const ControlledTextarea = ({ selectedDiv }: ControlledTextareaProps) => {
+  const query = useSelector(selectRequestData);
+  const { updateRequestData } = useActions();
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const [caretPosition, setCaretPosition] = useState(1);
 
@@ -24,10 +28,10 @@ const ControlledTextarea = ({ selectedDiv, query, setQuery }: ControlledTextarea
     const newQuery = event.target.value;
     const caretPos = event.target.selectionStart || 0;
     if (newQuery.charAt(caretPos - 1) === '{' && newQuery.length > query.length) {
-      setQuery(newQuery.substring(0, caretPos) + '}' + newQuery.substring(caretPos));
+      updateRequestData(newQuery.substring(0, caretPos) + '}' + newQuery.substring(caretPos));
       setCaretPosition(caretPos);
     } else {
-      setQuery(newQuery);
+      updateRequestData(newQuery);
     }
   };
 
