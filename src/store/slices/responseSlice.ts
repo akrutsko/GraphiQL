@@ -1,13 +1,12 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 import type { RootState } from '../store';
-import prettifyingService from '../../services/PrettifyingService';
 
-type UserState = {
+type ResponseState = {
   responseData: string;
 };
 
-const initialState: UserState = {
+const initialState: ResponseState = {
   responseData: '',
 };
 
@@ -16,7 +15,7 @@ const responseDataSlice = createSlice({
   initialState,
   reducers: {
     updateResponseData: (state, action: PayloadAction<string>) => {
-      state.responseData = prettifyingService.formatJSON(action.payload);
+      state.responseData = action.payload;
     },
   },
 });
