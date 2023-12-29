@@ -3,7 +3,7 @@ import AnimatedInner from '../../shared/AnimatedInner/AnimatedInner';
 import DeveloperCard from '../../shared/DeveloperCard/DeveloperCard';
 import type { HeaderButton } from '../../../types';
 import { selectAuth } from '../../../store/slices/userSlice';
-import NavigationButton from '../../shared/NavigationButton/NavigationButton.tsx';
+import NavigationButton from '../../shared/NavigationButton/NavigationButton';
 
 import styles from './Welcome.module.css';
 
