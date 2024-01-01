@@ -1,11 +1,11 @@
 {
   "en": {
     "welcome": "Welcome to GraphiQL!",
+    "welcomeLink": "Welcome",
     "signin": "Sign In",
     "signup": "Sign Up",
     "signout": "Sign Out",
     "404": "Page not found",
-    "gotomain": "Go to main",
     "settings": "Settings",
     "applicationDevelopers": "Application Developers",
     "developers": [
@@ -92,15 +92,20 @@
         "textOpeningParenthesis": "Extra opening parenthesis detected"
       }
     },
-    "documentationExplorer": "Documentation Explorer"
+    "documentationExplorer": "Documentation Explorer",
+    "tooltip": {
+      "docs": "Documentation",
+      "play": "Execute query",
+      "prettify": "Prettify"
+    }
   },
   "ru": {
     "welcome": "Добро пожаловать в GraphiQL!",
+    "welcomeLink": "Домой",
     "signin": "Вход",
     "signup": "Регистрация",
     "signout": "Выход",
     "404": "Страница не найдена",
-    "gotomain": "На главную",
     "settings": "Настройки",
     "applicationDevelopers": "Разработчики приложения",
     "developers": [
@@ -187,6 +192,11 @@
         "textOpeningParenthesis": "Обнаружена лишняя открывающая скобка"
       }
     },
-    "documentationExplorer": "Обозреватель документации"
+    "documentationExplorer": "Обозреватель документации",
+    "tooltip": {
+      "docs": "Документация",
+      "play": "Выполнить запрос",
+      "prettify": "Форматировать"
+    }
   }
 }

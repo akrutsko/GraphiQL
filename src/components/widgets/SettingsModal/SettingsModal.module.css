@@ -28,3 +28,9 @@
 .close:hover {
   transform: rotate(180deg);
 }
+
+@media (max-width: 860px) {
+  .modal {
+    width: 300px;
+  }
+}

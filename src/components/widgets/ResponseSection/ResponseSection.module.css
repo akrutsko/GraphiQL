@@ -1,3 +1,10 @@
 .responseSection {
   flex: 1;
+  max-width: 38vw;
+}
+
+@media (max-width: 700px) {
+  .responseSection {
+    max-width: 100%;
+  }
 }

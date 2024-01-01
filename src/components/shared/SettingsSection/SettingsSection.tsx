@@ -36,9 +36,11 @@ const SettingsSection = ({ inner, description, alignments, startValue }: Setting
   return (
     <ThemeProvider theme={theme}>
       <Box className={styles.section}>
-        <Typography sx={{ fontSize: '28px' }} component="div">
+        <Typography sx={{ fontSize: { xs: '20px', md: '28px' } }} component="div">
           {inner}
-          <Typography component="p">{description}</Typography>
+          <Typography sx={{ display: { xs: 'none', md: 'block' } }} component="p">
+            {description}
+          </Typography>
         </Typography>
         <ToggleButtonGroup size="small" value={alignment} exclusive onChange={handleChange} aria-label="Platform">
           {alignments.map((el) => (
