@@ -7,8 +7,7 @@ class Api {
 
   private parseJsonWithValidation(jsonString: string) {
     try {
-      const parsedJson = JSON.parse(jsonString);
-      return parsedJson;
+      return JSON.parse(jsonString);
     } catch (error) {
       return null;
     }
