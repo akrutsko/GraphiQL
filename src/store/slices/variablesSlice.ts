@@ -7,7 +7,7 @@ type variablesState = {
 };
 
 const initialState: variablesState = {
-  variables: '{\n  \n}',
+  variables: '',
 };
 
 const variablesSlice = createSlice({

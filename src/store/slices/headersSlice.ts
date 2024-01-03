@@ -7,7 +7,7 @@ type headersState = {
 };
 
 const initialState: headersState = {
-  headers: '{\n  \n}',
+  headers: '',
 };
 
 const headersSlice = createSlice({

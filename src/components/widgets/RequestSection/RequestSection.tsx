@@ -11,12 +11,16 @@ import EditorOrViewer from '../../entities/EditorOrViewer/EditorOrViewer';
 import createApi from '../../../services/ApiService';
 import { selectEndpoint } from '../../../store/slices/endpointSlice';
 import HtmlTooltip from '../../shared/HtmlTooltip/HtmlTooltip';
+import { selectVariablesData } from '../../../store/slices/variablesSlice.ts';
+import { selectHeadersData } from '../../../store/slices/headersSlice.ts';
 
 import styles from './RequestSection.module.css';
 
 const RequestSection = () => {
   const translation = useTranslation();
   const query = useSelector(selectRequestData);
+  const variables = useSelector(selectVariablesData);
+  const headers = useSelector(selectHeadersData);
   const apiUrl = useSelector(selectEndpoint);
   const { updateResponseData, updateRequestData } = useActions();
 
@@ -31,10 +35,17 @@ const RequestSection = () => {
   };
 
   const handleButtonPlayClick = async () => {
+    const { requestFailed } = translation.notifications;
     if (query.trim()) {
       const api = createApi(apiUrl);
-      const data = await api.fetchInfo(query);
-      updateResponseData(JSON.stringify(data, null, 2));
+      const data = await api.fetchInfo(query, variables, headers);
+      if (typeof data === 'object') {
+        updateResponseData(JSON.stringify(data, null, 2));
+      } else if (data === 'variables') {
+        toast.error(<TostifyMessage title={requestFailed.title} text={requestFailed.textVariables} />);
+      } else {
+        toast.error(<TostifyMessage title={requestFailed.title} text={requestFailed.textHeaders} />);
+      }
     }
   };
 
