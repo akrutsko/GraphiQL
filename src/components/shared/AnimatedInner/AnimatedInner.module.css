@@ -12,3 +12,9 @@
     visibility: hidden;
   }
 }
+
+@media (max-width: 860px) {
+  .inner {
+    font-size: 36px;
+  }
+}

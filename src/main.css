@@ -28,7 +28,6 @@ html {
 }
 
 body {
-  padding-top: 150px;
   background-color: var(--violet-color);
   color: #ffff;
   background-image: url("./assets/images/background.png");
@@ -36,6 +35,7 @@ body {
   background-size: auto;
   background-position: top right;
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 ul {

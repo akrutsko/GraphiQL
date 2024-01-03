@@ -11,7 +11,7 @@ import styles from './CustomAccordion.module.css';
 const CustomAccordion = () => {
   const translation = useTranslation();
   const [selectedDiv, setSelectedDiv] = useState<Editor>(VARIABLES_EDITOR);
-  const [visibleDiv, setVisibleDiv] = useState<boolean>(false);
+  const [visibleDiv, setVisibleDiv] = useState(false);
 
   const showDiv = (divName: Editor) => {
     setVisibleDiv(true);

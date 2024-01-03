@@ -2,11 +2,11 @@ import { TextField, ThemeProvider } from '@mui/material';
 import { type ChangeEvent, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { useTranslation } from '../../../hooks';
+import { useActions, useTranslation } from '../../../hooks';
 import { themeInput } from '../../../utils/themeInput/themeInput';
 import DocumentationExplorer from '../../features/DocumentationExplorer/DocumentationExplorer';
 import { selectEndpoint } from '../../../store/slices/endpointSlice';
-import { useActions } from '../../../hooks/useActions';
+import HtmlTooltip from '../../shared/HtmlTooltip/HtmlTooltip';
 
 import styles from './DocsSection.module.css';
 
@@ -23,10 +23,12 @@ const DocsSection = () => {
   return (
     <div className={styles.docsSection}>
       <div className={styles.docsWrapper}>
-        <button
-          className={showDocumentation ? styles.buttonDocsOpen : styles.buttonDocs}
-          onClick={() => setShowDocumentation(!showDocumentation)}
-        />
+        <HtmlTooltip title={translation.tooltip.docs} placement="top">
+          <button
+            className={showDocumentation ? styles.buttonDocsOpen : styles.buttonDocs}
+            onClick={() => setShowDocumentation(!showDocumentation)}
+          />
+        </HtmlTooltip>
         <ThemeProvider theme={themeInput}>
           <TextField
             className={styles.inputEndpoind}

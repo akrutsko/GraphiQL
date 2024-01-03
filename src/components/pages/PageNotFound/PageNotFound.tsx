@@ -11,7 +11,7 @@ const PageNotFound = () => {
     <>
       <AnimatedInner inner={translation['404']} />
       <Link className={styles.link} to={'/'}>
-        {translation.gotomain}
+        {translation.welcomeLink}
       </Link>
     </>
   );

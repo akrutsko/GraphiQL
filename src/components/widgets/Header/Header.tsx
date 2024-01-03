@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AppBar, Box, Container, Toolbar } from '@mui/material';
 import { signOut } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
@@ -7,10 +7,10 @@ import { auth } from '../../../firebase/firebase';
 import { useAppSelector, useTranslation } from '../../../hooks';
 import SettingsModal from '../SettingsModal/SettingsModal';
 import { SCROLL_DOWN } from '../../../constants';
-import type { HeaderButton } from '../../../types';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import NavigationButton from '../../shared/NavigationButton/NavigationButton';
 import { selectAuth } from '../../../store/slices/userSlice';
+import type { HeaderButton } from '../../../types';
 
 import styles from './Header.module.css';
 
@@ -18,15 +18,16 @@ const Header = () => {
   const translation = useTranslation();
   const [open, setOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
+  const [buttons, setButtons] = useState<HeaderButton[]>([]);
   const navigate = useNavigate();
   const { isAuthenticated } = useAppSelector(selectAuth);
 
   const toggleModal = () => setOpen(!open);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     signOut(auth);
     navigate('/', { replace: true });
-  };
+  }, [navigate]);
 
   useEffect(() => {
     window.addEventListener('scroll', isSticky);
@@ -41,27 +42,41 @@ const Header = () => {
     setSticky(isSticky);
   };
 
-  const buttons: HeaderButton[] = isAuthenticated
-    ? [
-        {
-          value: 'GraphiQL',
-          to: '/main',
-        },
-        {
-          value: translation.signout,
-          func: handleClose,
-        },
-      ]
-    : [
-        {
-          value: translation.signin,
-          to: '/sign-in',
-        },
-        {
-          value: translation.signup,
-          to: '/sign-up',
-        },
-      ];
+  const links = useMemo(() => {
+    return isAuthenticated
+      ? [
+          {
+            value: translation.welcomeLink,
+            to: '/',
+          },
+          {
+            value: 'GraphiQL',
+            to: '/main',
+          },
+          {
+            value: translation.signout,
+            func: handleClose,
+          },
+        ]
+      : [
+          {
+            value: translation.welcomeLink,
+            to: '/',
+          },
+          {
+            value: translation.signin,
+            to: '/sign-in',
+          },
+          {
+            value: translation.signup,
+            to: '/sign-up',
+          },
+        ];
+  }, [isAuthenticated, translation, handleClose]);
+
+  useEffect(() => {
+    setButtons(links);
+  }, [isAuthenticated, links]);
 
   return (
     <>
