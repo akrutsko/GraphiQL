@@ -17,7 +17,7 @@ type Description = {
   kind?: string;
 };
 
-type SchemaType = Description & {
+export type SchemaType = Description & {
   fields: Field[] | null;
   inputFields: InputValue[] | null;
   interfaces: TypeRef[] | null;

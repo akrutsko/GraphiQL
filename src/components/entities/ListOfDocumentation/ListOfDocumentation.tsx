@@ -1,48 +1,65 @@
 import { Divider } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 import { introspectionQuery } from '../../../constants/intospectionQuery';
 import { useAppSelector, useTranslation } from '../../../hooks';
 import createApi from '../../../services/ApiService';
 import { selectEndpoint } from '../../../store/slices/endpointSlice';
-import type { IntrospectionSchema } from '../../../types/introspectionSchema';
-import styles from '../../features/DocumentationExplorer/DocumentationExplorer.module.css';
+import type { IntrospectionSchema, SchemaType } from '../../../types/introspectionSchema';
 import GraphQLDocService from '../../../services/GraphQLDocService';
+import TostifyComponent from '../../shared/TostifyComponent/TostifyComponent';
+import TostifyMessage from '../../shared/TostifyMessage/TostifyMessage';
+
+import Methods from './ui/Methods/Methods';
+import RootTypesSection from './ui/RootTypesSection/RootTypesSection';
+import styles from './ListOfDocumentation.module.css';
 
 const ListOfDocumentation = () => {
   const translation = useTranslation();
   const endpoint = useAppSelector(selectEndpoint);
 
   const [schema, setSchema] = useState<IntrospectionSchema>();
+  const [entity, setEntity] = useState<string | null>(null);
+  const [methods, setMethods] = useState<SchemaType | undefined>(undefined);
+
+  const notify = () => {
+    const { title, text } = translation.notifications.fetchingFailed;
+    toast.error(<TostifyMessage title={title} text={text} />);
+  };
 
   useEffect(() => {
     const api = createApi(endpoint);
-
     const getSchema = async () => {
       try {
         const schema = (await api.fetchInfo(introspectionQuery)) as IntrospectionSchema;
         if ('errors' in schema) throw new Error();
         setSchema(schema);
       } catch {
-        console.error('Show react-toastify error message'); // TODO
+        notify();
       }
     };
 
     getSchema();
   }, [endpoint]);
 
+  const handleClose = () => {
+    setEntity(null);
+    setMethods(undefined);
+  };
+
   const header = (
-    <div>
+    <div className={styles.container}>
+      {entity && <button className={styles.close} onClick={handleClose} />}
+
       <h2 className={styles.title}>{translation.documentationExplorer}</h2>
-      <p>A GraphQL schema provides a root type for each kind of operation.</p>
-      {/* TODDO: add translation if description is needed */}
-      <Divider />
+      <p>{translation.docs.desc}</p>
+      <Divider sx={{ margin: '20px 0' }} />
     </div>
   );
 
-  if (!schema) return header;
+  if (!schema) return null;
   console.log(schema);
-
   const graphQLDocSchema = new GraphQLDocService(schema);
 
   const queryType = graphQLDocSchema.getQueryType();
@@ -52,37 +69,36 @@ const ListOfDocumentation = () => {
   const subscriptionType = graphQLDocSchema.getSubscriptionType();
   const subscriptions = graphQLDocSchema.getSubscriptions();
 
-  const queryContent = queryType && (
-    <>
-      <h3>{queryType}</h3>
-      <ul>{queries?.fields?.map((field) => <li key={field.name}>{field.name}</li>)}</ul>
-    </>
-  );
-  const mutationContent = mutationType && (
-    <>
-      <h3>{mutationType}</h3>
-      <ul>{mutations?.fields?.map((field) => <li key={field.name}>{field.name}</li>)}</ul>
-    </>
-  );
-  const subscriptionContent = subscriptionType && (
-    <>
-      <h3>{subscriptionType}</h3>
-      <ul>{subscriptions?.fields?.map((field) => <li key={field.name}>{field.name}</li>)}</ul>
-    </>
-  );
+  const openMethods = (ent: string | null) => {
+    let methods;
+    setEntity(ent);
+    switch (ent) {
+      case 'Query':
+        methods = queries;
+        break;
+      case 'Mutation':
+        methods = mutations;
+        break;
+      case 'Subscription':
+        methods = subscriptions;
+        break;
+    }
+    setMethods(methods);
+  };
 
   return (
     <>
       {header}
-      <h3>Root Types</h3>
-      <ul>
-        {queryType && <li>query: {mutationType}</li>}
-        {mutationType && <li>mutation: {mutationType}</li>}
-        {subscriptionType && <li>subscription: {subscriptionType}</li>}
-      </ul>
-      {queryContent}
-      {mutationContent}
-      {subscriptionContent}
+      {!entity && (
+        <RootTypesSection
+          queryType={queryType}
+          mutationType={mutationType}
+          subscriptionType={subscriptionType}
+          openMethods={openMethods}
+        />
+      )}
+      <Methods title={entity} types={methods} />
+      <TostifyComponent />
     </>
   );
 };

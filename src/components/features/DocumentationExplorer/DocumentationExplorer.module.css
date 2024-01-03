@@ -3,12 +3,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding-top: 10%;
-}
-
-.title {
-  text-align: center;
-  margin: 20px 0;
+  padding: 10% 10px;
 }
 
 .close {

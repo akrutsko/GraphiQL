@@ -90,6 +90,10 @@
         "title": "Prettifying Failed!",
         "textClosingParenthesis": "Extra closing parenthesis detected",
         "textOpeningParenthesis": "Extra opening parenthesis detected"
+      },
+      "fetchingFailed": {
+        "title": "Fetching Error",
+        "text": "Failed to fetch data. \nCheck your data and try again"
       }
     },
     "documentationExplorer": "Documentation Explorer",
@@ -97,6 +101,10 @@
       "docs": "Documentation",
       "play": "Execute query",
       "prettify": "Prettify"
+    },
+    "docs": {
+      "rootType": "Root Types",
+      "desc": "A GraphQL schema provides a root type for each kind of operation"
     }
   },
   "ru": {
@@ -190,6 +198,10 @@
         "title": "Ошибка форматирования!",
         "textClosingParenthesis": "Обнаружена лишняя закрывающая скобка",
         "textOpeningParenthesis": "Обнаружена лишняя открывающая скобка"
+      },
+      "fetchingFailed": {
+        "title": "Ошибка запроса",
+        "text": "Ошибка получения данных. Проверьте данные и повторите попытку"
       }
     },
     "documentationExplorer": "Обозреватель документации",
@@ -197,6 +209,10 @@
       "docs": "Документация",
       "play": "Выполнить запрос",
       "prettify": "Форматировать"
+    },
+    "docs": {
+      "rootType": "Корневые типы",
+      "desc": "GraphQL-схема предоставляет корневой тип для каждого вида операции"
     }
   }
 }
