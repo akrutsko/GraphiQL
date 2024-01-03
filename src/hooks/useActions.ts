@@ -4,8 +4,8 @@ import { setAuth } from '../store/slices/userSlice';
 import { updateResponseData } from '../store/slices/responseSlice';
 import { updateRequestData } from '../store/slices/requestSlice';
 import { updateEndpoint } from '../store/slices/endpointSlice';
-import { updateVariables } from '../store/slices/variablesSlice.ts';
-import { updateHeaders } from '../store/slices/headersSlice.ts';
+import { updateVariables } from '../store/slices/variablesSlice';
+import { updateHeaders } from '../store/slices/headersSlice';
 
 import { useAppDispatch } from '.';
 

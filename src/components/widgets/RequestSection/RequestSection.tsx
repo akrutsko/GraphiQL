@@ -11,8 +11,8 @@ import EditorOrViewer from '../../entities/EditorOrViewer/EditorOrViewer';
 import createApi from '../../../services/ApiService';
 import { selectEndpoint } from '../../../store/slices/endpointSlice';
 import HtmlTooltip from '../../shared/HtmlTooltip/HtmlTooltip';
-import { selectVariablesData } from '../../../store/slices/variablesSlice.ts';
-import { selectHeadersData } from '../../../store/slices/headersSlice.ts';
+import { selectVariablesData } from '../../../store/slices/variablesSlice';
+import { selectHeadersData } from '../../../store/slices/headersSlice';
 
 import styles from './RequestSection.module.css';
 
