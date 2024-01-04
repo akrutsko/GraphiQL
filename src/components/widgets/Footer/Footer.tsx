@@ -1,6 +1,5 @@
-import Tooltip from '@mui/material/Tooltip';
-
 import { useTheme, useTranslation } from '../../../hooks';
+import HtmlTooltip from '../../shared/HtmlTooltip/HtmlTooltip';
 
 import styles from './Footer.module.css';
 
@@ -17,9 +16,9 @@ const Footer = () => {
       <span> &copy; 2023 - GraphiQL</span>
       <div className={styles.devContainer}>
         {translation.developers.map(({ name, href }) => (
-          <Tooltip title={name} key={name}>
+          <HtmlTooltip title={name} placement="top" key={name}>
             <a className={styles.githubLogo} href={href} target="_blank" rel="noreferrer" style={stylesIcon}></a>
-          </Tooltip>
+          </HtmlTooltip>
         ))}
       </div>
       <a className={styles.rsLogo} href="https://rs.school/react/" target="_blank" rel="noreferrer" style={stylesIcon} />
