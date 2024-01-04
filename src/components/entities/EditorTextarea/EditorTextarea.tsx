@@ -1,4 +1,3 @@
-import type { ChangeEvent } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useActions } from '../../../hooks';
@@ -16,13 +15,7 @@ const EditorTextarea = ({ selectedDiv }: EditorTextareaProps) => {
   const variables = useSelector(selectVariablesData);
   const headers = useSelector(selectHeadersData);
 
-  const handleTextareaChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    if (selectedDiv === HEADERS_EDITOR) {
-      updateHeaders(event.target.value);
-    } else {
-      updateVariables(event.target.value);
-    }
-  };
+  const handleTextareaChange = (value: string) => (selectedDiv === HEADERS_EDITOR ? updateHeaders : updateVariables)(value);
 
   return (
     <>

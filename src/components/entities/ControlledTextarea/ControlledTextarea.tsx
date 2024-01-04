@@ -23,7 +23,7 @@ const ControlledTextarea = ({ selectedDiv }: ControlledTextareaProps) => {
   const query = useSelector(selectRequestData);
   const { updateRequestData } = useActions();
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-  const [caretPosition, setCaretPosition] = useState(1);
+  const [caretPosition, setCaretPosition] = useState(0);
 
   useEffect(() => {
     if (textareaRef.current) {
