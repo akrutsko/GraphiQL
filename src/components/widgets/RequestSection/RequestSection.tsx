@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
+import { Box } from '@mui/material';
 
 import CustomAccordion from '../../entities/Accordion/CustomAccordion';
 import prettifyingService from '../../../services/PrettifyingService';
@@ -50,8 +51,8 @@ const RequestSection = () => {
   };
 
   return (
-    <div className={styles.requestSection}>
-      <div className={styles.wrapperButtons}>
+    <Box className={styles.requestSection} sx={{ bgcolor: 'primary.contrastText' }}>
+      <Box className={styles.wrapperButtons} sx={{ bgcolor: 'secondary.main' }}>
         <div className={styles.textarea}>
           <EditorOrViewer readOnly={false} />
         </div>
@@ -63,10 +64,10 @@ const RequestSection = () => {
         <HtmlTooltip title={translation.tooltip.prettify} placement="right">
           <button className={styles.buttonPrettier} onClick={handleButtonPrettierClick} />
         </HtmlTooltip>
-      </div>
+      </Box>
       <CustomAccordion />
       <TostifyComponent />
-    </div>
+    </Box>
   );
 };
 

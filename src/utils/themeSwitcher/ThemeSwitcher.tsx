@@ -9,8 +9,9 @@ const ThemeSwitcher = ({ children }: PropsWithChildren) => {
 
   const selectedTheme = useMemo(() => {
     const mainColor = theme === THEME_DARK ? '#2f2746' : '#e1e0e0';
-    const secondaryColor = theme === THEME_DARK ? '#2b2242' : '#e0dede';
+    const secondaryColor = theme === THEME_DARK ? '#2b2242' : '#ffffff';
     const redactorColor = theme === THEME_DARK ? '#262133' : '#e0dede';
+    const textColor = theme === THEME_DARK ? '#ffffff' : '#000000';
 
     return createTheme({
       breakpoints: {
@@ -33,6 +34,9 @@ const ThemeSwitcher = ({ children }: PropsWithChildren) => {
         },
         info: {
           main: '#fff',
+        },
+        text: {
+          primary: textColor,
         },
         background: {
           default: mainColor,

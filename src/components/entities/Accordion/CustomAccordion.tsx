@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Box } from '@mui/material';
 
 import { HEADERS_EDITOR, VARIABLES_EDITOR } from '../../../constants';
 import { useTranslation } from '../../../hooks';
@@ -23,7 +24,7 @@ const CustomAccordion = () => {
   };
 
   return (
-    <div className={styles.wrapperAccordion}>
+    <Box className={styles.wrapperAccordion} sx={{ bgcolor: 'primary.contrastText' }}>
       <div className={styles.wrapperGroup}>
         <div>
           <ControlButton
@@ -40,7 +41,7 @@ const CustomAccordion = () => {
         </div>
       </div>
       {visibleDiv && <EditorTextarea selectedDiv={selectedDiv} />}
-    </div>
+    </Box>
   );
 };
 

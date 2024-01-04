@@ -1,5 +1,6 @@
-import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 import type { ChangeEvent } from 'react';
+
+import { StylizedTextarea } from '../../entities/ControlledTextarea/ControlledTextarea.tsx';
 
 import styles from './Textarea.module.css';
 
@@ -11,7 +12,7 @@ interface TextareaProps {
 const Textarea = ({ value, onChange }: TextareaProps) => {
   return (
     <div className={styles.wrapperTextarea}>
-      <TextareaAutosize minRows={8} className={styles.textarea} defaultValue={value} onChange={onChange} />
+      <StylizedTextarea minRows={8} className={styles.textarea} defaultValue={value} onChange={onChange} />
     </div>
   );
 };
