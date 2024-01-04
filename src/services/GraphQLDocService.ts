@@ -24,6 +24,10 @@ class GraphQLDocService {
     return this.schema.data.__schema.types.find((type) => type.name === this.getMutationType());
   }
 
+  getAllTypes() {
+    return this.schema.data.__schema.types || null;
+  }
+
   getSubscriptionType() {
     return this.schema.data.__schema.subscriptionType?.name || null;
   }

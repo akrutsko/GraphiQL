@@ -10,6 +10,11 @@ type MethodsProps = {
 };
 
 const Methods = ({ title, types, graphQLDocSchema }: MethodsProps) => {
+  const handleClick = () => {
+    const allTypes = graphQLDocSchema.getAllTypes();
+    console.log(allTypes);
+  };
+
   if (title) {
     return (
       <>
@@ -18,9 +23,23 @@ const Methods = ({ title, types, graphQLDocSchema }: MethodsProps) => {
           {types?.fields?.map((field) => (
             <Fragment key={field.name}>
               <div>
-                {`${field.name}(${field.args
-                  .map((arg) => `${arg.name}: ${graphQLDocSchema.getTypeName(arg.type)}`)
-                  .join(', ')}): ${graphQLDocSchema.getTypeName(field.type)}`}
+                {field.name}
+                <span>
+                  {'('}
+                  {field.args.map((arg, index) => (
+                    <span key={index}>
+                      {arg.name}:{' '}
+                      <span style={{ color: 'green', cursor: 'pointer' }} onClick={handleClick}>
+                        {graphQLDocSchema.getTypeName(arg.type)}
+                      </span>
+                      {index < field.args.length - 1 ? ', ' : ''}
+                    </span>
+                  ))}
+                  {'): '}
+                </span>
+                <span style={{ color: 'green', cursor: 'pointer' }} onClick={handleClick}>
+                  {graphQLDocSchema.getTypeName(field.type)}
+                </span>
               </div>
               {field.description && <div>{field.description}</div>}
               <br />
