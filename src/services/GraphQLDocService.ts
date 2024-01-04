@@ -1,4 +1,5 @@
-import type { IntrospectionSchema } from '../types/introspectionSchema';
+import { LIST, NON_NULL } from '../constants/graphql';
+import type { DeepTypeRef, IntrospectionSchema, TypeRef } from '../types/introspectionSchema';
 
 class GraphQLDocService {
   schema: IntrospectionSchema;
@@ -29,6 +30,20 @@ class GraphQLDocService {
 
   getSubscriptions() {
     return this.schema.data.__schema.types.find((type) => type.name === this.getSubscriptionType());
+  }
+
+  getTypeName(type: DeepTypeRef | TypeRef): string {
+    switch (type.kind) {
+      case NON_NULL: {
+        return `${this.getTypeName((type as DeepTypeRef).ofType)}!`;
+      }
+      case LIST: {
+        return `[${this.getTypeName((type as DeepTypeRef).ofType)}]`;
+      }
+      default: {
+        return type.name!;
+      }
+    }
   }
 }
 

@@ -39,14 +39,14 @@ type InputValue = Description & {
 
 type EnumValue = Description & Deprecation;
 
-type TypeRef = {
+export type TypeRef = {
   name: string;
   description: string | null;
   kind: string;
   ofType: null;
 };
 
-type DeepTypeRef = {
+export type DeepTypeRef = {
   name: string | null;
   description: null;
   kind: typeof LIST | typeof NON_NULL | string;

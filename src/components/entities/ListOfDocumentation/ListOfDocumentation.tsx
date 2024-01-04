@@ -97,7 +97,7 @@ const ListOfDocumentation = () => {
           openMethods={openMethods}
         />
       )}
-      <Methods title={entity} types={methods} />
+      <Methods title={entity} types={methods} graphQLDocSchema={graphQLDocSchema} />
       <TostifyComponent />
     </>
   );
