@@ -45,7 +45,7 @@ const ControlledTextarea = ({ selectedDiv }: ControlledTextareaProps) => {
   return (
     <div>
       <StylizedTextarea
-        minRows={19}
+        minRows={15}
         className={styles.textarea}
         placeholder={selectedDiv}
         value={query}
