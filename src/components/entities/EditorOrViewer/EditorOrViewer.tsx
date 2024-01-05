@@ -10,7 +10,11 @@ const EditorOrViewer = ({ readOnly }: EditorOrViewerProps) => {
   const responseData = useSelector(selectResponseData);
 
   if (readOnly) {
-    return <pre style={{ overflow: 'auto' }}>{responseData}</pre>;
+    return (
+      <pre data-testid={'code-container'} style={{ overflow: 'auto' }}>
+        {responseData}
+      </pre>
+    );
   } else {
     return <ControlledTextarea />;
   }

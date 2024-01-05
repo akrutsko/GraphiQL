@@ -45,6 +45,7 @@ const ControlledTextarea = ({ selectedDiv }: ControlledTextareaProps) => {
   return (
     <div>
       <StylizedTextarea
+        data-testid={'text-area'}
         minRows={15}
         className={styles.textarea}
         placeholder={selectedDiv}
