@@ -11,6 +11,7 @@ import GraphQLDocService from '../../../services/GraphQLDocService';
 import TostifyComponent from '../../shared/TostifyComponent/TostifyComponent';
 import TostifyMessage from '../../shared/TostifyMessage/TostifyMessage';
 import { SchemaKey } from '../../../constants';
+import { cutWord } from '../../../utils/cutWord/cutWord';
 
 import Methods from './ui/Methods/Methods';
 import RootTypesSection from './ui/RootTypesSection/RootTypesSection';
@@ -36,6 +37,8 @@ const ListOfDocumentation = () => {
         const schema = (await api.fetchInfo(introspectionQuery)) as IntrospectionSchema;
         if ('errors' in schema) throw new Error();
         setSchema(schema);
+        setHistory([]);
+        setEntity(null);
       } catch {
         notify();
       }
@@ -58,10 +61,12 @@ const ListOfDocumentation = () => {
   const header = (
     <div className={styles.container}>
       {entity && (
-        <>
+        <div className={styles.back}>
           <button className={styles.close} onClick={handleClose} />
-          <span>{history[history.length - 2]?.name ? history[history.length - 2]?.name : 'Schema'}</span>
-        </>
+          <span>
+            {translation.docs.back}: {history[history.length - 2]?.name ? cutWord(history[history.length - 2]?.name) : 'Schema'}
+          </span>
+        </div>
       )}
       <h2 className={styles.title}>{translation.documentationExplorer}</h2>
       <p>{translation.docs.desc}</p>

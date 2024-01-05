@@ -26,7 +26,7 @@ const DocumentationExplorer = ({ showDocumentation, onclose }: DocumentationExpl
           maxHeight: 'fit-content',
           height: '100%',
           boxShadow: 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0 6px 6px',
-          overflowX: 'hidden',
+          overflowX: 'auto',
         },
       }}
     >

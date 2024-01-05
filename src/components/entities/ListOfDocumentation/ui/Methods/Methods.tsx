@@ -44,7 +44,7 @@ const Methods = ({ graphQLDocSchema, setHistory, history }: MethodsProps) => {
         <div style={{ color: '#9e8f9e' }}>{newType?.description ?? translation.docs.noDesc}</div>
         <br />
         <div>
-          Kind: <span style={{ color: '#918b3b' }}>{newType?.kind}</span>
+          {translation.docs.kind}: <span style={{ color: '#918b3b' }}>{newType?.kind}</span>
         </div>
       </>
     );

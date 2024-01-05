@@ -38,6 +38,19 @@ body {
   overflow-x: hidden;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--violet-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--dark-grey-color);
+}
+
 ul {
   list-style: none;
 }
