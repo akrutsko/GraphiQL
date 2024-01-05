@@ -22,7 +22,7 @@ const ListOfDocumentation = () => {
   const [schema, setSchema] = useState<IntrospectionSchema>();
   const [entity, setEntity] = useState<string | null>(null);
   const [methods, setMethods] = useState<SchemaType | undefined>(undefined);
-  const [description, setDescription] = useState<string | null>(null);
+  const [notObject, setNotObject] = useState<SchemaType | undefined>(undefined);
 
   const notify = () => {
     const { title, text } = translation.notifications.fetchingFailed;
@@ -47,7 +47,7 @@ const ListOfDocumentation = () => {
   const handleClose = () => {
     setEntity(null);
     setMethods(undefined);
-    setDescription(null);
+    setNotObject(undefined);
   };
 
   const header = (
@@ -71,18 +71,23 @@ const ListOfDocumentation = () => {
   const subscriptions = graphQLDocSchema.getSubscriptions();
 
   const openMethods = (ent: string | null) => {
+    const keys = Object.keys(schema.data.__schema);
+
     let methods;
     setEntity(ent);
-    switch (ent) {
-      case 'Query':
-        methods = queries;
-        break;
-      case 'Mutation':
-        methods = mutations;
-        break;
-      case 'Subscription':
-        methods = subscriptions;
-        break;
+    for (const key of keys) {
+      switch (key) {
+        case 'queryType':
+          methods = queries;
+          break;
+        case 'mutationType':
+          methods = mutations;
+          break;
+        case 'subscriptionType':
+          methods = subscriptions;
+          break;
+      }
+      if (methods) break;
     }
     setMethods(methods);
   };
@@ -102,8 +107,8 @@ const ListOfDocumentation = () => {
         title={entity}
         types={methods}
         graphQLDocSchema={graphQLDocSchema}
-        description={description}
-        setDescription={setDescription}
+        notObject={notObject}
+        setNotObject={setNotObject}
       />
       <TostifyComponent />
     </>

@@ -10,11 +10,11 @@ type MethodsProps = {
   title: string | null;
   types: SchemaType | undefined;
   graphQLDocSchema: InstanceType<typeof GraphQLDocService>;
-  description: string | null;
-  setDescription: Dispatch<SetStateAction<string | null>>;
+  notObject: SchemaType | undefined;
+  setNotObject: Dispatch<SetStateAction<SchemaType | undefined>>;
 };
 
-const Methods = ({ title, types, graphQLDocSchema, description, setDescription }: MethodsProps) => {
+const Methods = ({ title, types, graphQLDocSchema, notObject, setNotObject }: MethodsProps) => {
   const [newType, setNewTypes] = useState<SchemaType | undefined>(undefined);
   const [newTitle, setNewTitle] = useState<string | null>(null);
 
@@ -28,27 +28,36 @@ const Methods = ({ title, types, graphQLDocSchema, description, setDescription }
   const handleClick = (event: MouseEvent<HTMLSpanElement>) => {
     const typeName = (event.target as HTMLSpanElement).textContent;
     const type = graphQLDocSchema.getType(typeName as string);
+
     if (type) {
       setNewTitle(type.name);
 
-      if (type?.kind === OBJECT) {
-        setNewTypes(type);
-      } else {
-        setDescription(type.description ?? translation.docs.noDesc);
+      switch (type.kind) {
+        case OBJECT: {
+          setNewTypes(type);
+          break;
+        }
+        default: {
+          setNotObject(type);
+        }
       }
     }
   };
 
-  if (description) {
+  if (notObject) {
     return (
       <>
         <h3 style={{ color: '#a65926', marginBottom: '10px' }}>{newTitle}</h3>
-        <div style={{ color: '#9e8f9e' }}>{description}</div>
+        <div style={{ color: '#9e8f9e' }}>{notObject.description ?? translation.docs.noDesc}</div>
+        <br />
+        <div>
+          Kind: <span style={{ color: '#918b3b' }}>{notObject.kind}</span>
+        </div>
       </>
     );
   }
 
-  if (newTitle) {
+  if (newType) {
     return (
       <>
         <h3 style={{ color: '#a65926', marginBottom: '10px' }}>{newTitle}</h3>

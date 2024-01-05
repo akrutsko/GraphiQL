@@ -3,6 +3,7 @@
   padding: 15px 15px 0;
   margin-bottom: 10px;
   box-shadow: var(--button-hover);
+  height: fit-content;
 }
 
 .wrapper {

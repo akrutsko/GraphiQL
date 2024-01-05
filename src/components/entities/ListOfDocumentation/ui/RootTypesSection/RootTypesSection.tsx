@@ -14,9 +14,9 @@ const RootTypesSection = ({ queryType, mutationType, subscriptionType, openMetho
     <>
       <h3 style={{ color: '#a65926' }}>{translation.docs.rootType}</h3>
       <ul>
-        <RootType root={queryType} onClick={() => openMethods(queryType)} />
-        <RootType root={mutationType} onClick={() => openMethods(mutationType)} />
-        <RootType root={subscriptionType} onClick={() => openMethods(subscriptionType)} />
+        <RootType title={'query'} root={queryType} onClick={() => openMethods(queryType)} />
+        <RootType title={'mutation'} root={mutationType} onClick={() => openMethods(mutationType)} />
+        <RootType title={'subscription'} root={subscriptionType} onClick={() => openMethods(subscriptionType)} />
       </ul>
     </>
   );

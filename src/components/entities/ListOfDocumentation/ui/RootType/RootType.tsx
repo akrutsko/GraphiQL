@@ -3,12 +3,13 @@ import styles from '../../ListOfDocumentation.module.css';
 type RootTypeProps = {
   root: string | null;
   onClick: (root: string | null) => void;
+  title: string;
 };
-const RootType = ({ root, onClick }: RootTypeProps) => {
+const RootType = ({ root, onClick, title }: RootTypeProps) => {
   if (root)
     return (
       <li onClick={() => onClick(root)}>
-        {root.toLowerCase()}:{' '}
+        {title}:{' '}
         <span className={styles.link} style={{ color: '#918b3b', cursor: 'pointer' }}>
           {root}
         </span>
