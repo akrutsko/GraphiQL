@@ -8,7 +8,6 @@
 
 .wrapper {
   display: flex;
-
   gap: 30px;
   align-items: stretch;
   padding: 15px 0;

@@ -3,7 +3,7 @@
 }
 .back {
   position: absolute;
-  top: -22px;
+  top: -2px;
   display: flex;
   align-items: center;
 }
@@ -18,7 +18,7 @@
 
 .title {
   text-align: center;
-  margin: 20px 0;
+  margin: 40px 0 10px;
 }
 
 .link:hover {

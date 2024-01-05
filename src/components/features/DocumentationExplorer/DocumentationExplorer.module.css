@@ -1,9 +1,8 @@
 .wrapper {
-  min-width: 400px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 10% 10px;
+  padding: 20px 10px;
 }
 
 .close {
@@ -24,8 +23,7 @@
 
 @media (max-width: 600px) {
   .wrapper {
-    min-width: 270px;
-    padding-top: 5%;
+    padding: 10px;
   }
 
   .title {
