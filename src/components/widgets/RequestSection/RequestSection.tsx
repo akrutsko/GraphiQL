@@ -39,13 +39,17 @@ const RequestSection = () => {
     const { requestFailed } = translation.notifications;
     if (query.trim()) {
       const api = createApi(apiUrl);
-      const data = await api.fetchInfo(query, variables, headers);
-      if (typeof data === 'object') {
-        updateResponseData(JSON.stringify(data, null, 2));
-      } else if (data === 'variables') {
+      const validatedVariables = api.parseJsonWithValidation(variables);
+      const validatedHeaders = api.parseJsonWithValidation(headers);
+      if (!validatedVariables) {
         toast.error(<TostifyMessage title={requestFailed.title} text={requestFailed.textVariables} />);
-      } else {
+      }
+      if (!validatedHeaders) {
         toast.error(<TostifyMessage title={requestFailed.title} text={requestFailed.textHeaders} />);
+      }
+      if (validatedHeaders && validatedVariables) {
+        const data = await api.fetchInfo(query, validatedVariables, validatedHeaders);
+        updateResponseData(JSON.stringify(data, null, 2));
       }
     }
   };

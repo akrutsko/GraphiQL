@@ -5,40 +5,34 @@ class Api {
     this.apiUrl = apiUrl;
   }
 
-  private parseJsonWithValidation(jsonString: string) {
+  parseJsonWithValidation(jsonString: string) {
     try {
-      return JSON.parse(jsonString);
+      if (jsonString.trim() === '') {
+        return 'empty';
+      } else {
+        return JSON.parse(jsonString);
+      }
     } catch (error) {
       return null;
     }
   }
 
-  async fetchInfo(query: string, variablesString: string, headersString: string) {
-    let bodyResponse = JSON.stringify({ query });
-    let headersResponse = {
-      'Content-Type': 'application/json',
-    };
-    if (variablesString.trim()) {
-      const variables = this.parseJsonWithValidation(variablesString);
-      if (!variables) {
-        return 'variables';
-      }
-      bodyResponse = JSON.stringify({ query, variables });
-    }
-    if (headersString.trim()) {
-      const headers = this.parseJsonWithValidation(headersString);
-      if (!headers) {
-        return 'headers';
-      }
-      headersResponse = {
-        'Content-Type': 'application/json',
-        ...headers,
-      };
-    }
+  async fetchInfo(query: string, variables: object | string, headers: object | string) {
+    const isVariablesString = typeof variables === 'string';
+    const isHeadersString = typeof headers === 'string';
+
+    const requestBody = isVariablesString ? { query } : { query, variables };
+    const requestHeaders = isHeadersString
+      ? { 'Content-Type': 'application/json' }
+      : {
+          'Content-Type': 'application/json',
+          ...headers,
+        };
+
     const response = await fetch(this.apiUrl, {
       method: 'POST',
-      headers: headersResponse,
-      body: bodyResponse,
+      headers: requestHeaders,
+      body: JSON.stringify(requestBody),
     });
 
     return await response.json();
