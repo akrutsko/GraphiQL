@@ -9,15 +9,24 @@
 
 .devContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 20px;
 }
 
 .rsLogo {
   background-image: url("../../../assets/icons/rs_school_js.svg");
   background-size: contain;
   background-repeat: no-repeat;
-  height: 50px;
-  width: 140px;
+  height: 30px;
+  width: 100px;
+}
+
+.githubLogo {
+  background-image: url("../../../assets/icons/github.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 30px;
 }
 
 @media (max-width: 860px) {

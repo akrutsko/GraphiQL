@@ -94,6 +94,11 @@
       "fetchingFailed": {
         "title": "Fetching Error",
         "text": "Failed to fetch data. \nCheck your data and try again"
+      },
+      "requestFailed": {
+        "title": "Invalid Request!",
+        "textVariables": "Please ensure that the variable editor contains the correct brackets and syntax.",
+        "textHeaders": "Please ensure that the header editor contains the correct brackets and syntax."
       }
     },
     "documentationExplorer": "Documentation Explorer",
@@ -203,6 +208,11 @@
       "fetchingFailed": {
         "title": "Ошибка запроса",
         "text": "Ошибка получения данных. Проверьте данные и повторите попытку"
+      },
+      "requestFailed": {
+        "title": "Запрос неверен!",
+        "textVariables": "Пожалуйста, убедитесь, что редактор переменных содержит правильные скобки и синтаксис.",
+        "textHeaders": "Пожалуйста, убедитесь, что редактор заголовков содержит правильные скобки и синтаксис."
       }
     },
     "documentationExplorer": "Обозреватель документации",

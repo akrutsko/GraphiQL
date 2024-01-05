@@ -5,16 +5,21 @@ class Api {
     this.apiUrl = apiUrl;
   }
 
-  async fetchInfo(query: string) {
-    const response = await fetch(this.apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ query }),
-    });
+  parseJsonWithValidation(json: string): Record<string, string> | undefined {
+    try {
+      return JSON.parse(json);
+    } catch {
+      return undefined;
+    }
+  }
 
-    return await response.json();
+  async fetchInfo(query: string, variables?: Record<string, string>, reqHeaders?: Record<string, string>) {
+    const body = JSON.stringify({ query, variables });
+    const headers = new Headers(reqHeaders);
+    headers.append('Content-Type', 'application/json');
+
+    const response = await fetch(this.apiUrl, { method: 'POST', headers, body });
+    return response.json();
   }
 }
 

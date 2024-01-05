@@ -64,6 +64,10 @@ textarea {
   font-size: 18px;
 }
 
+pre {
+  white-space: pre-wrap;
+}
+
 @media (max-width: 700px) {
   textarea {
     font-size: 16px;
