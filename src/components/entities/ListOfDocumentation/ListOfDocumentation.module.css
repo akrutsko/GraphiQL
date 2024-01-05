@@ -16,3 +16,7 @@
   text-align: center;
   margin: 20px 0;
 }
+
+.link:hover {
+  text-decoration: underline;
+}
