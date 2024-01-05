@@ -104,7 +104,8 @@
     },
     "docs": {
       "rootType": "Root Types",
-      "desc": "A GraphQL schema provides a root type for each kind of operation"
+      "desc": "A GraphQL schema provides a root type for each kind of operation",
+      "noDesc": "No description"
     }
   },
   "ru": {
@@ -212,7 +213,8 @@
     },
     "docs": {
       "rootType": "Корневые типы",
-      "desc": "GraphQL-схема предоставляет корневой тип для каждого вида операции"
+      "desc": "GraphQL-схема предоставляет корневой тип для каждого вида операции",
+      "noDesc": "Нет описания"
     }
   }
 }

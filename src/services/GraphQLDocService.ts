@@ -1,4 +1,4 @@
-import { LIST, NON_NULL } from '../constants/graphql';
+import { LIST, NON_NULL, OBJECT } from '../constants/graphql';
 import type { DeepTypeRef, IntrospectionSchema, TypeRef } from '../types/introspectionSchema';
 
 class GraphQLDocService {
@@ -46,6 +46,27 @@ class GraphQLDocService {
       }
       default: {
         return type.name!;
+      }
+    }
+  }
+  getType(value: string) {
+    const pureValue = value
+      .match(/[a-zA-Z]*/g)
+      ?.filter((el) => el !== '')
+      .join('');
+    return this.getAllTypes().find((type) => type.name === pureValue);
+  }
+
+  getTypeDescription(type: DeepTypeRef | TypeRef) {
+    switch (type.kind) {
+      case OBJECT: {
+        return `${this.getTypeName((type as DeepTypeRef).ofType)}!`;
+      }
+      case LIST: {
+        return `[${this.getTypeName((type as DeepTypeRef).ofType)}]`;
+      }
+      default: {
+        return type.description!;
       }
     }
   }

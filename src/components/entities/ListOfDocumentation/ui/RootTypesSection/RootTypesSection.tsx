@@ -12,7 +12,7 @@ const RootTypesSection = ({ queryType, mutationType, subscriptionType, openMetho
 
   return (
     <>
-      <h3>{translation.docs.rootType}</h3>
+      <h3 style={{ color: 'blue' }}>{translation.docs.rootType}</h3>
       <ul>
         <RootType root={queryType} onClick={() => openMethods(queryType)} />
         <RootType root={mutationType} onClick={() => openMethods(mutationType)} />

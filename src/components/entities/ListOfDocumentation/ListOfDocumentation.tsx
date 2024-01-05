@@ -22,6 +22,7 @@ const ListOfDocumentation = () => {
   const [schema, setSchema] = useState<IntrospectionSchema>();
   const [entity, setEntity] = useState<string | null>(null);
   const [methods, setMethods] = useState<SchemaType | undefined>(undefined);
+  const [description, setDescription] = useState<string | null>(null);
 
   const notify = () => {
     const { title, text } = translation.notifications.fetchingFailed;
@@ -46,6 +47,7 @@ const ListOfDocumentation = () => {
   const handleClose = () => {
     setEntity(null);
     setMethods(undefined);
+    setDescription(null);
   };
 
   const header = (
@@ -59,7 +61,6 @@ const ListOfDocumentation = () => {
   );
 
   if (!schema) return null;
-  console.log(schema);
   const graphQLDocSchema = new GraphQLDocService(schema);
 
   const queryType = graphQLDocSchema.getQueryType();
@@ -97,7 +98,13 @@ const ListOfDocumentation = () => {
           openMethods={openMethods}
         />
       )}
-      <Methods title={entity} types={methods} graphQLDocSchema={graphQLDocSchema} />
+      <Methods
+        title={entity}
+        types={methods}
+        graphQLDocSchema={graphQLDocSchema}
+        description={description}
+        setDescription={setDescription}
+      />
       <TostifyComponent />
     </>
   );
