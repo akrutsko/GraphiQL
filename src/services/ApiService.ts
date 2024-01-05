@@ -5,37 +5,21 @@ class Api {
     this.apiUrl = apiUrl;
   }
 
-  parseJsonWithValidation(jsonString: string) {
+  parseJsonWithValidation(json: string): Record<string, string> | undefined {
     try {
-      if (jsonString.trim() === '') {
-        return 'empty';
-      } else {
-        return JSON.parse(jsonString);
-      }
-    } catch (error) {
-      return null;
+      return JSON.parse(json);
+    } catch {
+      return undefined;
     }
   }
 
-  async fetchInfo(query: string, variables: object | string, headers: object | string) {
-    const isVariablesString = typeof variables === 'string';
-    const isHeadersString = typeof headers === 'string';
+  async fetchInfo(query: string, variables?: Record<string, string>, reqHeaders?: Record<string, string>) {
+    const body = JSON.stringify({ query, variables });
+    const headers = new Headers(reqHeaders);
+    headers.append('Content-Type', 'application/json');
 
-    const requestBody = isVariablesString ? { query } : { query, variables };
-    const requestHeaders = isHeadersString
-      ? { 'Content-Type': 'application/json' }
-      : {
-          'Content-Type': 'application/json',
-          ...headers,
-        };
-
-    const response = await fetch(this.apiUrl, {
-      method: 'POST',
-      headers: requestHeaders,
-      body: JSON.stringify(requestBody),
-    });
-
-    return await response.json();
+    const response = await fetch(this.apiUrl, { method: 'POST', headers, body });
+    return response.json();
   }
 }
 

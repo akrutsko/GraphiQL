@@ -36,22 +36,25 @@ const RequestSection = () => {
   };
 
   const handleButtonPlayClick = async () => {
+    if (!query.trim()) return;
+
     const { requestFailed } = translation.notifications;
-    if (query.trim()) {
-      const api = createApi(apiUrl);
-      const validatedVariables = api.parseJsonWithValidation(variables);
-      const validatedHeaders = api.parseJsonWithValidation(headers);
-      if (!validatedVariables) {
-        toast.error(<TostifyMessage title={requestFailed.title} text={requestFailed.textVariables} />);
-      }
-      if (!validatedHeaders) {
-        toast.error(<TostifyMessage title={requestFailed.title} text={requestFailed.textHeaders} />);
-      }
-      if (validatedHeaders && validatedVariables) {
-        const data = await api.fetchInfo(query, validatedVariables, validatedHeaders);
-        updateResponseData(JSON.stringify(data, null, 2));
-      }
+    const api = createApi(apiUrl);
+
+    const validatedVariables = api.parseJsonWithValidation(variables);
+    if (variables && !validatedVariables) {
+      toast.error(<TostifyMessage title={requestFailed.title} text={requestFailed.textVariables} />);
+      return;
     }
+
+    const validatedHeaders = api.parseJsonWithValidation(headers);
+    if (headers && !validatedHeaders) {
+      toast.error(<TostifyMessage title={requestFailed.title} text={requestFailed.textHeaders} />);
+      return;
+    }
+
+    const data = await api.fetchInfo(query, validatedVariables, validatedHeaders);
+    updateResponseData(JSON.stringify(data, null, 2));
   };
 
   return (
