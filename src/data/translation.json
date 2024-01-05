@@ -90,6 +90,11 @@
         "title": "Prettifying Failed!",
         "textClosingParenthesis": "Extra closing parenthesis detected",
         "textOpeningParenthesis": "Extra opening parenthesis detected"
+      },
+      "requestFailed": {
+        "title": "Invalid Request!",
+        "textVariables": "Please ensure that the variable editor contains the correct brackets and syntax.",
+        "textHeaders": "Please ensure that the header editor contains the correct brackets and syntax."
       }
     },
     "documentationExplorer": "Documentation Explorer",
@@ -190,6 +195,11 @@
         "title": "Ошибка форматирования!",
         "textClosingParenthesis": "Обнаружена лишняя закрывающая скобка",
         "textOpeningParenthesis": "Обнаружена лишняя открывающая скобка"
+      },
+      "requestFailed": {
+        "title": "Запрос неверен!",
+        "textVariables": "Пожалуйста, убедитесь, что редактор переменных содержит правильные скобки и синтаксис.",
+        "textHeaders": "Пожалуйста, убедитесь, что редактор заголовков содержит правильные скобки и синтаксис."
       }
     },
     "documentationExplorer": "Обозреватель документации",

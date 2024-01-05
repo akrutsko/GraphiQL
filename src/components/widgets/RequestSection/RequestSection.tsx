@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
+import { Box } from '@mui/material';
 
 import CustomAccordion from '../../entities/Accordion/CustomAccordion';
 import prettifyingService from '../../../services/PrettifyingService';
@@ -11,12 +12,16 @@ import EditorOrViewer from '../../entities/EditorOrViewer/EditorOrViewer';
 import createApi from '../../../services/ApiService';
 import { selectEndpoint } from '../../../store/slices/endpointSlice';
 import HtmlTooltip from '../../shared/HtmlTooltip/HtmlTooltip';
+import { selectVariablesData } from '../../../store/slices/variablesSlice';
+import { selectHeadersData } from '../../../store/slices/headersSlice';
 
 import styles from './RequestSection.module.css';
 
 const RequestSection = () => {
   const translation = useTranslation();
   const query = useSelector(selectRequestData);
+  const variables = useSelector(selectVariablesData);
+  const headers = useSelector(selectHeadersData);
   const apiUrl = useSelector(selectEndpoint);
   const { updateResponseData, updateRequestData } = useActions();
 
@@ -31,16 +36,30 @@ const RequestSection = () => {
   };
 
   const handleButtonPlayClick = async () => {
-    if (query.trim()) {
-      const api = createApi(apiUrl);
-      const data = await api.fetchInfo(query);
-      updateResponseData(JSON.stringify(data, null, 2));
+    if (!query.trim()) return;
+
+    const { requestFailed } = translation.notifications;
+    const api = createApi(apiUrl);
+
+    const validatedVariables = api.parseJsonWithValidation(variables);
+    if (variables && !validatedVariables) {
+      toast.error(<TostifyMessage title={requestFailed.title} text={requestFailed.textVariables} />);
+      return;
     }
+
+    const validatedHeaders = api.parseJsonWithValidation(headers);
+    if (headers && !validatedHeaders) {
+      toast.error(<TostifyMessage title={requestFailed.title} text={requestFailed.textHeaders} />);
+      return;
+    }
+
+    const data = await api.fetchInfo(query, validatedVariables, validatedHeaders);
+    updateResponseData(JSON.stringify(data, null, 2));
   };
 
   return (
-    <div className={styles.requestSection}>
-      <div className={styles.wrapperButtons}>
+    <Box className={styles.requestSection} sx={{ bgcolor: 'primary.contrastText' }}>
+      <Box className={styles.wrapperButtons} sx={{ bgcolor: 'secondary.main' }}>
         <div className={styles.textarea}>
           <EditorOrViewer readOnly={false} />
         </div>
@@ -52,10 +71,10 @@ const RequestSection = () => {
         <HtmlTooltip title={translation.tooltip.prettify} placement="right">
           <button className={styles.buttonPrettier} onClick={handleButtonPrettierClick} />
         </HtmlTooltip>
-      </div>
+      </Box>
       <CustomAccordion />
       <TostifyComponent />
-    </div>
+    </Box>
   );
 };
 
