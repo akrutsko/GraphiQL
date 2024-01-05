@@ -2,62 +2,55 @@ import { Fragment, useState, type MouseEvent, useEffect, type Dispatch, type Set
 
 import type GraphQLDocService from '../../../../../services/GraphQLDocService';
 import type { SchemaType } from '../../../../../types';
-import { OBJECT } from '../../../../../constants/graphql';
+import { OBJECT } from '../../../../../constants';
 import { useTranslation } from '../../../../../hooks';
 import styles from '../../ListOfDocumentation.module.css';
 
 type MethodsProps = {
-  title: string | null;
-  types: SchemaType | undefined;
   graphQLDocSchema: InstanceType<typeof GraphQLDocService>;
-  notObject: SchemaType | undefined;
-  setNotObject: Dispatch<SetStateAction<SchemaType | undefined>>;
+  setHistory: Dispatch<SetStateAction<(SchemaType | undefined)[]>>;
+  history: (SchemaType | undefined)[];
 };
 
-const Methods = ({ title, types, graphQLDocSchema, notObject, setNotObject }: MethodsProps) => {
+const Methods = ({ graphQLDocSchema, setHistory, history }: MethodsProps) => {
   const [newType, setNewTypes] = useState<SchemaType | undefined>(undefined);
-  const [newTitle, setNewTitle] = useState<string | null>(null);
+  const [newTitle, setNewTitle] = useState<string | undefined>(undefined);
+  const [entity, setEntity] = useState<string | undefined>(OBJECT);
 
   const translation = useTranslation();
 
   useEffect(() => {
-    setNewTypes(types);
-    setNewTitle(title);
-  }, [types, title]);
+    const actualEntity = history[history.length - 1];
+    setNewTypes(actualEntity);
+    setNewTitle(actualEntity?.name);
+    setEntity(actualEntity?.kind);
+  }, [history]);
 
   const handleClick = (event: MouseEvent<HTMLSpanElement>) => {
     const typeName = (event.target as HTMLSpanElement).textContent;
     const type = graphQLDocSchema.getType(typeName as string);
-
+    setHistory((prevHistory) => [...prevHistory, type]);
+    setNewTypes(type);
     if (type) {
       setNewTitle(type.name);
-
-      switch (type.kind) {
-        case OBJECT: {
-          setNewTypes(type);
-          break;
-        }
-        default: {
-          setNotObject(type);
-        }
-      }
+      setEntity(type.kind);
     }
   };
 
-  if (notObject) {
+  if (entity !== OBJECT && entity !== undefined) {
     return (
       <>
         <h3 style={{ color: '#a65926', marginBottom: '10px' }}>{newTitle}</h3>
-        <div style={{ color: '#9e8f9e' }}>{notObject.description ?? translation.docs.noDesc}</div>
+        <div style={{ color: '#9e8f9e' }}>{newType?.description ?? translation.docs.noDesc}</div>
         <br />
         <div>
-          Kind: <span style={{ color: '#918b3b' }}>{notObject.kind}</span>
+          Kind: <span style={{ color: '#918b3b' }}>{newType?.kind}</span>
         </div>
       </>
     );
   }
 
-  if (newType) {
+  if (entity === OBJECT) {
     return (
       <>
         <h3 style={{ color: '#a65926', marginBottom: '10px' }}>{newTitle}</h3>

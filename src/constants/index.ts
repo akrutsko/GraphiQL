@@ -4,4 +4,5 @@ export * from './theme';
 export * from './inputs';
 export * from './prettifying';
 export * from './headerSizes';
-export * from './endpoint.ts';
+export * from './endpoint';
+export * from './graphql';

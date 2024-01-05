@@ -10,6 +10,7 @@ import type { IntrospectionSchema, SchemaType } from '../../../types/introspecti
 import GraphQLDocService from '../../../services/GraphQLDocService';
 import TostifyComponent from '../../shared/TostifyComponent/TostifyComponent';
 import TostifyMessage from '../../shared/TostifyMessage/TostifyMessage';
+import { SchemaKey } from '../../../constants';
 
 import Methods from './ui/Methods/Methods';
 import RootTypesSection from './ui/RootTypesSection/RootTypesSection';
@@ -21,8 +22,7 @@ const ListOfDocumentation = () => {
 
   const [schema, setSchema] = useState<IntrospectionSchema>();
   const [entity, setEntity] = useState<string | null>(null);
-  const [methods, setMethods] = useState<SchemaType | undefined>(undefined);
-  const [notObject, setNotObject] = useState<SchemaType | undefined>(undefined);
+  const [history, setHistory] = useState<Array<SchemaType | undefined>>([]);
 
   const notify = () => {
     const { title, text } = translation.notifications.fetchingFailed;
@@ -45,15 +45,24 @@ const ListOfDocumentation = () => {
   }, [endpoint]);
 
   const handleClose = () => {
-    setEntity(null);
-    setMethods(undefined);
-    setNotObject(undefined);
+    const updatedHistory = history.slice(0, -1);
+    setHistory(updatedHistory);
+
+    if (updatedHistory.length === 0) {
+      setEntity(null);
+    } else {
+      setEntity(updatedHistory[updatedHistory.length - 1]?.name ?? '');
+    }
   };
 
   const header = (
     <div className={styles.container}>
-      {entity && <button className={styles.close} onClick={handleClose} />}
-
+      {entity && (
+        <>
+          <button className={styles.close} onClick={handleClose} />
+          <span>{history[history.length - 2]?.name ? history[history.length - 2]?.name : 'Schema'}</span>
+        </>
+      )}
       <h2 className={styles.title}>{translation.documentationExplorer}</h2>
       <p>{translation.docs.desc}</p>
       <Divider sx={{ margin: '20px 0' }} />
@@ -71,25 +80,24 @@ const ListOfDocumentation = () => {
   const subscriptions = graphQLDocSchema.getSubscriptions();
 
   const openMethods = (ent: string | null) => {
-    const keys = Object.keys(schema.data.__schema);
+    const keys = schema.data.__schema;
+    const key = Object.keys(keys).find((key) => (keys[key as SchemaKey] !== null ? keys[key as SchemaKey]?.name === ent : ''));
 
     let methods;
     setEntity(ent);
-    for (const key of keys) {
-      switch (key) {
-        case 'queryType':
-          methods = queries;
-          break;
-        case 'mutationType':
-          methods = mutations;
-          break;
-        case 'subscriptionType':
-          methods = subscriptions;
-          break;
-      }
-      if (methods) break;
+    switch (key) {
+      case SchemaKey.QueryType:
+        methods = queries;
+        break;
+      case SchemaKey.MutationType:
+        methods = mutations;
+        break;
+      case SchemaKey.SubscriptionType:
+        methods = subscriptions;
+        break;
     }
-    setMethods(methods);
+
+    setHistory([...history, methods]);
   };
 
   return (
@@ -103,13 +111,7 @@ const ListOfDocumentation = () => {
           openMethods={openMethods}
         />
       )}
-      <Methods
-        title={entity}
-        types={methods}
-        graphQLDocSchema={graphQLDocSchema}
-        notObject={notObject}
-        setNotObject={setNotObject}
-      />
+      <Methods history={history} graphQLDocSchema={graphQLDocSchema} setHistory={setHistory} />
       <TostifyComponent />
     </>
   );
