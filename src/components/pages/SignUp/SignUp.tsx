@@ -1,5 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -28,11 +29,18 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    trigger,
+    formState: { touchedFields, errors },
   } = useForm({
     resolver: yupResolver(validationSchema),
     mode: 'onBlur',
   });
+
+  useEffect(() => {
+    if (Object.keys(errors).length > 0) {
+      Object.keys(touchedFields).forEach((key) => trigger(key as keyof typeof touchedFields));
+    }
+  }, [translation]);
 
   const onSubmit = async (data: SignUpSchema) => {
     try {
