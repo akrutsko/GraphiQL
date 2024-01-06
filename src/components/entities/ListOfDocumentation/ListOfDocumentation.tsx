@@ -6,7 +6,7 @@ import { introspectionQuery } from '../../../constants/intospectionQuery';
 import { useAppSelector, useTranslation } from '../../../hooks';
 import createApi from '../../../services/ApiService';
 import { selectEndpoint } from '../../../store/slices/endpointSlice';
-import type { IntrospectionSchema, SchemaType } from '../../../types/introspectionSchema';
+import type { IntrospectionSchema, SchemaType } from '../../../types';
 import GraphQLDocService from '../../../services/GraphQLDocService';
 import TostifyComponent from '../../shared/TostifyComponent/TostifyComponent';
 import TostifyMessage from '../../shared/TostifyMessage/TostifyMessage';
@@ -85,8 +85,8 @@ const ListOfDocumentation = () => {
   const subscriptions = graphQLDocSchema.getSubscriptions();
 
   const openMethods = (ent: string | null) => {
-    const keys = schema.data.__schema;
-    const key = Object.keys(keys).find((key) => (keys[key as SchemaKey] !== null ? keys[key as SchemaKey]?.name === ent : ''));
+    const root = schema.data.__schema;
+    const key = Object.keys(root).find((key) => (root[key as SchemaKey] !== null ? root[key as SchemaKey]?.name === ent : ''));
 
     let methods;
     setEntity(ent);
