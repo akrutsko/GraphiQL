@@ -51,6 +51,7 @@
     "variables": "Variables",
     "headers": "Headers",
     "endpoint": "Endpoint",
+    "error": "Wrong endpoint",
     "projectInfo": [
       "Our platform provides you with unique opportunities to interact with GraphQL API. Here, you can easily experiment with various endpoints, input queries, manage variables and headers, and then enjoy the results of your efforts.",
 
@@ -168,6 +169,7 @@
     "variables": "Переменные",
     "headers": "Заголовки",
     "endpoint": "Конечная точка",
+    "error": "Неправильная конечная точка",
     "projectInfo": [
       "Наша платформа предоставляет вам уникальные возможности взаимодействия с GraphQL API. Здесь вы можете легко экспериментировать с различными конечными точками, вводить запросы, управлять переменными и заголовками, а затем наслаждаться результатами вашего труда.",
 

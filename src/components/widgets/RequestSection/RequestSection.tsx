@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 
 import CustomAccordion from '../../entities/Accordion/CustomAccordion';
 import prettifyingService from '../../../services/PrettifyingService';
-import { useTranslation, useActions } from '../../../hooks';
+import { useTranslation, useActions, useAppSelector } from '../../../hooks';
 import TostifyMessage from '../../shared/TostifyMessage/TostifyMessage';
 import TostifyComponent from '../../shared/TostifyComponent/TostifyComponent';
 import { selectRequestData } from '../../../store/slices/requestSlice';
@@ -14,6 +14,7 @@ import { selectEndpoint } from '../../../store/slices/endpointSlice';
 import HtmlTooltip from '../../shared/HtmlTooltip/HtmlTooltip';
 import { selectVariablesData } from '../../../store/slices/variablesSlice';
 import { selectHeadersData } from '../../../store/slices/headersSlice';
+import { selectDocumentation } from '../../../store/slices/documentationSlice';
 
 import styles from './RequestSection.module.css';
 
@@ -24,6 +25,7 @@ const RequestSection = () => {
   const headers = useSelector(selectHeadersData);
   const apiUrl = useSelector(selectEndpoint);
   const { updateResponseData, updateRequestData } = useActions();
+  const documentationStatus = useAppSelector(selectDocumentation);
 
   const handleButtonPrettierClick = () => {
     const { prettifyingFailed } = translation.notifications;
@@ -63,9 +65,9 @@ const RequestSection = () => {
         <div className={styles.textarea}>
           <EditorOrViewer readOnly={false} />
         </div>
-        <div className={styles.wrapperButtonPlay}>
+        <div className={`${styles.wrapperButtonPlay} ${documentationStatus !== 'loaded' ? styles.disabled : ''}`}>
           <HtmlTooltip title={translation.tooltip.play} placement="right">
-            <button className={styles.buttonPlay} onClick={handleButtonPlayClick} />
+            <button className={styles.buttonPlay} onClick={handleButtonPlayClick} disabled={documentationStatus !== 'loaded'} />
           </HtmlTooltip>
         </div>
         <HtmlTooltip title={translation.tooltip.prettify} placement="right">

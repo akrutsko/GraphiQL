@@ -1,48 +1,61 @@
 import { TextField, ThemeProvider } from '@mui/material';
-import { type ChangeEvent, useState } from 'react';
+import { type FocusEvent, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { useActions, useTranslation } from '../../../hooks';
+import { useActions, useAppSelector, useTranslation } from '../../../hooks';
 import { themeInput } from '../../../utils/themeInput/themeInput';
 import DocumentationExplorer from '../../features/DocumentationExplorer/DocumentationExplorer';
 import { selectEndpoint } from '../../../store/slices/endpointSlice';
-import HtmlTooltip from '../../shared/HtmlTooltip/HtmlTooltip';
+import DocumentationButton from '../../entities/DocumentationButton/DocumentationButton';
+import { selectDocumentation } from '../../../store/slices/documentationSlice';
 
 import styles from './DocsSection.module.css';
 
 const DocsSection = () => {
   const translation = useTranslation();
-  const [showDocumentation, setShowDocumentation] = useState(false);
-  const apiUrl = useSelector(selectEndpoint);
   const { updateEndpoint } = useActions();
+  const documentationStatus = useAppSelector(selectDocumentation);
+  const apiUrl = useSelector(selectEndpoint);
+  const [showDocumentation, setShowDocumentation] = useState(false);
 
-  const handleEndpointChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleEndpointChange = (event: FocusEvent<HTMLInputElement>) => {
     updateEndpoint(event.target.value);
     setShowDocumentation(false);
+  };
+
+  const handleButtonClick = () => {
+    setShowDocumentation(!showDocumentation);
   };
 
   return (
     <div className={styles.docsSection}>
       <div className={styles.docsWrapper}>
-        <HtmlTooltip title={translation.tooltip.docs} placement="top">
-          <button
-            className={showDocumentation ? styles.buttonDocsOpen : styles.buttonDocs}
-            onClick={() => setShowDocumentation(!showDocumentation)}
-            //disabled={true}
-            // TODO: disable docs button if wrong endpoint
-          />
-        </HtmlTooltip>
+        <DocumentationButton showDocumentation={showDocumentation} onclick={handleButtonClick} />
         <ThemeProvider theme={themeInput}>
-          <TextField
-            className={styles.inputEndpoind}
-            label={translation.endpoint}
-            id="filled-size-small"
-            variant="filled"
-            size="small"
-            color="secondary"
-            defaultValue={apiUrl}
-            onChange={handleEndpointChange}
-          />
+          {documentationStatus === 'error' ? (
+            <TextField
+              error
+              className={styles.inputEndpoint}
+              label={translation.error}
+              id="filled-size-small"
+              variant="filled"
+              size="small"
+              color="secondary"
+              defaultValue={apiUrl}
+              onBlur={handleEndpointChange}
+            />
+          ) : (
+            <TextField
+              className={styles.inputEndpoint}
+              label={translation.endpoint}
+              id="filled-size-small"
+              variant="filled"
+              size="small"
+              color="secondary"
+              defaultValue={apiUrl}
+              onBlur={handleEndpointChange}
+            />
+          )}
         </ThemeProvider>
       </div>
       <DocumentationExplorer onclose={() => setShowDocumentation(false)} showDocumentation={showDocumentation} />
