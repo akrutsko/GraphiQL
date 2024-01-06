@@ -20,9 +20,11 @@ const DocumentationExplorer = ({ showDocumentation, onclose }: DocumentationExpl
       open={showDocumentation}
       SlideProps={{
         style: {
-          width: 'fit-content',
+          width: '400px',
+          maxWidth: '100%',
           position: 'absolute',
           zIndex: 100,
+          maxHeight: 'fit-content',
           height: '100%',
           boxShadow: 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0 6px 6px',
         },
@@ -30,11 +32,9 @@ const DocumentationExplorer = ({ showDocumentation, onclose }: DocumentationExpl
     >
       <div className={styles.wrapper}>
         <button className={styles.close} onClick={onclose} />
-        {showDocumentation && (
-          <Suspense fallback={<LoaderSmall marginTop={'30'} />}>
-            <ListOfDocumentation />
-          </Suspense>
-        )}
+        <Suspense fallback={<LoaderSmall marginTop={'30'} />}>
+          <ListOfDocumentation />
+        </Suspense>
       </div>
     </Drawer>
   );

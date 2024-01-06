@@ -8,3 +8,4 @@ export * from './theme';
 export * from './trans';
 export * from './schema';
 export * from './headerButton';
+export * from './introspectionSchema';

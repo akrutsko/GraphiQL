@@ -18,6 +18,7 @@ const DocsSection = () => {
 
   const handleEndpointChange = (event: ChangeEvent<HTMLInputElement>) => {
     updateEndpoint(event.target.value);
+    setShowDocumentation(false);
   };
 
   return (
@@ -27,6 +28,8 @@ const DocsSection = () => {
           <button
             className={showDocumentation ? styles.buttonDocsOpen : styles.buttonDocs}
             onClick={() => setShowDocumentation(!showDocumentation)}
+            //disabled={true}
+            // TODO: disable docs button if wrong endpoint
           />
         </HtmlTooltip>
         <ThemeProvider theme={themeInput}>
