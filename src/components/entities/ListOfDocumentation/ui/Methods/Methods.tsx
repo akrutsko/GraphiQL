@@ -20,7 +20,7 @@ const Methods = ({ graphQLDocSchema, setHistory, history }: MethodsProps) => {
   const translation = useTranslation();
 
   useEffect(() => {
-    const actualEntity = history[history.length - 1];
+    const actualEntity = history.at(-1);
     setNewTypes(actualEntity);
     setNewTitle(actualEntity?.name);
     setEntity(actualEntity?.kind);

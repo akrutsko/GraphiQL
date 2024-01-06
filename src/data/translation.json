@@ -112,7 +112,8 @@
       "desc": "A GraphQL schema provides a root type for each kind of operation",
       "noDesc": "No description",
       "kind": "Kind",
-      "back": "Back to"
+      "back": "Back to",
+      "schema": "Schema"
     }
   },
   "ru": {
@@ -228,7 +229,8 @@
       "desc": "GraphQL-схема предоставляет корневой тип для каждого вида операции",
       "noDesc": "Нет описания",
       "kind": "Тип",
-      "back": "Назад к"
+      "back": "Назад к",
+      "schema": "Schema"
     }
   }
 }
