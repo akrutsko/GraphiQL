@@ -32,7 +32,7 @@ const DocumentationExplorer = ({ showDocumentation, onclose }: DocumentationExpl
     >
       <div className={styles.wrapper}>
         <button className={styles.close} onClick={onclose} />
-        <Suspense fallback={<LoaderSmall marginTop={'30'} />}>
+        <Suspense fallback={<LoaderSmall marginTopBottom={'30'} />}>
           <ListOfDocumentation />
         </Suspense>
       </div>

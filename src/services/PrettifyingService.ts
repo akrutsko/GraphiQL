@@ -33,17 +33,46 @@ class PrettifyingService {
     return '';
   }
 
+  private areBracketsClosed(inputString: string): boolean {
+    const stack: string[] = [];
+    const brackets: Record<string, string> = {
+      '(': ')',
+      '[': ']',
+      '{': '}',
+    };
+
+    for (const char of inputString) {
+      if (brackets[char]) {
+        stack.push(char);
+      } else if (Object.values(brackets).includes(char)) {
+        const lastOpenBracket = stack.pop();
+        if (!lastOpenBracket || brackets[lastOpenBracket] !== char) {
+          return false;
+        }
+      }
+    }
+
+    return stack.length === 0;
+  }
+
   public formatJSON(query: string) {
     const queryWithoutEmptyLines = this.removeEmptyLinesAndParagraphs(query);
     let result = '';
     let indentationLevel = 0;
+    let isFirstCharOpeningBrace = queryWithoutEmptyLines.startsWith('{');
     for (const el of queryWithoutEmptyLines) {
       switch (el) {
         case '{':
         case '[':
           indentationLevel++;
-          result += ` ${el}\n${'  '.repeat(indentationLevel)}`;
-          break;
+          if (isFirstCharOpeningBrace) {
+            result += `${el}\n${'  '.repeat(indentationLevel)}`;
+            isFirstCharOpeningBrace = false;
+            break;
+          } else {
+            result += ` ${el}\n${'  '.repeat(indentationLevel)}`;
+            break;
+          }
 
         case '}':
         case ']':
@@ -52,8 +81,14 @@ class PrettifyingService {
           break;
 
         case ',':
-          result += `\n${'  '.repeat(indentationLevel)}`;
-          break;
+          const areBracketsClosedInResult = this.areBracketsClosed(result);
+          if (result.includes('{') && !areBracketsClosedInResult) {
+            result += `\n${'  '.repeat(indentationLevel)}`;
+            break;
+          } else {
+            result += ` ${'  '.repeat(indentationLevel)}`;
+            break;
+          }
 
         case ':':
           result += `${el} `;
@@ -68,7 +103,7 @@ class PrettifyingService {
       }
     }
 
-    return result;
+    return result.replace(/(\bfragment\b)/g, '\n$1');
   }
 
   public formatQuery(query: string, errorMessage: errorMessagePrettifying): string | Array<string> {
