@@ -21,6 +21,11 @@
   background-repeat: no-repeat;
 }
 
+.buttonDocs:disabled {
+  opacity: 0.1;
+  cursor: default;
+}
+
 .buttonDocsOpen {
   background-image: url("../../../assets/icons/bookOpen.svg");
   width: 50px;

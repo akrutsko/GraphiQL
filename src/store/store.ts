@@ -6,6 +6,7 @@ import { requestReducer } from './slices/requestSlice';
 import { endpointReducer } from './slices/endpointSlice';
 import { variablesReducer } from './slices/variablesSlice';
 import { headersReducer } from './slices/headersSlice';
+import { documentationReducer } from './slices/documentationSlice';
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
     endpoint: endpointReducer,
     variables: variablesReducer,
     headers: headersReducer,
+    documentation: documentationReducer,
   },
 });
 

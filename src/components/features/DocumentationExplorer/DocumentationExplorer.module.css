@@ -15,6 +15,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   transition: transform 0.5s;
+  z-index: 2;
 }
 
 .close:hover {

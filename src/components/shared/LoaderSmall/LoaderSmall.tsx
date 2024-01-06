@@ -1,15 +1,18 @@
 import { CircularProgress } from '@mui/material';
 
 type LoadingProps = {
-  marginTop: string;
+  marginTopBottom: string;
+  marginLeftRight?: string;
 };
 
-const LoaderSmall = ({ marginTop }: LoadingProps) => {
+const LoaderSmall = ({ marginTopBottom, marginLeftRight }: LoadingProps) => {
+  const newMargin = marginLeftRight ? marginLeftRight : 'auto';
+
   return (
     <CircularProgress
       color="secondary"
       sx={{
-        margin: `${marginTop}px auto`,
+        margin: `${marginTopBottom}px ${newMargin}`,
       }}
     />
   );

@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import { introspectionQuery } from '../../../constants/intospectionQuery';
-import { useAppSelector, useTranslation } from '../../../hooks';
+import { useActions, useAppSelector, useTranslation } from '../../../hooks';
 import createApi from '../../../services/ApiService';
 import { selectEndpoint } from '../../../store/slices/endpointSlice';
-import type { IntrospectionSchema, SchemaType } from '../../../types/introspectionSchema';
+import type { IntrospectionSchema, SchemaType } from '../../../types';
 import GraphQLDocService from '../../../services/GraphQLDocService';
 import TostifyComponent from '../../shared/TostifyComponent/TostifyComponent';
 import TostifyMessage from '../../shared/TostifyMessage/TostifyMessage';
@@ -20,6 +20,7 @@ import styles from './ListOfDocumentation.module.css';
 const ListOfDocumentation = () => {
   const translation = useTranslation();
   const endpoint = useAppSelector(selectEndpoint);
+  const { setLoaded, setError, setLoading } = useActions();
 
   const [schema, setSchema] = useState<IntrospectionSchema>();
   const [entity, setEntity] = useState<string | null>(null);
@@ -34,12 +35,15 @@ const ListOfDocumentation = () => {
     const api = createApi(endpoint);
     const getSchema = async () => {
       try {
+        setLoading();
         const schema = (await api.fetchInfo(introspectionQuery)) as IntrospectionSchema;
         if ('errors' in schema) throw new Error();
         setSchema(schema);
         setHistory([]);
         setEntity(null);
+        setLoaded();
       } catch {
+        setError();
         notify();
       }
     };
