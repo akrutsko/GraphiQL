@@ -57,7 +57,6 @@ class PrettifyingService {
 
   public formatJSON(query: string) {
     const queryWithoutEmptyLines = this.removeEmptyLinesAndParagraphs(query);
-    console.log(queryWithoutEmptyLines);
     let result = '';
     let indentationLevel = 0;
     let isFirstCharOpeningBrace = queryWithoutEmptyLines.startsWith('{');
