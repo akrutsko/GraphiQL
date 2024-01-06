@@ -58,7 +58,7 @@ const ListOfDocumentation = () => {
     if (updatedHistory.length === 0) {
       setEntity(null);
     } else {
-      setEntity(updatedHistory[updatedHistory.length - 1]?.name ?? '');
+      setEntity(updatedHistory.at(-1)?.name ?? '');
     }
   };
 
@@ -68,7 +68,7 @@ const ListOfDocumentation = () => {
         <div className={styles.back}>
           <button className={styles.close} onClick={handleClose} />
           <span>
-            {translation.docs.back}: {history[history.length - 2]?.name ? cutWord(history[history.length - 2]?.name) : 'Schema'}
+            {translation.docs.back}: {history.at(-2)?.name ? cutWord(history.at(-2)?.name) : translation.docs.schema}
           </span>
         </div>
       )}
@@ -89,11 +89,11 @@ const ListOfDocumentation = () => {
   const subscriptions = graphQLDocSchema.getSubscriptions();
 
   const openMethods = (ent: string | null) => {
-    const keys = schema.data.__schema;
-    const key = Object.keys(keys).find((key) => (keys[key as SchemaKey] !== null ? keys[key as SchemaKey]?.name === ent : ''));
+    const root = schema.data.__schema;
+    const key = Object.keys(root).find((key) => root[key as SchemaKey]?.name === ent);
+    setEntity(ent);
 
     let methods;
-    setEntity(ent);
     switch (key) {
       case SchemaKey.QueryType:
         methods = queries;

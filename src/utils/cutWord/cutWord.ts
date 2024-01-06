@@ -1,7 +1,7 @@
-const maxLength = 25;
+import { MAX_STRING_LENGTH } from '../../constants';
 export const cutWord = (word: string | undefined) => {
   if (!word) return;
-  const shortenedName = word.slice(0, maxLength);
+  const shortenedName = word.slice(0, MAX_STRING_LENGTH);
 
-  return word.length > maxLength ? shortenedName + '...' : shortenedName;
+  return word.length > MAX_STRING_LENGTH ? shortenedName + '...' : shortenedName;
 };

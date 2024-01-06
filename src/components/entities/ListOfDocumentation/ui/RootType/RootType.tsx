@@ -6,15 +6,16 @@ type RootTypeProps = {
   title: string;
 };
 const RootType = ({ root, onClick, title }: RootTypeProps) => {
-  if (root)
-    return (
-      <li onClick={() => onClick(root)}>
-        {title}:{' '}
-        <span className={styles.link} style={{ color: '#918b3b', cursor: 'pointer' }}>
-          {root}
-        </span>
-      </li>
-    );
+  if (!root) return;
+
+  return (
+    <li onClick={() => onClick(root)}>
+      {title}:{' '}
+      <span className={styles.link} style={{ color: '#918b3b', cursor: 'pointer' }}>
+        {root}
+      </span>
+    </li>
+  );
 };
 
 export default RootType;

@@ -6,3 +6,4 @@ export * from './prettifying';
 export * from './headerSizes';
 export * from './endpoint';
 export * from './graphql';
+export * from './maxStringLength';
