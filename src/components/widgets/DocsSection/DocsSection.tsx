@@ -6,8 +6,8 @@ import { useActions, useAppSelector, useTranslation } from '../../../hooks';
 import { themeInput } from '../../../utils/themeInput/themeInput';
 import DocumentationExplorer from '../../features/DocumentationExplorer/DocumentationExplorer';
 import { selectEndpoint } from '../../../store/slices/endpointSlice';
-import DocumentationButton from '../../entities/DocumentationButton/DocumentationButton.tsx';
-import { selectDocumentation } from '../../../store/slices/documentationSlice.ts';
+import DocumentationButton from '../../entities/DocumentationButton/DocumentationButton';
+import { selectDocumentation } from '../../../store/slices/documentationSlice';
 
 import styles from './DocsSection.module.css';
 

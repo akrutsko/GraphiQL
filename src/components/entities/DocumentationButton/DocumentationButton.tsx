@@ -1,8 +1,8 @@
-import LoaderSmall from '../../shared/LoaderSmall/LoaderSmall.tsx';
-import HtmlTooltip from '../../shared/HtmlTooltip/HtmlTooltip.tsx';
+import LoaderSmall from '../../shared/LoaderSmall/LoaderSmall';
+import HtmlTooltip from '../../shared/HtmlTooltip/HtmlTooltip';
 import styles from '../../widgets/DocsSection/DocsSection.module.css';
 import { useAppSelector, useTranslation } from '../../../hooks';
-import { selectDocumentation } from '../../../store/slices/documentationSlice.ts';
+import { selectDocumentation } from '../../../store/slices/documentationSlice';
 
 interface DocumentationButtonProps {
   showDocumentation: boolean;
@@ -15,7 +15,7 @@ const DocumentationButton = ({ showDocumentation, onclick }: DocumentationButton
 
   return (
     <>
-      {documentationStatus === 'loading' && <LoaderSmall marginTopBottom={'0'} marginLeftRight={'5px'} />}
+      {documentationStatus === 'loading' && <LoaderSmall marginTopBottom={'0'} marginLeftRight={'5'} />}
       {documentationStatus === 'loaded' && (
         <HtmlTooltip title={translation.tooltip.docs} placement="top">
           <button className={showDocumentation ? styles.buttonDocsOpen : styles.buttonDocs} onClick={onclick} />

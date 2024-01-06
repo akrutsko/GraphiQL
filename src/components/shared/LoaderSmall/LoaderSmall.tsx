@@ -6,7 +6,7 @@ type LoadingProps = {
 };
 
 const LoaderSmall = ({ marginTopBottom, marginLeftRight }: LoadingProps) => {
-  const newMargin = marginLeftRight ? marginLeftRight : 'auto';
+  const newMargin = marginLeftRight ? `${marginLeftRight}px` : 'auto';
 
   return (
     <CircularProgress
