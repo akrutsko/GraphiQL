@@ -14,7 +14,7 @@ import { selectEndpoint } from '../../../store/slices/endpointSlice';
 import HtmlTooltip from '../../shared/HtmlTooltip/HtmlTooltip';
 import { selectVariablesData } from '../../../store/slices/variablesSlice';
 import { selectHeadersData } from '../../../store/slices/headersSlice';
-import { selectDocumentation } from '../../../store/slices/documentationSlice.ts';
+import { selectDocumentation } from '../../../store/slices/documentationSlice';
 
 import styles from './RequestSection.module.css';
 
