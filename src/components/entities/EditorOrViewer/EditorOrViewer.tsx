@@ -1,4 +1,6 @@
 import { useSelector } from 'react-redux';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { atelierHeathDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 import { selectResponseData } from '../../../store/slices/responseSlice';
 import ControlledTextarea from '../ControlledTextarea/ControlledTextarea';
@@ -11,9 +13,14 @@ const EditorOrViewer = ({ readOnly }: EditorOrViewerProps) => {
 
   if (readOnly) {
     return (
-      <pre data-testid={'code-container'} style={{ overflow: 'auto' }}>
+      <SyntaxHighlighter
+        data-testid={'code-container'}
+        customStyle={{ backgroundColor: 'transparent' }}
+        language="json"
+        style={atelierHeathDark}
+      >
         {responseData}
-      </pre>
+      </SyntaxHighlighter>
     );
   } else {
     return <ControlledTextarea />;
