@@ -34,7 +34,14 @@ const Textarea = ({ value, onChange }: TextareaProps) => {
 
   return (
     <div className={styles.wrapperTextarea}>
-      <StylizedTextarea minRows={8} className={styles.textarea} value={value} onChange={handleQueryChange} ref={textareaRef} />
+      <StylizedTextarea
+        data-testid={'text-area-mini'}
+        minRows={8}
+        className={styles.textarea}
+        value={value}
+        onChange={handleQueryChange}
+        ref={textareaRef}
+      />
     </div>
   );
 };

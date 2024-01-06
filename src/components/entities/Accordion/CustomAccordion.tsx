@@ -37,7 +37,11 @@ const CustomAccordion = () => {
             isActive={selectedDiv === HEADERS_EDITOR}
             onClick={() => showDiv(HEADERS_EDITOR)}
           />
-          <button className={`${styles.buttonGroup} ${visibleDiv ? styles.visible : ''}`} onClick={toggleDiv}></button>
+          <button
+            data-testid={'toggle-button'}
+            className={`${styles.buttonGroup} ${visibleDiv ? styles.visible : ''}`}
+            onClick={toggleDiv}
+          ></button>
         </div>
       </div>
       {visibleDiv && <EditorTextarea selectedDiv={selectedDiv} />}

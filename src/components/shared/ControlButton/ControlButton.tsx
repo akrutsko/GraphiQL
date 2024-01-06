@@ -8,7 +8,11 @@ interface ControlButtonProps {
 
 const ControlButton = ({ label, isActive, onClick }: ControlButtonProps) => {
   return (
-    <button className={`${styles.buttonsControl} ${isActive ? styles.activeButton : ''}`} onClick={onClick}>
+    <button
+      data-testid={`control-${label}`}
+      className={`${styles.buttonsControl} ${isActive ? styles.activeButton : ''}`}
+      onClick={onClick}
+    >
       {label}
     </button>
   );
