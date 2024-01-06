@@ -86,10 +86,10 @@ const ListOfDocumentation = () => {
 
   const openMethods = (ent: string | null) => {
     const root = schema.data.__schema;
-    const key = Object.keys(root).find((key) => (root[key as SchemaKey] !== null ? root[key as SchemaKey]?.name === ent : ''));
+    const key = Object.keys(root).find((key) => root[key as SchemaKey]?.name === ent);
+    setEntity(ent);
 
     let methods;
-    setEntity(ent);
     switch (key) {
       case SchemaKey.QueryType:
         methods = queries;

@@ -13,31 +13,31 @@ type MethodsProps = {
 };
 
 const Methods = ({ graphQLDocSchema, setHistory, history }: MethodsProps) => {
-  const [newType, setNewTypes] = useState<SchemaType | undefined>(undefined);
-  const [newTitle, setNewTitle] = useState<string | undefined>(undefined);
+  const [newType, setNewType] = useState<SchemaType>();
+  const [newTitle, setNewTitle] = useState<string>();
   const [entity, setEntity] = useState<string | undefined>(OBJECT);
 
   const translation = useTranslation();
 
   useEffect(() => {
     const actualEntity = history.at(-1);
-    setNewTypes(actualEntity);
+    setNewType(actualEntity);
     setNewTitle(actualEntity?.name);
     setEntity(actualEntity?.kind);
   }, [history]);
 
-  const handleClick = (event: MouseEvent<HTMLSpanElement>) => {
-    const typeName = (event.target as HTMLSpanElement).textContent;
-    const type = graphQLDocSchema.getType(typeName as string);
+  const handleClick = ({ currentTarget }: MouseEvent<HTMLSpanElement>) => {
+    const typeName = currentTarget.textContent!;
+    const type = graphQLDocSchema.getType(typeName);
     setHistory((prevHistory) => [...prevHistory, type]);
-    setNewTypes(type);
+    setNewType(type);
     if (type) {
       setNewTitle(type.name);
       setEntity(type.kind);
     }
   };
 
-  if (entity !== OBJECT && entity !== undefined) {
+  if (entity && entity !== OBJECT) {
     return (
       <>
         <h3 style={{ color: '#a65926', marginBottom: '10px' }}>{newTitle}</h3>
