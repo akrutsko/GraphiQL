@@ -1,5 +1,5 @@
 import { setupServer } from 'msw/node';
-import { beforeAll, afterEach, afterAll, describe, test } from 'vitest';
+import { beforeAll, afterEach, afterAll, describe, test, expect, beforeEach } from 'vitest';
 import { screen } from '@testing-library/react';
 import { http, HttpResponse } from 'msw';
 
@@ -8,21 +8,24 @@ import renderWithRouterAndProvider from '../../../tests/utils/renderWithRouter';
 
 import ListOfDocumentation from './ListOfDocumentation';
 
-const server = setupServer(
-  http.post('https://rest-endpoint', () => {
+const handlers = [
+  http.post('https://snowtooth.moonhighway.com', () => {
     return HttpResponse.json(mockSchema);
   }),
-);
+];
 
-describe('s', () => {
-  beforeAll(() => {
-    renderWithRouterAndProvider(<ListOfDocumentation />);
-    server.listen();
+const server = setupServer(...handlers);
+
+describe('ListOfDocumentation', () => {
+  beforeEach(async () => {
+    await renderWithRouterAndProvider(<ListOfDocumentation />);
   });
+
+  beforeAll(() => server.listen());
   afterEach(() => server.resetHandlers());
   afterAll(() => server.close());
 
-  test('renders ListOfDocumentation with a successful API call', async () => {
-    await screen.debug();
+  test('renders ListOfDocumentation with a successful API call', () => {
+    expect(screen.getByText(/Documentation Explorer/i)).toBeInTheDocument();
   });
 });
