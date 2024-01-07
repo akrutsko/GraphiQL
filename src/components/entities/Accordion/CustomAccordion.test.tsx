@@ -18,7 +18,7 @@ describe('CustomAccordion', () => {
 
   test('opens textarea', async () => {
     const button = screen.getByTestId('control-Variables');
-    expect(screen.queryByTestId('text-area-mini')).toBeNull();
+    expect(screen.queryByTestId('text-area-mini')).not.toBeInTheDocument();
     await userEvent.click(button);
     expect(screen.getByTestId('text-area-mini')).toBeInTheDocument();
   });
@@ -28,6 +28,6 @@ describe('CustomAccordion', () => {
     await userEvent.click(toggleButton);
     expect(screen.getByTestId('text-area-mini')).toBeInTheDocument();
     await userEvent.click(toggleButton);
-    expect(screen.queryByTestId('text-area-mini')).toBeNull();
+    expect(screen.queryByTestId('text-area-mini')).not.toBeInTheDocument();
   });
 });

@@ -6,8 +6,7 @@ export type Schema = {
   password: {
     required: string;
     whitespace: string;
-    uppercase: string;
-    lowercase: string;
+    letter: string;
     number: string;
     symbol: string;
     length: string;

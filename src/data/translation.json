@@ -67,8 +67,7 @@
       "password": {
         "required": "Password is required",
         "whitespace": "Password must not contain spaces",
-        "uppercase": "Password must contain at least one uppercase letter",
-        "lowercase": "Password must contain at least one letter",
+        "letter": "Password must contain at least one letter",
         "number": "Password must contain at least one number",
         "symbol": "Password must contain at least one special character",
         "length": "Password must be at least 8 characters"
@@ -185,8 +184,7 @@
       "password": {
         "required": "Требуется пароль",
         "whitespace": "Пароль не должен содержать пробелы",
-        "uppercase": "Пароль должен содержать минимум одну заглавную букву",
-        "lowercase": "Пароль должен содержать минимум одну букву",
+        "letter": "Пароль должен содержать минимум одну букву",
         "number": "Пароль должен содержать минимум одну цифру",
         "symbol": "Пароль должен содержать хотя бы один символ",
         "length": "Пароль должен содержать минимум 8 символов"

@@ -6,7 +6,7 @@ export const createPasswordSchema = ({ password }: Pick<Schema, 'password'>) => 
   return string()
     .required(password.required)
     .matches(/^\S*$/, password.whitespace)
-    .matches(/^(?=.*\p{L})[^\s]+$/u, password.lowercase)
+    .matches(/^(?=.*\p{L})[^\s]+$/u, password.letter)
     .matches(/[0-9]/, password.number)
     .matches(/[!"#$%&'()*+,./:;<=>?@^_`{|}~\-\[\]]/, password.symbol)
     .min(8, password.length);

@@ -1,18 +1,17 @@
+import { screen } from '@testing-library/react';
 import { beforeEach, describe, expect, test } from 'vitest';
 
-import { GraphiQL } from '../index';
-import renderWithRouterAndProvider from '../../../tests/utils/renderWithRouter';
 import { ENDPOINT } from '../../../constants';
+import renderWithRouterAndProvider from '../../../tests/utils/renderWithRouter';
+import { GraphiQL } from '../index';
 
 describe('GrapiQL', () => {
-  let wrapper: HTMLElement;
   beforeEach(async () => {
-    const { container } = await renderWithRouterAndProvider(<GraphiQL />);
-    wrapper = container;
+    await renderWithRouterAndProvider(<GraphiQL />);
   });
 
-  test('has default value', () => {
-    const input = wrapper.querySelector('#filled-size-small');
-    expect(input?.getAttribute('value')).toEqual(ENDPOINT);
+  test('has default value', async () => {
+    const input = screen.getByRole('textbox', { name: 'Endpoint' });
+    expect(input).toHaveAttribute('value', ENDPOINT);
   });
 });

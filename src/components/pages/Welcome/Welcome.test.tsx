@@ -20,19 +20,16 @@ describe('Welcome', () => {
   });
 
   test('button depends on auth status', () => {
-    act(() => {
-      mockStore.dispatch(setAuth(false));
-    });
+    act(() => mockStore.dispatch(setAuth(false)));
+
     expect(screen.getByText(/sign in/i)).toBeInTheDocument();
     expect(screen.getByText(/sign up/i)).toBeInTheDocument();
-    expect(screen.queryByText('GraphiQL')).toBeNull();
+    expect(screen.queryByText('GraphiQL')).not.toBeInTheDocument();
 
-    act(() => {
-      mockStore.dispatch(setAuth(true));
-    });
+    act(() => mockStore.dispatch(setAuth(true)));
 
     expect(screen.getByText('GraphiQL')).toBeInTheDocument();
-    expect(screen.queryByText(/sign up/i)).toBeNull();
-    expect(screen.queryByText(/sign ip/i)).toBeNull();
+    expect(screen.queryByText(/sign up/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/sign ip/i)).not.toBeInTheDocument();
   });
 });
