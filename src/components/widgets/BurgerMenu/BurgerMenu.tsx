@@ -59,7 +59,12 @@ const BurgerMenu = ({ buttons }: BurgerMenuProps) => {
         onClose={handleClose}
       >
         {buttons.map(({ value, to, func }) => (
-          <MenuItem sx={{ display: isActive(to) ? 'none' : 'line' }} key={value} onClick={handleClose}>
+          <MenuItem
+            className={styles.menu}
+            sx={{ display: isActive(to) ? 'none' : 'line', padding: 0 }}
+            key={value}
+            onClick={handleClose}
+          >
             <NavigationButton value={value} to={to} func={func} />
           </MenuItem>
         ))}
