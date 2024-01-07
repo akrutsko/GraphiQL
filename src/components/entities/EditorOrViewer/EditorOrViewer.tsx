@@ -13,7 +13,12 @@ const EditorOrViewer = ({ readOnly }: EditorOrViewerProps) => {
 
   if (readOnly) {
     return (
-      <SyntaxHighlighter customStyle={{ backgroundColor: 'transparent' }} language="json" style={atelierHeathDark}>
+      <SyntaxHighlighter
+        data-testid={'code-container'}
+        customStyle={{ backgroundColor: 'transparent' }}
+        language="json"
+        style={atelierHeathDark}
+      >
         {responseData}
       </SyntaxHighlighter>
     );

@@ -10,8 +10,8 @@ const LoaderSmall = ({ marginTopBottom, marginLeftRight }: LoadingProps) => {
 
   return (
     <CircularProgress
-      color="secondary"
       sx={{
+        color: '#ff05ea',
         margin: `${marginTopBottom}px ${newMargin}`,
       }}
     />

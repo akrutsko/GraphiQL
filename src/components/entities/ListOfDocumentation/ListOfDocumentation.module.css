@@ -1,11 +1,18 @@
 .container {
   position: relative;
 }
+
 .back {
   position: absolute;
   top: -2px;
   display: flex;
   align-items: center;
+  color: var(--dark-grey-color);
+  font-size: 16px;
+}
+
+.back:hover {
+  text-decoration: underline;
 }
 
 .close {

@@ -36,6 +36,7 @@ module.exports = {
     'react/display-name': 'off',
     'comma-dangle': ['error', 'only-multiline'],
     'no-fallthrough': 'error',
+    'react-hooks/exhaustive-deps': ['off'],
     'import/order': [
       2,
       {

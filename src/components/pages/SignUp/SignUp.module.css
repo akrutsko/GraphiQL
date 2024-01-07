@@ -1,9 +1,11 @@
 .form {
   width: fit-content;
+  margin-bottom: 30px;
 }
 
 .submit {
   font-size: var(--link-font-size);
+  line-height: 1.5;
   background-color: var(--pink-color);
   padding: var(--link-padding);
   color: var(--link-color);

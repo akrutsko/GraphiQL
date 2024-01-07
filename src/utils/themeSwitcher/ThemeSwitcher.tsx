@@ -9,7 +9,7 @@ const ThemeSwitcher = ({ children }: PropsWithChildren) => {
 
   const selectedTheme = useMemo(() => {
     const mainColor = theme === THEME_DARK ? '#2f2746' : '#e1e0e0';
-    const secondaryColor = theme === THEME_DARK ? '#2b2242' : '#ffffff';
+    const secondaryColor = theme === THEME_DARK ? '#2b2242' : '#f3f3f3';
     const redactorColor = theme === THEME_DARK ? '#262133' : '#e0dede';
     const textColor = theme === THEME_DARK ? '#ffffff' : '#000000';
 
