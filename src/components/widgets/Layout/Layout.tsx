@@ -20,7 +20,7 @@ const Layout = () => {
         <Header />
         <Container
           sx={{
-            minHeight: '100vh',
+            minHeight: '100%',
             display: 'flex',
             justifyContent: 'space-between',
             flexDirection: 'column',

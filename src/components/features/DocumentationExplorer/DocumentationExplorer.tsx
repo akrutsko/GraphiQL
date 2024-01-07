@@ -21,7 +21,7 @@ const DocumentationExplorer = ({ showDocumentation, onclose }: DocumentationExpl
       SlideProps={{
         style: {
           width: '400px',
-          maxWidth: '100%',
+          maxWidth: `${showDocumentation ? '100%' : '0'}`,
           position: 'absolute',
           zIndex: 100,
           maxHeight: 'fit-content',
