@@ -65,12 +65,10 @@ const ListOfDocumentation = () => {
   const header = (
     <div className={styles.container}>
       {entity && (
-        <div className={styles.back}>
-          <button className={styles.close} onClick={handleClose} />
-          <span>
-            {translation.docs.back}: {history.at(-2)?.name ? cutWord(history.at(-2)?.name) : translation.docs.schema}
-          </span>
-        </div>
+        <button className={styles.back} onClick={handleClose}>
+          <span className={styles.close} />
+          {translation.docs.back}: {history.at(-2)?.name ? cutWord(history.at(-2)?.name) : translation.docs.schema}
+        </button>
       )}
       <h2 className={styles.title}>{translation.documentationExplorer}</h2>
       <p>{translation.docs.desc}</p>
